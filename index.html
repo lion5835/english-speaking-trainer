@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>演講英文口說訓練｜睡眠呼吸中止症</title>
+<style>
+:root {
+  --bg: #f7f4ef;
+  --surface: #ffffff;
+  --ink: #1f2a24;
+  --muted: #5c6b63;
+  --line: #e4ddd3;
+  --accent: #2f6f5e;
+  --accent-soft: #e7f2ee;
+  --accent-dark: #245749;
+  --warm: #c47a3a;
+  --warm-soft: #f8efe4;
+  --ok: #2d7a52;
+  --ok-soft: #e8f5ee;
+  --shadow: 0 10px 30px rgba(31, 42, 36, 0.08);
+  --radius: 16px;
+  --font: "Iowan Old Style", "Palatino Linotype", "Songti TC", "Noto Serif TC", Georgia, serif;
+  --sans: "Avenir Next", "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(47,111,94,0.08), transparent 32%),
+    radial-gradient(circle at top right, rgba(196,122,58,0.08), transparent 28%),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+a { color: var(--accent); }
+button, input, textarea { font: inherit; }
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(14px);
+  background: rgba(247,244,239,0.88);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 14px 18px 10px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.brand h1 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-family: var(--font);
+  letter-spacing: 0.02em;
+}
+.brand p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.yt-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 8px 12px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  font-size: 0.88rem;
+}
+.yt-link:hover { border-color: var(--accent); color: var(--accent-dark); }
+.nav {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 12px 12px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.nav button {
+  flex: 0 0 auto;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav button.active {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  border-color: rgba(47,111,94,0.18);
+  font-weight: 600;
+}
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 8px 18px 48px;
+}
+.panel { display: none; }
+.panel.active { display: block; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+  margin-bottom: 16px;
+}
+.card h2 {
+  margin: 0 0 8px;
+  font-family: var(--font);
+  font-size: 1.35rem;
+}
+.card .lead {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.summary-zh {
+  background: var(--warm-soft);
+  border-left: 4px solid var(--warm);
+  padding: 14px 16px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+.summary-zh p { margin: 0 0 10px; }
+.summary-zh p:last-child { margin-bottom: 0; }
+.takeaways {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+.takeaways li { margin-bottom: 10px; }
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.82rem;
+}
+.btn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent-dark); }
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+.btn.primary:hover { background: var(--accent-dark); }
+.btn.soft {
+  background: var(--accent-soft);
+  border-color: transparent;
+  color: var(--accent-dark);
+}
+.btn.ok {
+  background: var(--ok-soft);
+  border-color: transparent;
+  color: var(--ok);
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+.vocab-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  background: linear-gradient(180deg, #fff, #fcfbf8);
+  position: relative;
+}
+.vocab-card.studied {
+  outline: 2px solid rgba(45,122,82,0.25);
+  background: linear-gradient(180deg, #f7fcf9, #fff);
+}
+.vocab-term {
+  font-family: var(--font);
+  font-size: 1.15rem;
+  margin: 0 0 4px;
+}
+.ipa {
+  color: var(--muted);
+  font-size: 0.86rem;
+  margin-bottom: 6px;
+}
+.gloss {
+  color: var(--accent-dark);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.example {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.92rem;
+  margin-bottom: 12px;
+}
+.chunk {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: #fff;
+}
+.chunk.done {
+  border-color: rgba(45,122,82,0.35);
+  background: linear-gradient(180deg, #f7fcf9, #fff);
+}
+.chunk-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.chunk-text {
+  font-family: var(--font);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0 0 8px;
+}
+.chunk-text.hidden-text {
+  filter: blur(7px);
+  user-select: none;
+  transition: filter 0.2s ease;
+}
+.hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+.progress {
+  height: 10px;
+  background: #ebe5db;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 8px 0 16px;
+}
+.progress > span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), #4f9d84);
+  transition: width 0.25s ease;
+}
+.drill {
+  border-top: 1px solid var(--line);
+  padding: 16px 0;
+}
+.drill:first-of-type { border-top: none; padding-top: 0; }
+.drill h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+.prompt {
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+.cloze-blank {
+  display: inline-block;
+  min-width: 4.5em;
+  border-bottom: 2px dashed var(--warm);
+  color: var(--warm);
+  text-align: center;
+  padding: 0 4px;
+}
+.answer-box {
+  display: none;
+  margin-top: 10px;
+  background: var(--ok-soft);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.answer-box.show { display: block; }
+.answer-input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  resize: vertical;
+  min-height: 70px;
+  background: #fcfcfb;
+}
+.timer-box {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 720px) {
+  .timer-box { grid-template-columns: 220px 1fr; align-items: start; }
+}
+.timer-face {
+  background: linear-gradient(180deg, #1f2a24, #2f6f5e);
+  color: white;
+  border-radius: 18px;
+  padding: 22px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.timer-face .time {
+  font-family: var(--font);
+  font-size: 3rem;
+  letter-spacing: 0.04em;
+  margin: 8px 0 14px;
+}
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.checklist li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.checklist li:last-child { border-bottom: none; }
+.checklist input { margin-top: 4px; }
+.footer-note {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin-top: 8px;
+}
+.badge {
+  display: inline-block;
+  background: var(--warm-soft);
+  color: #8a5522;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  margin-left: 6px;
+}
+.speak-active {
+  box-shadow: 0 0 0 3px rgba(47,111,94,0.18);
+}
+.toolbar-mini {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.small { font-size: 0.85rem; color: var(--muted); }
+.topic-cue {
+  background: var(--warm-soft);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+.topic-cue strong { display: block; margin-bottom: 4px; }
+.notes-area {
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fbfaf7;
+  margin-bottom: 12px;
+}
+.notes-area.hidden { display: none; }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <h1>演講英文口說訓練</h1>
+        <p>睡眠呼吸中止症｜晨間高血壓、夜尿與冠狀動脈痙攣</p>
+      </div>
+      <a class="yt-link" href="https://www.youtube.com/watch?v=rUOWar5cNGw" target="_blank" rel="noopener">▶ 觀看原演講</a>
+    </div>
+    <nav class="nav" id="nav" aria-label="模組切換">
+      <button type="button" data-tab="focus" class="active">今日重點</button>
+      <button type="button" data-tab="vocab">關鍵字彙</button>
+      <button type="button" data-tab="shadow">跟讀練習</button>
+      <button type="button" data-tab="sentence">句子練習</button>
+      <button type="button" data-tab="qa">口說問答</button>
+      <button type="button" data-tab="retell">一分鐘重述</button>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <!-- A. 今日重點 -->
+    <section class="panel active" id="panel-focus">
+      <div class="card">
+        <h2>今日重點</h2>
+        <p class="lead">先掌握這場演講的臨床邏輯，再用英文把重點說清楚。</p>
+        <div class="summary-zh">
+          <p>這場演講說明：夜間睡眠時心率與血氧劇烈波動後，血壓常在清晨達到高峰。晨間血壓特別高，可能是嚴重睡眠呼吸中止與交感神經過度活化的「紅旗」（red flag），尤其常見於 40–50 歲、需服用多種降壓藥卻控制不佳的男性。</p>
+          <p>阻塞缺氧時，肺血管收縮、右心負荷增加，心房被撐張後釋放心房利鈉肽（ANP），如同夜間被給予利尿劑，導致夜尿。夜尿不一定是攝水量或攝護腺肥大造成；攝護腺肥大主要影響排尿速度，難以解釋夜尿量。夜間體重明顯下降（如 1.5–2 公斤）常反映夜尿與呼吸中止嚴重度。另有患者出現休息或睡眠時心絞痛，心導管卻無阻塞，可能是血管痙攣。</p>
+        </div>
+        <h3 style="font-family:var(--font);margin:0 0 10px;">English key takeaways</h3>
+        <ul class="takeaways">
+          <li><strong>Morning hypertension can be a red flag</strong> for severe sleep apnea driven by overnight sympathetic overactivity—not just “daytime hypertension.”</li>
+          <li><strong>Men in their 40s–50s</strong> may deny insomnia yet still be sleep-deprived; stubborn hypertension on multiple drugs often masks apnea.</li>
+          <li><strong>Nocturia may reflect atrial natriuretic peptide (ANP)</strong> release after right-heart pressure rises during obstructive breaths—not simply evening water intake.</li>
+          <li><strong>An enlarged prostate</strong> explains slow or difficult urination, but not necessarily a large overnight urine volume.</li>
+          <li><strong>Large overnight weight loss</strong> (about 1.5–2 kg after emptying the bladder) and rest/sleep angina with clean vessels can signal severe apnea and coronary spasm.</li>
+        </ul>
+        <div class="pill-row">
+          <span class="pill">臨床紅旗</span>
+          <span class="pill">交感過動</span>
+          <span class="pill">夜尿 vs 攝護腺</span>
+          <span class="pill">夜間體重差</span>
+          <span class="pill">血管痙攣</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- B. 關鍵字彙 -->
+    <section class="panel" id="panel-vocab">
+      <div class="card">
+        <div class="toolbar-mini">
+          <div>
+            <h2 style="margin:0;">關鍵字彙</h2>
+            <p class="lead" style="margin:6px 0 0;">點選「朗讀」練習發音；標記「已學」會自動儲存。</p>
+          </div>
+          <div class="small" id="vocab-progress">已學 0 / 0</div>
+        </div>
+        <div class="vocab-grid" id="vocab-grid"></div>
+      </div>
+    </section>
+
+    <!-- C. 跟讀練習 -->
+    <section class="panel" id="panel-shadow">
+      <div class="card">
+        <h2>跟讀練習</h2>
+        <p class="lead">可先隱藏文字做 shadowing；聽完後點「我讀完了」追蹤進度。</p>
+        <div class="toolbar-mini">
+          <div class="small" id="chunk-progress-label">進度 0 / 0</div>
+          <button type="button" class="btn soft" id="toggle-all-text">全部隱藏／顯示文字</button>
+        </div>
+        <div class="progress" aria-hidden="true"><span id="chunk-progress-bar"></span></div>
+        <div id="chunks"></div>
+      </div>
+    </section>
+
+    <!-- D. 句子練習 -->
+    <section class="panel" id="panel-sentence">
+      <div class="card">
+        <h2>句子練習</h2>
+        <p class="lead">完成填空或改寫臨床句子；可先自答，再對照示範答案並朗讀。</p>
+        <div id="drills"></div>
+      </div>
+    </section>
+
+    <!-- E. 口說問答 -->
+    <section class="panel" id="panel-qa">
+      <div class="card">
+        <h2>口說問答</h2>
+        <p class="lead">想像你在向英語聽眾或病患解釋。先自己說，再看參考說法。</p>
+        <div id="qa-list"></div>
+      </div>
+    </section>
+
+    <!-- F. 一分鐘重述 -->
+    <section class="panel" id="panel-retell">
+      <div class="card">
+        <h2>一分鐘重述</h2>
+        <p class="lead">用約 60 秒，把演講核心用英文說給聽眾聽。可隱藏筆記。</p>
+        <div class="timer-box">
+          <div class="timer-face">
+            <div class="small" style="color:rgba(255,255,255,0.75);">計時</div>
+            <div class="time" id="timer-display">1:00</div>
+            <div class="btn-row" style="justify-content:center;">
+              <button type="button" class="btn primary" id="timer-start">開始</button>
+              <button type="button" class="btn" id="timer-stop">停止</button>
+              <button type="button" class="btn" id="timer-reset">重設</button>
+            </div>
+          </div>
+          <div>
+            <div class="topic-cue">
+              <strong>Topic cue</strong>
+              Explain to an English-speaking audience why high morning blood pressure, nocturia, overnight weight loss, and rest angina can all point to sleep apnea—and why enlarged prostate is not the whole story.
+            </div>
+            <div class="toolbar-mini">
+              <label class="small"><input type="checkbox" id="hide-notes"> 隱藏筆記</label>
+              <span class="small" id="timer-status">準備好後按下開始</span>
+            </div>
+            <div class="notes-area" id="notes-area">
+              <strong>可用提示（英文關鍵詞）</strong>
+              <p class="small" style="margin:8px 0 0;">morning BP peak · red flag · sympathetic overactivity · 40–50s men · multiple BP meds · hypoxia · right heart pressure · atrial natriuretic peptide · diuretic-like effect · nocturia volume vs prostate flow · weigh after voiding · 1.5–2 kg · coronary spasm · clean catheterization</p>
+            </div>
+            <div id="checklist-wrap" style="display:none;">
+              <h3 style="font-family:var(--font);margin:0 0 8px;">自我檢查：必須涵蓋的重點</h3>
+              <ul class="checklist" id="retell-checklist"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer-note">練習內容依演講逐字稿整理 · 離線可用 · 進度儲存於本機瀏覽器</p>
+  </main>
+
+<script>
+(function () {
+  const STORAGE_KEY = 'speech-trainer-sleep-apnea-v1';
+  const YT = 'https://www.youtube.com/watch?v=rUOWar5cNGw';
+
+  const vocab = [
+    {
+      term: 'sleep apnea',
+      ipa: '/sliːp ˈæpniə/ · SLEEP AP-nee-uh',
+      gloss: '睡眠呼吸中止（症）',
+      example: 'High morning blood pressure is actually a sign of severe sleep apnea.'
+    },
+    {
+      term: 'sympathetic nervous system',
+      ipa: '/ˌsɪmpəˈθɛtɪk/ · sim-puh-THET-ik',
+      gloss: '交感神經系統',
+      example: 'Sleep apnea is a result of sympathetic nervous system overactivity.'
+    },
+    {
+      term: 'overactivity',
+      ipa: '/ˌoʊvərækˈtɪvəti/ · OH-ver-ak-TIV-uh-tee',
+      gloss: '過度活化／過動',
+      example: 'Their sympathetic nervous system is hyperactive overnight and into the day.'
+    },
+    {
+      term: 'morning hypertension',
+      ipa: 'MOR-ning HY-per-TEN-shun',
+      gloss: '晨間高血壓',
+      example: 'High morning blood pressure is a red flag for severe sleep apnea.'
+    },
+    {
+      term: 'red flag',
+      ipa: 'RED flag',
+      gloss: '警訊／紅旗徵象',
+      example: 'I told him that high morning blood pressure is a red flag.'
+    },
+    {
+      term: 'hypoxia',
+      ipa: '/haɪˈpɒksiə/ · hy-POK-see-uh',
+      gloss: '缺氧',
+      example: 'When he is blocked and cannot breathe, he experiences hypoxia.'
+    },
+    {
+      term: 'atrial natriuretic peptide',
+      ipa: 'AY-tree-ul nay-tree-yoo-RET-ik PEP-tide (ANP)',
+      gloss: '心房利鈉肽（ANP）',
+      example: 'When the atrium is stretched, it releases atrial natriuretic peptide.'
+    },
+    {
+      term: 'diuretic',
+      ipa: '/ˌdaɪjʊˈrɛtɪk/ · dye-yuh-RET-ik',
+      gloss: '利尿劑',
+      example: 'It is as if you were given a diuretic while you slept.'
+    },
+    {
+      term: 'nocturia',
+      ipa: '/nɒkˈtjʊəriə/ · nok-TYOO-ree-uh',
+      gloss: '夜尿',
+      example: 'After experiencing nocturia, many people in their 50s to 70s see a urologist.'
+    },
+    {
+      term: 'enlarged prostate',
+      ipa: 'en-LARJD PROS-tate',
+      gloss: '攝護腺肥大',
+      example: 'An enlarged prostate affects the speed of urination, but it cannot explain the volume.'
+    },
+    {
+      term: 'urologist',
+      ipa: '/jʊˈrɒlədʒɪst/ · yuh-ROL-uh-jist',
+      gloss: '泌尿科醫師',
+      example: 'They go see a urologist, who may say the nocturia is an enlarged prostate.'
+    },
+    {
+      term: 'angina',
+      ipa: '/ænˈdʒaɪnə/ · an-JY-nuh',
+      gloss: '心絞痛',
+      example: 'Many people often experience angina and go to cardiology for check-ups.'
+    },
+    {
+      term: 'cardiac catheterization',
+      ipa: 'KAR-dee-ak kath-uh-tur-uh-ZAY-shun',
+      gloss: '心導管檢查',
+      example: 'They even get a cardiac catheterization, only to be told their vessels look great.'
+    },
+    {
+      term: 'coronary spasm',
+      ipa: 'KOR-uh-nair-ee spasm',
+      gloss: '冠狀動脈痙攣',
+      example: 'Sometimes the problem is that the blood vessels go into spasm during sleep or rest.'
+    },
+    {
+      term: 'negative pressure',
+      ipa: 'NEG-uh-tiv PRESH-ur',
+      gloss: '負壓（胸腔）',
+      example: 'When you inhale forcefully, your chest cavity creates a strong negative pressure.'
+    }
+  ];
+
+  const chunks = [
+    {
+      en: 'When we wake up in the morning, our blood pressure should have dropped while we sleep and remain relatively low. However, after a night of severe fluctuations in heart rate and oxygen levels, blood pressure is typically at its peak in the morning.',
+      zh: '正常睡眠時血壓應下降；但整夜心率與血氧劇烈波動後，血壓常在清晨達高峰。'
+    },
+    {
+      en: 'I once saw an elderly gentleman whose blood pressure was exceptionally high every morning, but not that severe during the day. I told him high morning blood pressure is a red flag—a sign of severe sleep apnea from sympathetic nervous system overactivity.',
+      zh: '晨間血壓特別高是紅旗，指向嚴重睡眠呼吸中止與交感神經過動。'
+    },
+    {
+      en: 'We must be cautious, especially in men aged 40 to 50. They often think they simply have hypertension that never improves. People who need two or three blood pressure medications without success often have underlying sleep apnea.',
+      zh: '40–50 歲男性、多種降壓藥仍控制不佳者，常有潛在睡眠呼吸中止。'
+    },
+    {
+      en: 'Men with sleep apnea often present differently: when obstructed, they keep sleeping. They do not have insomnia, so they do not think they have a sleep problem. They fall asleep the moment they hit the bed and only notice the high blood pressure.',
+      zh: '男性常無失眠主訴，一上床就睡著，只注意到高血壓。'
+    },
+    {
+      en: 'High blood pressure indicates sympathetic nervous system stimulation. If they exercise regularly and stay fit, their sympathetic system stays active. They do not feel sleepy and believe they are healthy—until something suddenly goes wrong.',
+      zh: '白天不睏、體力好，可能仍處交感活化狀態，直到突然出事。'
+    },
+    {
+      en: 'During obstruction and hypoxia, lung vessels constrict. The right heart cannot pump effectively into the lungs. Forceful inspiration creates strong negative chest pressure, so blood rushes into the right heart and it becomes distended and pressurized.',
+      zh: '缺氧致肺血管收縮、右心負荷增加；用力吸氣的胸腔負壓使大量血液湧入右心。'
+    },
+    {
+      en: 'The body judges fluid status by heart pressure. When the atrium is stretched, it releases atrial natriuretic peptide. With sleep apnea, pressure rises at night as if a diuretic were given during sleep, producing lots of urine and waking you to pee.',
+      zh: '心房被撐張釋放 ANP，如同夜間被給利尿劑，產生大量夜尿。'
+    },
+    {
+      en: 'People say they drank too much water before bed. But ten years ago they drank no less—so why nocturia now? Urologists may blame an enlarged prostate. Prostate enlargement slows urine flow; it does not explain a large urine volume.',
+      zh: '夜尿未必是睡前喝水或攝護腺肥大；肥大解釋流速，難解釋尿量。'
+    },
+    {
+      en: 'Weight can fluctuate a lot overnight. Weigh yourself after emptying the bladder. Patients may wake a kilogram lighter than the night before. Differences of 1.5 to 2 kilograms often mean more severe sleep apnea, especially with lower-body fluid retention.',
+      zh: '排空膀胱後秤重；夜間體重差 1.5–2 公斤常反映較嚴重的呼吸中止。'
+    },
+    {
+      en: 'With sleep apnea, vessels can become unstable. Before blockage, an earlier sign is spasm. Patients may have angina and even cardiac catheterization showing clean vessels. Spasm often occurs during sleep or rest and may last only seconds, so it is hard to catch.',
+      zh: '阻塞前可先有痙攣；休息或睡眠時心絞痛、心導管卻乾淨，可能是血管痙攣。'
+    }
+  ];
+
+  const drills = [
+    {
+      type: 'cloze',
+      title: '填空 1 · 晨間血壓',
+      promptHtml: 'High morning blood pressure is a <span class="cloze-blank">______</span>; it is a sign of severe <span class="cloze-blank">______</span>.',
+      model: 'High morning blood pressure is a red flag; it is a sign of severe sleep apnea.',
+      tip: '提示：red flag / sleep apnea'
+    },
+    {
+      type: 'cloze',
+      title: '填空 2 · 交感神經',
+      promptHtml: 'Sleep apnea in this context is linked to <span class="cloze-blank">______</span> nervous system <span class="cloze-blank">______</span>.',
+      model: 'Sleep apnea in this context is linked to sympathetic nervous system overactivity.',
+      tip: '提示：sympathetic / overactivity'
+    },
+    {
+      type: 'cloze',
+      title: '填空 3 · 難治高血壓',
+      promptHtml: 'People who take two or three medications for high blood pressure without success often have underlying <span class="cloze-blank">______</span>.',
+      model: 'People who take two or three medications for high blood pressure without success often have underlying sleep apnea.',
+      tip: '提示：sleep apnea'
+    },
+    {
+      type: 'cloze',
+      title: '填空 4 · ANP',
+      promptHtml: 'When the atrium is stretched, it releases <span class="cloze-blank">______</span>, which acts like a powerful <span class="cloze-blank">______</span> at night.',
+      model: 'When the atrium is stretched, it releases atrial natriuretic peptide, which acts like a powerful diuretic at night.',
+      tip: '提示：atrial natriuretic peptide / diuretic'
+    },
+    {
+      type: 'cloze',
+      title: '填空 5 · 攝護腺',
+      promptHtml: 'An enlarged prostate explains why urination is difficult or slow; it cannot explain the <span class="cloze-blank">______</span>.',
+      model: 'An enlarged prostate explains why urination is difficult or slow; it cannot explain the volume.',
+      tip: '提示：volume'
+    },
+    {
+      type: 'transform',
+      title: '改寫 1',
+      prompt: '把「高晨間血壓是紅旗」改成自然、專業的英文。',
+      model: 'High morning blood pressure is a red flag.',
+      tip: '可用：red flag / warning sign'
+    },
+    {
+      type: 'transform',
+      title: '改寫 2',
+      prompt: '用英文說明：夜尿不一定是睡前喝太多水。',
+      model: 'Nocturia is not necessarily from drinking too much water before bed.',
+      tip: '關鍵詞：nocturia / not necessarily'
+    },
+    {
+      type: 'transform',
+      title: '改寫 3',
+      prompt: '用英文說明：夜間體重差愈大，睡眠呼吸中止可能愈嚴重。',
+      model: 'The greater the overnight weight difference, the more severe the sleep apnea tends to be.',
+      tip: '關鍵詞：overnight weight difference / more severe'
+    },
+    {
+      type: 'transform',
+      title: '改寫 4',
+      prompt: '用英文說明：心導管顯示血管很好，但休息時仍有心絞痛，可能是痙攣。',
+      model: 'Cardiac catheterization may show clean vessels, yet angina at rest can still come from coronary spasm.',
+      tip: '關鍵詞：cardiac catheterization / spasm'
+    },
+    {
+      type: 'cloze',
+      title: '填空 6 · 缺氧與右心',
+      promptHtml: 'During <span class="cloze-blank">______</span>, lung vessels constrict and the right heart cannot pump effectively, so pressure rises.',
+      model: 'During hypoxia, lung vessels constrict and the right heart cannot pump effectively, so pressure rises.',
+      tip: '提示：hypoxia'
+    }
+  ];
+
+  const qaItems = [
+    {
+      q: 'Why can morning blood pressure signal sleep apnea?',
+      outline: 'Normally BP falls during sleep. After a night of big swings in heart rate and oxygen, BP often peaks in the morning. Very high morning BP—especially if daytime BP is milder—is a red flag for severe sleep apnea from sympathetic overactivity.'
+    },
+    {
+      q: 'Why might middle-aged men miss the diagnosis?',
+      outline: 'Men in their 40s–50s may keep sleeping through obstruction and deny insomnia. They fall asleep quickly, feel fit if they exercise, and only notice stubborn hypertension that needs multiple drugs.'
+    },
+    {
+      q: 'How can sleep apnea cause nocturia?',
+      outline: 'Obstruction causes hypoxia and lung-vessel constriction. Right-heart pressure rises; forceful breathing creates strong negative chest pressure and blood floods the right heart. Atrial stretch releases ANP, which acts like a nighttime diuretic.'
+    },
+    {
+      q: 'Why is enlarged prostate not always the full explanation for nocturia?',
+      outline: 'Prostate enlargement mainly slows or obstructs urine flow. It does not explain a large overnight urine volume. Ask whether water intake changed versus ten years ago—and consider apnea-related ANP.'
+    },
+    {
+      q: 'How can overnight weight change help assess severity?',
+      outline: 'Weigh after fully emptying the bladder. A large drop by morning—about 1.5 to 2 kilograms in some patients—often tracks more severe apnea, especially with lower-body fluid retention.'
+    },
+    {
+      q: 'What is the link between sleep apnea and angina with “clean” arteries?',
+      outline: 'Vessels may spasm before fixed blockage. Angina can occur during sleep or rest; catheterization may look normal because spasm is brief and hard to catch.'
+    }
+  ];
+
+  const retellChecks = [
+    'Morning BP can peak after overnight HR/O₂ swings; high morning BP is a red flag for severe sleep apnea.',
+    'Sympathetic overactivity; stubborn hypertension on 2–3 drugs, especially men 40–50.',
+    'Hypoxia → lung constriction → right-heart pressure → ANP → diuretic-like nocturia.',
+    'Prostate explains flow difficulty, not necessarily urine volume; water intake alone may not explain new nocturia.',
+    'Overnight weight loss after voiding (e.g. 1.5–2 kg) can mark severity.',
+    'Rest/sleep angina with clean catheterization may reflect coronary spasm.'
+  ];
+
+  function loadState() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    } catch (e) {
+      return {};
+    }
+  }
+  function saveState(state) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+  let state = Object.assign({
+    studiedVocab: {},
+    doneChunks: {},
+    textHidden: false
+  }, loadState());
+
+  let voices = [];
+  function refreshVoices() {
+    voices = window.speechSynthesis ? speechSynthesis.getVoices() : [];
+  }
+  if (window.speechSynthesis) {
+    refreshVoices();
+    speechSynthesis.onvoiceschanged = refreshVoices;
+  }
+
+  function pickVoice() {
+    if (!voices.length) refreshVoices();
+    const prefer = [
+      v => /en-US/i.test(v.lang) && /Google|Samantha|Alex|Karen|Daniel|Microsoft/i.test(v.name),
+      v => /en-US/i.test(v.lang),
+      v => /^en(-|_)/i.test(v.lang)
+    ];
+    for (const fn of prefer) {
+      const found = voices.find(fn);
+      if (found) return found;
+    }
+    return null;
+  }
+
+  let speakingBtn = null;
+  function speak(text, btn) {
+    if (!window.speechSynthesis) {
+      alert('此瀏覽器不支援語音合成（speechSynthesis）。請改用 Chrome 或 Safari。');
+      return;
+    }
+    speechSynthesis.cancel();
+    if (speakingBtn) speakingBtn.classList.remove('speak-active');
+    const u = new SpeechSynthesisUtterance(text);
+    const voice = pickVoice();
+    if (voice) u.voice = voice;
+    u.lang = 'en-US';
+    u.rate = 0.9;
+    u.pitch = 1;
+    if (btn) {
+      speakingBtn = btn;
+      btn.classList.add('speak-active');
+      u.onend = u.onerror = function () {
+        btn.classList.remove('speak-active');
+        speakingBtn = null;
+      };
+    }
+    speechSynthesis.speak(u);
+  }
+
+  // Tabs
+  const nav = document.getElementById('nav');
+  nav.addEventListener('click', function (e) {
+    const btn = e.target.closest('button[data-tab]');
+    if (!btn) return;
+    nav.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    speechSynthesis && speechSynthesis.cancel();
+  });
+
+  // Vocab
+  const vocabGrid = document.getElementById('vocab-grid');
+  function renderVocab() {
+    vocabGrid.innerHTML = '';
+    vocab.forEach((v, i) => {
+      const studied = !!state.studiedVocab[i];
+      const card = document.createElement('article');
+      card.className = 'vocab-card' + (studied ? ' studied' : '');
+      card.innerHTML =
+        '<h3 class="vocab-term">' + escapeHtml(v.term) + (studied ? '<span class="badge">已學</span>' : '') + '</h3>' +
+        '<div class="ipa">' + escapeHtml(v.ipa) + '</div>' +
+        '<div class="gloss">' + escapeHtml(v.gloss) + '</div>' +
+        '<div class="example">' + escapeHtml(v.example) + '</div>' +
+        '<div class="btn-row">' +
+          '<button type="button" class="btn primary" data-speak="' + i + '">朗讀</button>' +
+          '<button type="button" class="btn ' + (studied ? 'ok' : 'soft') + '" data-study="' + i + '">' +
+            (studied ? '取消已學' : '標記已學') +
+          '</button>' +
+        '</div>';
+      vocabGrid.appendChild(card);
+    });
+    const n = Object.keys(state.studiedVocab).filter(k => state.studiedVocab[k]).length;
+    document.getElementById('vocab-progress').textContent = '已學 ' + n + ' / ' + vocab.length;
+  }
+  vocabGrid.addEventListener('click', function (e) {
+    const speakBtn = e.target.closest('[data-speak]');
+    const studyBtn = e.target.closest('[data-study]');
+    if (speakBtn) {
+      const i = +speakBtn.dataset.speak;
+      speak(vocab[i].term + '. ' + vocab[i].example, speakBtn);
+    }
+    if (studyBtn) {
+      const i = +studyBtn.dataset.study;
+      if (state.studiedVocab[i]) delete state.studiedVocab[i];
+      else state.studiedVocab[i] = true;
+      saveState(state);
+      renderVocab();
+    }
+  });
+  renderVocab();
+
+  // Chunks
+  const chunksEl = document.getElementById('chunks');
+  let globalHide = !!state.textHidden;
+  function renderChunks() {
+    chunksEl.innerHTML = '';
+    chunks.forEach((c, i) => {
+      const done = !!state.doneChunks[i];
+      const hide = globalHide;
+      const div = document.createElement('div');
+      div.className = 'chunk' + (done ? ' done' : '');
+      div.innerHTML =
+        '<div class="chunk-meta"><span>段落 ' + (i + 1) + ' / ' + chunks.length +
+        ' · 約 ' + c.en.split(/\s+/).length + ' 詞</span>' +
+        (done ? '<span style="color:var(--ok);font-weight:600;">已完成</span>' : '<span></span>') +
+        '</div>' +
+        '<p class="chunk-text' + (hide ? ' hidden-text' : '') + '" data-chunk-text="' + i + '">' + escapeHtml(c.en) + '</p>' +
+        '<div class="hint">' + escapeHtml(c.zh) + '</div>' +
+        '<div class="btn-row">' +
+          '<button type="button" class="btn primary" data-chunk-speak="' + i + '">播放</button>' +
+          '<button type="button" class="btn soft" data-chunk-toggle="' + i + '">' + (hide ? '顯示文字' : '隱藏文字') + '</button>' +
+          '<button type="button" class="btn ' + (done ? 'ok' : '') + '" data-chunk-done="' + i + '">' +
+            (done ? '取消完成' : '我讀完了') +
+          '</button>' +
+        '</div>';
+      chunksEl.appendChild(div);
+    });
+    updateChunkProgress();
+  }
+  function updateChunkProgress() {
+    const n = Object.keys(state.doneChunks).filter(k => state.doneChunks[k]).length;
+    document.getElementById('chunk-progress-label').textContent = '進度 ' + n + ' / ' + chunks.length;
+    document.getElementById('chunk-progress-bar').style.width = Math.round(n / chunks.length * 100) + '%';
+  }
+  chunksEl.addEventListener('click', function (e) {
+    const speakBtn = e.target.closest('[data-chunk-speak]');
+    const toggleBtn = e.target.closest('[data-chunk-toggle]');
+    const doneBtn = e.target.closest('[data-chunk-done]');
+    if (speakBtn) {
+      const i = +speakBtn.dataset.chunkSpeak;
+      speak(chunks[i].en, speakBtn);
+    }
+    if (toggleBtn) {
+      const i = +toggleBtn.dataset.chunkToggle;
+      const p = chunksEl.querySelector('[data-chunk-text="' + i + '"]');
+      p.classList.toggle('hidden-text');
+      toggleBtn.textContent = p.classList.contains('hidden-text') ? '顯示文字' : '隱藏文字';
+    }
+    if (doneBtn) {
+      const i = +doneBtn.dataset.chunkDone;
+      if (state.doneChunks[i]) delete state.doneChunks[i];
+      else state.doneChunks[i] = true;
+      saveState(state);
+      renderChunks();
+    }
+  });
+  document.getElementById('toggle-all-text').addEventListener('click', function () {
+    globalHide = !globalHide;
+    state.textHidden = globalHide;
+    saveState(state);
+    renderChunks();
+  });
+  renderChunks();
+
+  // Drills
+  const drillsEl = document.getElementById('drills');
+  drills.forEach((d, i) => {
+    const div = document.createElement('div');
+    div.className = 'drill';
+    const body = d.type === 'cloze'
+      ? '<p class="prompt">' + d.promptHtml + '</p><p class="small">' + escapeHtml(d.tip) + '</p>'
+      : '<p class="prompt">' + escapeHtml(d.prompt) + '</p><p class="small">' + escapeHtml(d.tip) + '</p>';
+    div.innerHTML =
+      '<h3>' + escapeHtml(d.title) + '</h3>' +
+      body +
+      '<textarea class="answer-input" placeholder="可在此打出你的英文（選填）"></textarea>' +
+      '<div class="btn-row">' +
+        '<button type="button" class="btn soft" data-reveal="' + i + '">顯示示範答案</button>' +
+        '<button type="button" class="btn primary" data-drill-speak="' + i + '">朗讀示範答案</button>' +
+      '</div>' +
+      '<div class="answer-box" id="answer-' + i + '"><strong>示範答案</strong><div style="margin-top:6px;">' + escapeHtml(d.model) + '</div></div>';
+    drillsEl.appendChild(div);
+  });
+  drillsEl.addEventListener('click', function (e) {
+    const reveal = e.target.closest('[data-reveal]');
+    const sp = e.target.closest('[data-drill-speak]');
+    if (reveal) {
+      document.getElementById('answer-' + reveal.dataset.reveal).classList.add('show');
+    }
+    if (sp) {
+      const i = +sp.dataset.drillSpeak;
+      document.getElementById('answer-' + i).classList.add('show');
+      speak(drills[i].model, sp);
+    }
+  });
+
+  // QA
+  const qaEl = document.getElementById('qa-list');
+  qaItems.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'drill';
+    div.innerHTML =
+      '<h3>問題 ' + (i + 1) + '</h3>' +
+      '<p class="prompt" style="font-family:var(--font);font-size:1.05rem;">' + escapeHtml(item.q) + '</p>' +
+      '<div class="btn-row">' +
+        '<button type="button" class="btn soft" data-qa-reveal="' + i + '">看參考說法</button>' +
+        '<button type="button" class="btn primary" data-qa-speak="' + i + '">朗讀參考說法</button>' +
+      '</div>' +
+      '<div class="answer-box" id="qa-answer-' + i + '"><strong>參考說法</strong><div style="margin-top:6px;">' + escapeHtml(item.outline) + '</div></div>';
+    qaEl.appendChild(div);
+  });
+  qaEl.addEventListener('click', function (e) {
+    const reveal = e.target.closest('[data-qa-reveal]');
+    const sp = e.target.closest('[data-qa-speak]');
+    if (reveal) document.getElementById('qa-answer-' + reveal.dataset.qaReveal).classList.add('show');
+    if (sp) {
+      const i = +sp.dataset.qaSpeak;
+      document.getElementById('qa-answer-' + i).classList.add('show');
+      speak(qaItems[i].outline, sp);
+    }
+  });
+
+  // Retell timer
+  const checklist = document.getElementById('retell-checklist');
+  retellChecks.forEach((t, i) => {
+    const li = document.createElement('li');
+    li.innerHTML = '<input type="checkbox" id="rc' + i + '"><label for="rc' + i + '">' + escapeHtml(t) + '</label>';
+    checklist.appendChild(li);
+  });
+
+  let timerId = null;
+  let remaining = 60;
+  const timerDisplay = document.getElementById('timer-display');
+  const timerStatus = document.getElementById('timer-status');
+  const checklistWrap = document.getElementById('checklist-wrap');
+
+  function formatTime(s) {
+    const m = Math.floor(s / 60);
+    const ss = s % 60;
+    return m + ':' + String(ss).padStart(2, '0');
+  }
+  function setTimerUI() {
+    timerDisplay.textContent = formatTime(remaining);
+  }
+  function stopTimer(showCheck) {
+    if (timerId) {
+      clearInterval(timerId);
+      timerId = null;
+    }
+    if (showCheck) {
+      checklistWrap.style.display = 'block';
+      timerStatus.textContent = remaining <= 0 ? '時間到！請用下方清單自我檢查' : '已停止 — 可用清單檢查是否講到重點';
+    }
+  }
+  document.getElementById('timer-start').addEventListener('click', function () {
+    if (timerId) return;
+    if (remaining <= 0) remaining = 60;
+    checklistWrap.style.display = 'none';
+    timerStatus.textContent = '進行中…用英文口述';
+    setTimerUI();
+    timerId = setInterval(function () {
+      remaining -= 1;
+      setTimerUI();
+      if (remaining <= 0) {
+        remaining = 0;
+        setTimerUI();
+        stopTimer(true);
+      }
+    }, 1000);
+  });
+  document.getElementById('timer-stop').addEventListener('click', function () {
+    stopTimer(true);
+  });
+  document.getElementById('timer-reset').addEventListener('click', function () {
+    stopTimer(false);
+    remaining = 60;
+    setTimerUI();
+    checklistWrap.style.display = 'none';
+    timerStatus.textContent = '已重設 — 準備好後按下開始';
+    checklist.querySelectorAll('input').forEach(cb => { cb.checked = false; });
+  });
+  document.getElementById('hide-notes').addEventListener('change', function (e) {
+    document.getElementById('notes-area').classList.toggle('hidden', e.target.checked);
+  });
+  setTimerUI();
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+})();
+</script>
+</body>
+</html>
