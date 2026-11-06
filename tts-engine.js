@@ -77,9 +77,10 @@
   function prepareSpokenText(text) {
     var spoken = String(text == null ? '' : text);
     spoken = spoken.replace(/(\d)\s*[–—−-]\s*(\d)/g, '$1 to $2');
-    spoken = spoken.replace(/[–—]/g, ', ');
-    spoken = spoken.replace(/→/g, ', then ');
-    spoken = spoken.replace(/\bHR\/O₂\b/g, 'heart rate and oxygen');
+    spoken = spoken.replace(/([A-Za-z0-9])[–—]([A-Za-z0-9])/g, '$1 to $2');
+    spoken = spoken.replace(/\s*→\s*/g, ', then ');
+    spoken = spoken.replace(/\s*[–—]\s*/g, ', ');
+    spoken = spoken.replace(/\bHR\/O₂/g, 'heart rate and oxygen');
     spoken = spoken.replace(/\bHR\/O2\b/gi, 'heart rate and oxygen');
     spoken = spoken.replace(/O₂/g, 'oxygen');
     spoken = spoken.replace(/\bO2\b/g, 'oxygen');

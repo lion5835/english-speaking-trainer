@@ -216,15 +216,17 @@ function run() {
     })
     .then(function () {
       return test('prepares spoken text without changing original teaching strings', function () {
-        var original = 'Morning BP can peak after overnight HR/O₂ swings; ANP → diuretic-like nocturia (e.g. 1.5–2 kg).';
+        var original = 'Morning BP can peak after overnight HR/O₂ swings; ANP → diuretic-like nocturia (e.g. 1.5–2 kg). Men in their 40s–50s.';
         var spoken = TTS.prepareSpokenText(original);
         assert.ok(spoken.indexOf('blood pressure') !== -1);
         assert.ok(spoken.indexOf('heart rate and oxygen') !== -1);
         assert.ok(spoken.indexOf('atrial natriuretic peptide') !== -1);
-        assert.ok(spoken.indexOf('then') !== -1);
+        assert.ok(spoken.indexOf(', then ') !== -1);
         assert.ok(spoken.indexOf('for example') !== -1);
         assert.ok(spoken.indexOf('1.5 to 2') !== -1);
         assert.ok(spoken.indexOf('kilograms') !== -1);
+        assert.ok(spoken.indexOf('40s to 50s') !== -1);
+        assert.ok(!/ , then/.test(spoken));
         assert.strictEqual(original.indexOf('blood pressure'), -1);
       });
     })
