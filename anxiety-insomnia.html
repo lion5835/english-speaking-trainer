@@ -402,6 +402,50 @@ button, input, textarea { font: inherit; }
   margin-bottom: 12px;
 }
 .notes-area.hidden { display: none; }
+.voice-bar {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 12px 12px;
+}
+.voice-bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: flex-end;
+}
+.voice-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.voice-field select {
+  min-width: 240px;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 12px;
+}
+.voice-rate-field { min-width: 180px; }
+.voice-rate-field input[type="range"] {
+  width: 180px;
+  accent-color: var(--accent);
+}
+.voice-note {
+  margin: 8px 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+@media (max-width: 640px) {
+  .voice-field, .voice-field select, .voice-rate-field, .voice-rate-field input[type="range"] {
+    width: 100%;
+    min-width: 0;
+  }
+}
 </style>
 </head>
 <body>
@@ -422,6 +466,20 @@ button, input, textarea { font: inherit; }
       <button type="button" data-tab="qa">口說問答</button>
       <button type="button" data-tab="retell">一分鐘重述</button>
     </nav>
+    <div class="voice-bar">
+      <div class="voice-bar-inner">
+        <label class="voice-field">
+          <span>英文語音</span>
+          <select id="voice-select" aria-label="選擇英文語音"></select>
+        </label>
+        <button type="button" class="btn soft" id="voice-preview">試聽</button>
+        <label class="voice-field voice-rate-field">
+          <span>速度 <strong id="voice-rate-value">0.95</strong></span>
+          <input id="voice-rate" type="range" min="0.70" max="1.15" step="0.05" value="0.95" aria-label="朗讀速度">
+        </label>
+      </div>
+      <p class="voice-note" id="voice-note">朗讀使用你裝置上瀏覽器／作業系統已安裝的英文語音。語調能自然到什麼程度，取決於那些語音本身的品質；這不是另外錄製的真人聲音，也沒有接雲端或付費語音服務。</p>
+    </div>
   </header>
 
   <main class="wrap">
@@ -538,6 +596,7 @@ button, input, textarea { font: inherit; }
     <p class="footer-note">練習內容依演講逐字稿整理 · 離線可用 · 進度儲存於本機瀏覽器（ep2）</p>
   </main>
 
+<script src="tts-engine.js"></script>
 <script>
 (function () {
   const STORAGE_KEY = 'ep2-anxiety-speech-trainer-v1';
@@ -810,52 +869,15 @@ button, input, textarea { font: inherit; }
     textHidden: false
   }, loadState());
 
-  let voices = [];
-  function refreshVoices() {
-    voices = window.speechSynthesis ? speechSynthesis.getVoices() : [];
-  }
-  if (window.speechSynthesis) {
-    refreshVoices();
-    speechSynthesis.onvoiceschanged = refreshVoices;
-  }
-
-  function pickVoice() {
-    if (!voices.length) refreshVoices();
-    const prefer = [
-      v => /en-US/i.test(v.lang) && /Google|Samantha|Alex|Karen|Daniel|Microsoft/i.test(v.name),
-      v => /en-US/i.test(v.lang),
-      v => /^en(-|_)/i.test(v.lang)
-    ];
-    for (const fn of prefer) {
-      const found = voices.find(fn);
-      if (found) return found;
-    }
-    return null;
-  }
-
-  let speakingBtn = null;
+  const tts = TrainerTTS.createController({
+    selectEl: document.getElementById('voice-select'),
+    rateEl: document.getElementById('voice-rate'),
+    rateValueEl: document.getElementById('voice-rate-value'),
+    noteEl: document.getElementById('voice-note'),
+    previewBtn: document.getElementById('voice-preview')
+  });
   function speak(text, btn) {
-    if (!window.speechSynthesis) {
-      alert('此瀏覽器不支援語音合成（speechSynthesis）。請改用 Chrome 或 Safari。');
-      return;
-    }
-    speechSynthesis.cancel();
-    if (speakingBtn) speakingBtn.classList.remove('speak-active');
-    const u = new SpeechSynthesisUtterance(text);
-    const voice = pickVoice();
-    if (voice) u.voice = voice;
-    u.lang = 'en-US';
-    u.rate = 0.9;
-    u.pitch = 1;
-    if (btn) {
-      speakingBtn = btn;
-      btn.classList.add('speak-active');
-      u.onend = u.onerror = function () {
-        btn.classList.remove('speak-active');
-        speakingBtn = null;
-      };
-    }
-    speechSynthesis.speak(u);
+    tts.speak(text, btn);
   }
 
   // Tabs
@@ -867,7 +889,7 @@ button, input, textarea { font: inherit; }
     btn.classList.add('active');
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
-    speechSynthesis && speechSynthesis.cancel();
+    tts.cancel();
   });
 
   // Vocab
