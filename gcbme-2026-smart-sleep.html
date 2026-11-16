@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>演講英文口說訓練｜GCBME 2026 智慧睡眠（雷達）</title>
+<style>
+:root {
+  --bg: #f7f4ef;
+  --surface: #ffffff;
+  --ink: #1f2a24;
+  --muted: #5c6b63;
+  --line: #e4ddd3;
+  --accent: #2f6f5e;
+  --accent-soft: #e7f2ee;
+  --accent-dark: #245749;
+  --warm: #c47a3a;
+  --warm-soft: #f8efe4;
+  --ok: #2d7a52;
+  --ok-soft: #e8f5ee;
+  --shadow: 0 10px 30px rgba(31, 42, 36, 0.08);
+  --radius: 16px;
+  --font: "Iowan Old Style", "Palatino Linotype", "Songti TC", "Noto Serif TC", Georgia, serif;
+  --sans: "Avenir Next", "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(47,111,94,0.08), transparent 32%),
+    radial-gradient(circle at top right, rgba(196,122,58,0.08), transparent 28%),
+    var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+a { color: var(--accent); }
+button, input, textarea { font: inherit; }
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(14px);
+  background: rgba(247,244,239,0.88);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 14px 18px 10px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.brand h1 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-family: var(--font);
+  letter-spacing: 0.02em;
+}
+.brand p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.yt-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 8px 12px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  font-size: 0.88rem;
+}
+.yt-link:hover { border-color: var(--accent); color: var(--accent-dark); }
+.nav {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 12px 12px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.nav button {
+  flex: 0 0 auto;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav button.active {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  border-color: rgba(47,111,94,0.18);
+  font-weight: 600;
+}
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 8px 18px 48px;
+}
+.panel { display: none; }
+.panel.active { display: block; }
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+  margin-bottom: 16px;
+}
+.card h2 {
+  margin: 0 0 8px;
+  font-family: var(--font);
+  font-size: 1.35rem;
+}
+.card .lead {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.summary-zh {
+  background: var(--warm-soft);
+  border-left: 4px solid var(--warm);
+  padding: 14px 16px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+.summary-zh p { margin: 0 0 10px; }
+.summary-zh p:last-child { margin-bottom: 0; }
+.takeaways {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+.takeaways li { margin-bottom: 10px; }
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.82rem;
+}
+.btn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent-dark); }
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+.btn.primary:hover { background: var(--accent-dark); }
+.btn.soft {
+  background: var(--accent-soft);
+  border-color: transparent;
+  color: var(--accent-dark);
+}
+.btn.ok {
+  background: var(--ok-soft);
+  border-color: transparent;
+  color: var(--ok);
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+.vocab-card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  background: linear-gradient(180deg, #fff, #fcfbf8);
+  position: relative;
+}
+.vocab-card.studied {
+  outline: 2px solid rgba(45,122,82,0.25);
+  background: linear-gradient(180deg, #f7fcf9, #fff);
+}
+.vocab-term {
+  font-family: var(--font);
+  font-size: 1.15rem;
+  margin: 0 0 4px;
+}
+.ipa {
+  color: var(--muted);
+  font-size: 0.86rem;
+  margin-bottom: 6px;
+}
+.gloss {
+  color: var(--accent-dark);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.example {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.92rem;
+  margin-bottom: 12px;
+}
+.chunk {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background: #fff;
+}
+.chunk.done {
+  border-color: rgba(45,122,82,0.35);
+  background: linear-gradient(180deg, #f7fcf9, #fff);
+}
+.chunk-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+.chunk-text {
+  font-family: var(--font);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 0 0 8px;
+}
+.chunk-text.hidden-text {
+  filter: blur(7px);
+  user-select: none;
+  transition: filter 0.2s ease;
+}
+.hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+.progress {
+  height: 10px;
+  background: #ebe5db;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 8px 0 16px;
+}
+.progress > span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), #4f9d84);
+  transition: width 0.25s ease;
+}
+.drill {
+  border-top: 1px solid var(--line);
+  padding: 16px 0;
+}
+.drill:first-of-type { border-top: none; padding-top: 0; }
+.drill h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+.prompt {
+  margin: 0 0 10px;
+  color: var(--ink);
+}
+.cloze-blank {
+  display: inline-block;
+  min-width: 4.5em;
+  border-bottom: 2px dashed var(--warm);
+  color: var(--warm);
+  text-align: center;
+  padding: 0 4px;
+}
+.answer-box {
+  display: none;
+  margin-top: 10px;
+  background: var(--ok-soft);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.answer-box.show { display: block; }
+.answer-input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  resize: vertical;
+  min-height: 70px;
+  background: #fcfcfb;
+}
+.timer-box {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 720px) {
+  .timer-box { grid-template-columns: 220px 1fr; align-items: start; }
+}
+.timer-face {
+  background: linear-gradient(180deg, #1f2a24, #2f6f5e);
+  color: white;
+  border-radius: 18px;
+  padding: 22px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.timer-face .time {
+  font-family: var(--font);
+  font-size: 3rem;
+  letter-spacing: 0.04em;
+  margin: 8px 0 14px;
+}
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.checklist li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+.checklist li:last-child { border-bottom: none; }
+.checklist input { margin-top: 4px; }
+.footer-note {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin-top: 8px;
+}
+.badge {
+  display: inline-block;
+  background: var(--warm-soft);
+  color: #8a5522;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  margin-left: 6px;
+}
+.speak-active {
+  box-shadow: 0 0 0 3px rgba(47,111,94,0.18);
+}
+.toolbar-mini {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.small { font-size: 0.85rem; color: var(--muted); }
+.topic-cue {
+  background: var(--warm-soft);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+.topic-cue strong { display: block; margin-bottom: 4px; }
+.notes-area {
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fbfaf7;
+  margin-bottom: 12px;
+}
+.notes-area.hidden { display: none; }
+.voice-bar {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 12px 12px;
+}
+.voice-bar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: flex-end;
+}
+.voice-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.voice-field select {
+  min-width: 240px;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 8px 12px;
+}
+.voice-rate-field { min-width: 180px; }
+.voice-rate-field input[type="range"] {
+  width: 180px;
+  accent-color: var(--accent);
+}
+.voice-note {
+  margin: 8px 0 0;
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+@media (max-width: 640px) {
+  .voice-field, .voice-field select, .voice-rate-field, .voice-rate-field input[type="range"] {
+    width: 100%;
+    min-width: 0;
+  }
+}
+</style>
+
+<style>
+/* ---- GCBME 2026 additions ---- */
+.subnav{display:flex;gap:6px;overflow-x:auto;padding:4px 0 10px;-webkit-overflow-scrolling:touch}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 10px;cursor:pointer;font-size:.85rem;color:var(--muted)}
+.chip.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip.done{border-color:rgba(45,122,82,.5);color:var(--ok)}
+.chip.active.done{color:#fff}
+.chip.skip::after{content:" ★";color:var(--warm)}
+.slide-img{width:100%;border-radius:12px;border:1px solid var(--line);cursor:zoom-in;display:block;background:#eee;aspect-ratio:16/9;object-fit:contain}
+.slide-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:820px){.slide-grid{grid-template-columns:1fr}}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
+.seg button{border:0;background:transparent;padding:6px 12px;cursor:pointer;color:var(--muted);font:inherit}
+.seg button.active{background:var(--accent-soft);color:var(--accent-dark);font-weight:600}
+.sent{display:flex;gap:8px;align-items:flex-start;padding:9px 0;border-top:1px dashed var(--line)}
+.sent:first-child{border-top:0}
+.sent .t{flex:1;font-family:var(--font);font-size:1.04rem;line-height:1.65}
+.sent .t.hide{filter:blur(6px);cursor:pointer}
+.sent .t.playing{background:var(--warm-soft);border-radius:6px}
+.sent .acts{display:flex;gap:4px;flex:0 0 auto}
+.ib{border:1px solid var(--line);background:#fff;border-radius:999px;min-width:34px;height:34px;padding:0 8px;cursor:pointer;font-size:.85rem;color:var(--ink)}
+.ib:hover{border-color:var(--accent)}
+.ib.on{background:var(--ok-soft);color:var(--ok);border-color:transparent}
+i.added{color:#8a8f8c;font-style:italic}
+.hintbox{background:var(--warm-soft);border-radius:12px;padding:10px 14px;font-size:.92rem;margin:10px 0}
+.hintbox li{margin:2px 0}
+.must{color:var(--warm);font-weight:700}
+.kp{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:8px 0}
+.kp .en{display:none;font-family:var(--font);margin-top:6px}
+.kp.show .en{display:block}
+.watch{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--bg);border-radius:12px;padding:10px 12px;margin-top:10px}
+.watch .clock{font-variant-numeric:tabular-nums;font-size:1.5rem;font-weight:700;min-width:5.5ch}
+.diff-ok{color:var(--ok);font-weight:600}.diff-bad{color:#b4472f;font-weight:600}
+.rec{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px}
+.rec audio{height:34px;max-width:100%}
+.rec .recdot{width:10px;height:10px;border-radius:50%;background:#c0392b;display:none}
+.rec.recording .recdot{display:inline-block;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.2}}
+table.tl{width:100%;border-collapse:collapse;font-size:.88rem}
+table.tl th,table.tl td{border-bottom:1px solid var(--line);padding:6px 6px;text-align:left;vertical-align:top}
+table.tl tr.sec td{background:var(--accent-soft);font-weight:600;color:var(--accent-dark)}
+table.tl td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{background:var(--bg);border-radius:12px;padding:10px 12px}
+.stat b{display:block;font-size:1.3rem;color:var(--accent-dark)}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:6px}
+.bar>span{display:block;height:100%;background:var(--accent)}
+.frame-pattern{font-family:var(--font);font-size:1.12rem;background:var(--accent-soft);border-radius:10px;padding:10px 12px;margin:6px 0}
+.slotcols{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0}
+.slotcol{border:1px solid var(--line);border-radius:10px;padding:8px 10px;min-width:150px;flex:1}
+.slotcol h4{margin:0 0 4px;font-size:.8rem;color:var(--muted)}
+.slotcol div{font-size:.9rem;padding:2px 0}
+.drill-out{border:2px solid var(--accent-soft);border-radius:12px;padding:12px;margin-top:10px}
+.drill-out .form{display:flex;gap:8px;align-items:flex-start;margin:6px 0}
+.drill-out .lab{flex:0 0 auto;font-size:.78rem;background:var(--bg);border-radius:999px;padding:3px 8px;color:var(--muted)}
+.drill-out .s{flex:1;font-family:var(--font);font-size:1.05rem}
+.drill-out .s.hide{filter:blur(6px);cursor:pointer}
+.mem{font-family:var(--font);font-size:1.08rem;line-height:1.9}
+.mem .w.h{color:transparent;border-bottom:2px solid var(--muted);cursor:pointer;border-radius:2px}
+.mem .w.h.rev{color:var(--accent-dark);border-bottom-color:transparent}
+.mem .w.fl{color:transparent;cursor:pointer;position:relative}
+.mem .w.fl::before{content:attr(data-f);color:var(--warm);position:absolute;left:0}
+.mem .w.fl.rev{color:var(--accent-dark)}.mem .w.fl.rev::before{content:""}
+.qa-card .ans{display:none;margin-top:8px;font-family:var(--font);line-height:1.7}
+.qa-card.show .ans{display:block}
+.tag{display:inline-block;font-size:.75rem;background:var(--warm-soft);color:var(--warm);border-radius:999px;padding:2px 8px;margin-left:6px}
+.prompter{height:56vh;overflow-y:auto;background:#1d2420;color:#f2efe8;border-radius:14px;padding:24px 22px 40vh;font-family:var(--font);line-height:1.75;scroll-behavior:auto}
+.prompter .ps{margin:0 0 22px;padding:10px 12px;border-radius:10px;border-left:4px solid transparent;cursor:pointer}
+.prompter .ps h4{margin:0 0 6px;font-family:var(--sans);font-size:.8rem;color:#9fb5aa;letter-spacing:.03em}
+.prompter .ps.cur{border-left-color:#e3a15f;background:rgba(255,255,255,.06)}
+.prompter .ps.past{opacity:.45}
+.prompter .ps.skipped{display:none}
+.pace{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:10px 0}
+.pace .big{font-size:2rem;font-weight:700;font-variant-numeric:tabular-nums}
+.pacebar{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--line);margin:6px 0}
+.pacebar span{display:block;height:100%;border-right:1px solid #fff}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:100;cursor:zoom-out}
+.lightbox.show{display:flex}.lightbox img{max-width:96vw;max-height:92vh}
+input[type=range].wide{width:180px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.muted{color:var(--muted)}
+.rating{display:flex;align-items:center;gap:8px;margin:4px 0}
+.rating span{min-width:6em}
+.vfilter{margin-bottom:12px}
+details.src{font-size:.85rem;color:var(--muted)}
+.ep-links a{margin-right:10px}
+.retell-cues{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.retell-cues div{background:var(--bg);border-radius:10px;padding:6px 10px;font-size:.9rem}
+
+@media (max-width:640px){.topbar{position:static}.voice-note{display:none}.prompter{height:70vh}}
+
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <h1>演講英文口說訓練</h1>
+        <p>GCBME 2026｜Non-wearable Devices in Sleep Medicine（2026/11/21 10:00–10:20 台北時間）</p>
+        <p class="ep-links"><a href="index.html">另一集：睡眠呼吸中止</a><a href="anxiety-insomnia.html">另一集：焦慮與慢性失眠</a></p>
+      </div>
+      <span class="yt-link" id="top-progress">進度 0%</span>
+    </div>
+    <nav class="nav" id="nav" aria-label="模組切換">
+      <button type="button" data-tab="overview" class="active">今日重點</button>
+      <button type="button" data-tab="slides">逐張練習</button>
+      <button type="button" data-tab="vocab">字彙與發音</button>
+      <button type="button" data-tab="frames">母框替換</button>
+      <button type="button" data-tab="lines">開場・轉場・結尾</button>
+      <button type="button" data-tab="qa">Q&amp;A 模擬</button>
+      <button type="button" data-tab="rehearse">全程彩排</button>
+      <button type="button" data-tab="retell">重述與自評</button>
+    </nav>
+    <div class="voice-bar">
+      <div class="voice-bar-inner">
+        <label class="voice-field">
+          <span>英文語音</span>
+          <select id="voice-select" aria-label="選擇英文語音"></select>
+        </label>
+        <button type="button" class="btn soft" id="voice-preview">試聽</button>
+        <label class="voice-field voice-rate-field">
+          <span>速度 <strong id="voice-rate-value">0.95</strong></span>
+          <input id="voice-rate" type="range" min="0.70" max="1.15" step="0.05" value="0.95" aria-label="朗讀速度">
+        </label>
+        <button type="button" class="btn" id="stop-all">■ 停止朗讀</button>
+      </div>
+      <p class="voice-note" id="voice-note">朗讀使用你裝置上瀏覽器／作業系統已安裝的英文語音。語調能自然到什麼程度，取決於那些語音本身的品質；這不是另外錄製的真人聲音，也沒有接雲端或付費語音服務。</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- 1. Overview -->
+    <section class="panel active" id="panel-overview">
+      <div class="card">
+        <h2>今日重點</h2>
+        <p class="lead">GCBME 2026 International Forum on Smart Healthcare｜Session I, Invited Talk II｜臺北醫學大學雙和校區 教研大樓 1801｜全程英文，時段 20 分鐘。</p>
+        <div class="summary-zh">
+          <p>這場演講的主線：<strong>睡眠檢查很難做 → 24 GHz 無接觸雷達把胸部微動變成呼吸訊號 → 研究一（院內，對 PSG）→ 研究二（居家，對 HSAT）→ TFDA 核准為「疑似重度 OSA 篩檢」→ 病房每日使用 → 研究三（呼吸與心臟，只是相關）→ 結論</strong>。</p>
+          <p>練習稿以今天（11/16）的三級練習稿 v8 為準：34 張要講的投影片（第 17、35、36 張隱藏）。詳細版約 1,924 字（130 wpm 約 14.8 分），精簡版約 946 字（約 8.2 分）。20 分鐘時段扣掉換頁停頓與問答，詳細版剛好。</p>
+        </div>
+        <h3 style="font-family:var(--font);margin:12px 0 8px;">Take-home messages（結尾五點）</h3>
+        <ul class="takeaways" id="key-messages"></ul>
+        <h3 style="font-family:var(--font);margin:12px 0 8px;">一定要守住的界線句</h3>
+        <ul class="takeaways" id="caveats"></ul>
+      </div>
+      <div class="card">
+        <h2>練習進度</h2>
+        <div class="stats" id="stats"></div>
+        <div class="btn-row">
+          <button class="btn" id="export-progress">匯出進度（JSON）</button>
+          <button class="btn" id="reset-progress">清除全部進度</button>
+        </div>
+        <p class="small">進度只存在這台裝置的瀏覽器（localStorage），不會上傳。</p>
+      </div>
+      <div class="card">
+        <h2>時間配置（逐張）</h2>
+        <div class="row">
+          <span>目標總長</span>
+          <input type="number" id="ov-target" min="5" max="20" step="0.5" style="width:5em"> 分鐘
+          <label><input type="checkbox" id="ov-skip"> 略過 ★ 可略過投影片</label>
+        </div>
+        <p class="small">每張時間依詳細版字數按比例分配到目標總長（預設 17 分，保留約 3 分鐘給換頁與問答）。★ 為建議可略過的投影片（時間不夠時用）；<span class="must">必</span> 表示該張有「必講」重點。</p>
+        <div style="overflow-x:auto"><table class="tl" id="timeline"></table></div>
+      </div>
+    </section>
+
+    <!-- 2. Per slide -->
+    <section class="panel" id="panel-slides">
+      <div class="card">
+        <h2>逐張投影片練習</h2>
+        <div class="subnav" id="slide-chips"></div>
+        <div class="row" style="justify-content:space-between">
+          <div class="seg" id="level-seg">
+            <button data-lv="detailed" class="active">詳細</button>
+            <button data-lv="concise">精簡</button>
+            <button data-lv="kp">重點式</button>
+          </div>
+          <div class="row">
+            <label class="small"><input type="checkbox" id="show-added" checked> 灰色斜體＝投影片上沒有的字</label>
+            <label class="small"><input type="checkbox" id="hide-text"> 隱藏英文（測試）</label>
+          </div>
+        </div>
+      </div>
+      <div class="card" id="slide-card"></div>
+    </section>
+
+    <!-- 3. Vocab -->
+    <section class="panel" id="panel-vocab">
+      <div class="card">
+        <h2>關鍵字彙與發音</h2>
+        <p class="lead">全部字彙都出自你的講稿。IPA 為美式發音；大寫音節＝重音。例句直接取自 v8 詳細版（或投影片重點）。</p>
+        <div class="subnav vfilter" id="vocab-filter"></div>
+        <div class="vocab-grid" id="vocab-grid"></div>
+      </div>
+      <div class="card">
+        <h2>數字與縮寫唸法</h2>
+        <p class="lead">上台最容易卡住的是數字。先看寫法，再聽、再自己唸一次。</p>
+        <div id="numbers"></div>
+      </div>
+    </section>
+
+    <!-- 4. Frames -->
+    <section class="panel" id="panel-frames">
+      <div class="card">
+        <h2>母框替換練習（Palmer 句型替換表）</h2>
+        <p class="lead">先記住固定的「母框」，再換掉可變的格子。事實類母框每一列都是講稿裡的真實數據（不要混搭）；轉場、提醒類母框可以自由組合。</p>
+        <div class="btn-row">
+          <button class="btn primary" id="frame-random">🎲 隨機抽一題（全部母框）</button>
+          <label class="small"><input type="checkbox" id="frame-hide" checked> 先只看中文／格子，按一下再顯示英文</label>
+        </div>
+        <div id="frame-random-out"></div>
+      </div>
+      <div id="frames"></div>
+    </section>
+
+    <!-- 5. Lines -->
+    <section class="panel" id="panel-lines">
+      <div class="card">
+        <h2>開場・轉場・結尾：背稿模式</h2>
+        <p class="lead">選遮字程度，看著提示說出整句；點被遮住的字可以偷看。</p>
+        <div class="seg" id="mem-seg">
+          <button data-m="0" class="active">全文</button>
+          <button data-m="25">遮 25%</button>
+          <button data-m="50">遮 50%</button>
+          <button data-m="75">遮 75%</button>
+          <button data-m="fl">首字母</button>
+          <button data-m="100">全遮</button>
+        </div>
+      </div>
+      <div id="lines"></div>
+    </section>
+
+    <!-- 6. QA -->
+    <section class="panel" id="panel-qa">
+      <div class="card">
+        <h2>現場問答模擬</h2>
+        <p class="lead">先聽問題（或看中文），按「開始 30 秒」自己回答，再看示範答案。示範答案只用講稿裡的事實。</p>
+        <div class="btn-row">
+          <button class="btn primary" id="qa-random">🎲 隨機抽一題</button>
+          <label class="small"><input type="checkbox" id="qa-hide-en"> 隱藏英文問題（只聽）</label>
+        </div>
+      </div>
+      <div id="qa-list"></div>
+      <div class="card">
+        <h2>救命句：爭取時間、確認、說不知道</h2>
+        <div id="phrases"></div>
+      </div>
+    </section>
+
+    <!-- 7. Rehearse -->
+    <section class="panel" id="panel-rehearse">
+      <div class="card">
+        <h2>全程彩排模式</h2>
+        <div class="row">
+          <div class="seg" id="rh-level"><button data-lv="detailed" class="active">詳細</button><button data-lv="concise">精簡</button></div>
+          <span>目標</span><input type="number" id="rh-target" min="3" max="20" step="0.5" style="width:5em"> 分
+          <label><input type="checkbox" id="rh-skip"> 略過 ★</label>
+        </div>
+        <div class="row" style="margin-top:8px">
+          <span>自動捲動</span>
+          <input type="range" class="wide" id="rh-speed" min="0" max="80" step="1" value="0"><span id="rh-speed-v" class="small">關</span>
+          <span>字級</span><input type="range" id="rh-font" min="16" max="34" step="1" value="22">
+        </div>
+        <div class="pace">
+          <div><div class="small">總時間</div><div class="big" id="rh-clock">0:00</div></div>
+          <div><div class="small">目前</div><div class="big" id="rh-cur">–</div></div>
+          <div><div class="small">應在</div><div class="big" id="rh-should">–</div></div>
+          <div><div class="small">節奏</div><div class="big" id="rh-pace">–</div></div>
+        </div>
+        <div class="pacebar" id="rh-bar"></div>
+        <div class="btn-row">
+          <button class="btn primary" id="rh-start">▶ 開始</button>
+          <button class="btn" id="rh-prev">← 上一張</button>
+          <button class="btn primary" id="rh-next">下一張 →（空白鍵）</button>
+          <button class="btn" id="rh-stop">■ 結束並記錄</button>
+          <button class="btn" id="rh-reset">重設</button>
+        </div>
+        <p class="small">換到下一張時按「下一張」或空白鍵／→。「應在」是依時間計畫此刻該講到的投影片；節奏＝你比計畫快（＋）或慢（−）幾秒。</p>
+      </div>
+      <div class="prompter" id="prompter"></div>
+      <div class="card" style="margin-top:16px">
+        <h2>彩排紀錄</h2>
+        <div id="rh-result"></div>
+        <div id="rh-history"></div>
+      </div>
+    </section>
+
+    <!-- 8. Retell & self-check -->
+    <section class="panel" id="panel-retell">
+      <div class="card">
+        <h2>一分鐘重述</h2>
+        <p class="lead">只看中文提示，用 60 秒把整場演講講一遍。講完再對照示範。</p>
+        <div class="retell-cues" id="retell-cues"></div>
+        <div class="timer-box">
+          <div class="timer-face"><div class="time" id="retell-time">1:00</div></div>
+          <div class="btn-row">
+            <button class="btn primary" id="retell-start">開始 60 秒</button>
+            <button class="btn" id="retell-30">改 30 秒版</button>
+            <button class="btn" id="retell-reset">重設</button>
+          </div>
+        </div>
+        <div id="retell-rec"></div>
+        <div class="btn-row">
+          <button class="btn soft" id="retell-show">看示範（1 分鐘）</button>
+          <button class="btn soft" id="retell-show30">看示範（30 秒）</button>
+        </div>
+        <div id="retell-model" class="example" style="display:none;margin-top:10px"></div>
+      </div>
+      <div class="card">
+        <h2>上台前自我評量</h2>
+        <ul class="checklist" id="checklist"></ul>
+        <h3 style="font-family:var(--font)">今天的自評（1–5）</h3>
+        <div id="ratings"></div>
+        <div class="btn-row"><button class="btn primary" id="save-rating">儲存今天的自評</button></div>
+        <div id="rating-history" class="small"></div>
+      </div>
+    </section>
+  </main>
+  <div class="lightbox" id="lightbox"><img id="lightbox-img" alt=""></div>
+  <footer class="footer-note" style="max-width:980px;margin:0 auto;padding:0 18px 30px">講稿來源：GCBME2026 三級練習稿 v8（2026/11/16 15:12 台北時間）。錄音只存在這個分頁的記憶體，不會上傳、重新整理就消失。</footer>
+
+<script src="tts-engine.js"></script>
+<script>
+(function () {
+  'use strict';
+  const D = {"slides": [{"slide": 1, "title": "Non-wearable Devices in Sleep Medicine", "image": "gcbme-2026/s01.jpg", "detailed": ["Good morning, everyone. Thank you for inviting me to the GCBME 2026 International Forum on Smart Healthcare.", "I'm Wen-Te Liu, from Pulmonary Medicine at Shuang Ho Hospital.", "Today I'll talk about non-wearable devices in sleep medicine: using contactless radar to check breathing during sleep."], "concise": ["Good morning, everyone. I'm Wen-Te Liu, from Pulmonary Medicine at Shuang Ho Hospital.", "Today's topic is using contactless radar to check breathing during sleep."], "dMark": ["[Good morning, everyone. Thank you for inviting me to the] GCBME 2026 International Forum on Smart Healthcare.", "[I'm] Wen-Te Liu, [from] Pulmonary Medicine [at] Shuang Ho Hospital.", "[Today I'll talk about] non-wearable devices in sleep medicine: using contactless radar to check breathing during sleep."], "cMark": ["[Good morning, everyone. I'm] Wen-Te Liu, [from] Pulmonary Medicine [at] Shuang Ho Hospital.", "[Today's topic is] using contactless radar to check breathing during sleep."], "points": [{"zh": "自我介紹：雙和醫院胸腔科醫師", "en": "Wen-Te Liu, M.D., Pulmonary Medicine, Shuang Ho Hospital.", "kw": "who I am", "must": false}, {"zh": "主題：非穿戴式雷達評估睡眠呼吸", "en": "Non-wearable Devices in Sleep Medicine: using contactless radar to check breathing during sleep.", "kw": "topic: contactless radar for sleep breathing", "must": true}, {"zh": "演講路線：問題→技術→院內/居家驗證→心臟", "en": "GCBME 2026 International Forum on Smart Healthcare.", "kw": "roadmap", "must": false}], "secD": 20.3, "secC": 12.5, "wd": 44, "wc": 24, "skip": null}, {"slide": 2, "title": "Why is sleep testing so hard?", "image": "gcbme-2026/s02.jpg", "detailed": ["So, why is sleep testing so hard?", "Look at the waiting room. If we suspect sleep-disordered breathing, we need objective data.", "But getting that data is a real hassle.", "Putting on the sensors often takes more than 60 minutes, and it makes patients anxious.", "And then patients have to sleep in a very unnatural setting."], "concise": ["Why is sleep testing so hard?", "We need objective data, but getting that data is a real hassle.", "And patients have to sleep in a very unnatural setting."], "dMark": ["[So,] why is sleep testing so hard?", "[Look at] the waiting room. If we suspect sleep-disordered breathing, we need objective data.", "But getting that data is a real hassle.", "[Putting on the sensors] often [takes more than] 60 minutes, [and it makes] patients [anxious.]", "[And then] patients have to sleep in a very unnatural setting."], "cMark": ["Why is sleep testing so hard?", "We need objective data, but getting that data is a real hassle.", "And patients have to sleep in a very unnatural setting."], "points": [{"zh": "需要客觀資料，但取得很麻煩", "en": "If we suspect sleep-disordered breathing, we need objective data. But getting that data is a real hassle.", "kw": "testing is a burden for patients", "must": true}, {"zh": "貼線超過 60 分鐘、會焦慮", "en": "Sensor application time often exceeds 60 minutes, causing anxiety.", "kw": "over 60 minutes of wiring, anxiety", "must": false}, {"zh": "睡眠環境不自然，與我們想測的相反", "en": "Patients have to sleep in a very unnatural setting.", "kw": "unnatural sleep conditions", "must": false}], "secD": 25.4, "secC": 14.6, "wd": 55, "wc": 28, "skip": null}, {"slide": 3, "title": "How do today's tests compare?", "image": "gcbme-2026/s03.jpg", "detailed": ["How do today's tests compare?", "PSG covers all sleep diseases, but it needs 20 or more wires, and patients wait 1 to 2 months.", "Home sleep testing uses 3 wires. An oximeter or an ECG patch can record for 7 to 14 days.", "But they are all uncomfortable, and the patch can cause allergy.", "So we need to move past wearable sensors, to monitoring with nothing to wear, night after night."], "concise": ["How do today's tests compare?", "PSG needs 20 or more wires and a 1 to 2 month wait, and the other tests are uncomfortable.", "So we need monitoring with nothing to wear, night after night."], "dMark": ["How do today's tests compare?", "PSG [covers] all sleep diseases, [but it needs] 20 [or more] wires, [and patients] wait 1 [to 2] months.", "Home sleep testing [uses] 3 wires. [An] oximeter [or an] ECG patch [can record for 7 to 14] days.", "[But they are all] uncomfortable, [and the] patch [can cause] allergy.", "So we need to move past wearable sensors, to monitoring with nothing to wear, night after night."], "cMark": ["How do today's tests compare?", "PSG [needs] 20 [or more] wires [and a] 1 [to 2 month] wait, [and the other] tests [are] uncomfortable.", "So we need monitoring with nothing to wear, night after night."], "points": [{"zh": "PSG 最完整但線多、要等 1–2 個月", "en": "Polysomnography: All Sleep Diseases, ≥20 wires, 1-2 Months wait.", "kw": "PSG: complete but many wires, long wait", "must": true}, {"zh": "居家檢測與穿戴裝置也不舒服", "en": "Home Sleep Testing, Oximeter and ECG Patch: Uncomfortable.", "kw": "home test & wearables uncomfortable", "must": false}, {"zh": "要走向不用穿戴、每晚都能監測", "en": "So we need to move past wearable sensors, to monitoring with nothing to wear, night after night.", "kw": "need comfortable multi-night non-wearable", "must": false}], "secD": 32.8, "secC": 18.3, "wd": 71, "wc": 35, "skip": null}, {"slide": 4, "title": "Wearable sensors for sleep monitoring", "image": "gcbme-2026/s04.jpg", "detailed": ["So what do we use today? There are many wearable sensors for sleep monitoring.", "They track brain activity, heart activity, movement, respiration, and blood oxygen.", "But every one of them has to be worn on the body.", "So the question is: could non-wearables work?"], "concise": ["Today, we use many wearable sensors for sleep monitoring.", "But every one of them is worn on the body.", "Could non-wearables work?"], "dMark": ["[So what do we use today? There are many] wearable sensors for sleep monitoring.", "[They track] brain activity, heart activity, movement, respiration, [and] blood oxygen.", "[But every one of them has to be worn on the body.]", "[So the question is:] could non-wearables work?"], "cMark": ["[Today, we use many] wearable sensors for sleep monitoring.", "[But every one of them is worn on the body.]", "Could non-wearables work?"], "points": [{"zh": "穿戴式感測器進步很多", "en": "Wearable sensors for sleep monitoring: brain activity, heart activity, respiration, blood oxygen.", "kw": "wearable sensors have improved", "must": true}, {"zh": "但每個穿戴感測器都在身上", "en": "But every wearable sensor is on the body.", "kw": "still attached to the body", "must": false}, {"zh": "問題：能不能不用穿戴？", "en": "Could non-wearables work?", "kw": "could non-wearable be possible?", "must": false}], "secD": 20.3, "secC": 11.5, "wd": 44, "wc": 22, "skip": null}, {"slide": 5, "title": "Radar principle diagram", "image": "gcbme-2026/s05.jpg", "detailed": ["Here is how the radar works.", "The radar sends a signal from Tx, and picks up the reflection at Rx.", "When the chest moves a little, the received signal changes, in its time of flight, or ToF, and its phase.", "From the changes, we rebuild the breathing signal, with no wires."], "concise": ["The radar sends a signal from Tx, and picks up the reflection at Rx.", "When the chest moves a little, the received signal changes. From the changes, we rebuild the breathing signal, with no wires."], "dMark": ["[Here is how the] radar [works.]", "[The] radar sends a signal from Tx, and picks up the reflection at Rx.", "When the chest moves a little, the received signal changes, in its time of flight, [or] ToF, and its phase.", "From the changes, we rebuild the breathing signal, [with] no wires."], "cMark": ["[The] radar sends a signal from Tx, and picks up the reflection at Rx.", "When the chest moves a little, the received signal changes. From the changes, we rebuild the breathing signal, [with] no wires."], "points": [{"zh": "雷達 Tx 發射、Rx 接收", "en": "Radar sends a signal from Tx, and picks up the reflection at Rx.", "kw": "24 GHz continuous-wave radar", "must": true}, {"zh": "胸壁微動 Δx 改變回波，不用接線", "en": "When the chest moves a little, the received signal changes, with no wires.", "kw": "senses tiny chest movement, no wires", "must": false}, {"zh": "飛行時間 ToF 與相位變化 Δφ", "en": "The signal changes in its time of flight (ToF) and its phase.", "kw": "phase changes → breathing; deep neural decision trees", "must": false}], "secD": 23.5, "secC": 18.3, "wd": 51, "wc": 35, "skip": null}, {"slide": 6, "title": "Here's how it looks at the bedside", "image": "gcbme-2026/s06.jpg", "detailed": ["Here's how it looks at the bedside.", "The radar can go on the wall above the bed, on an arm, or on a floor stand.", "Nothing touches the patient."], "concise": ["Here's how it looks at the bedside.", "It goes on the wall, on an arm, or on a floor stand. Nothing touches the patient."], "dMark": ["Here's how it looks at the bedside.", "[The radar can go on the wall above the bed, on an arm, or on a floor stand.]", "[Nothing touches the patient.]"], "cMark": ["Here's how it looks at the bedside.", "[It goes on the wall, on an arm, or on a floor stand. Nothing touches the patient.]"], "points": [{"zh": "病床邊裝在牆上，也有支架/落地架", "en": "Here's how it looks at the bedside: wall, arm or floor stand.", "kw": "wall, arm, or floor stand at bedside", "must": true}, {"zh": "病人身上什麼都沒有，護理師不用半夜重貼", "en": "Nothing touches the patient.", "kw": "nothing on the patient, nothing to reattach", "must": false}], "secD": 13.4, "secC": 12.5, "wd": 29, "wc": 24, "skip": null}, {"slide": 7, "title": "Our three published studies: sleep lab, home, and heart", "image": "gcbme-2026/s07.jpg", "detailed": ["Our team has three published studies: in the sleep lab, at home, and on the heart.", "How it works: a 24-GHz continuous-wave radar, plus deep neural decision trees.", "In Study 1, in the sleep lab, we compared the radar side by side with PSG in 196 patients, and got a strong correlation, r = 0.91.", "In Study 2, we tested 80 patients at home, for 147 nights, with no professional needed to set it up.", "In Study 3, with 72 patients, when the radar picked up periodic breathing, it was linked to lower LVEF."], "concise": ["We have three published studies: sleep lab, home, and heart.", "Study 1: in the sleep lab, 196 patients, r = 0.91.", "Study 2: at home, 80 patients and 147 nights.", "Study 3: in 72 patients, periodic breathing was linked to lower LVEF."], "dMark": ["[Our team has] three published studies: in the sleep lab, at home, and [on] the heart.", "How it works: a 24-GHz continuous-wave radar, plus deep neural decision trees.", "[In] Study 1, in the sleep lab, we compared [the] radar side by side with PSG [in] 196 patients, and got a strong correlation, r = 0.91.", "[In] Study 2, [we tested] 80 patients at home, [for] 147 nights, with no professional needed to set it up.", "[In] Study 3, [with] 72 patients, when [the] radar picked up periodic breathing, it was linked to lower LVEF."], "cMark": ["[We have] three published studies: sleep lab, home, and heart.", "Study 1: in the sleep lab, 196 patients, r = 0.91.", "Study 2: at home, 80 patients [and] 147 nights.", "Study 3: [in] 72 patients, periodic breathing was linked to lower LVEF."], "points": [{"zh": "我們發表的三篇研究；研究一：院內 196 人，強相關 r = 0.91", "en": "Our three published studies. Study 1, in the sleep lab: 196 patients, compared side by side with PSG, with a strong correlation, r = 0.91.", "kw": "phase 1: hospital, 196, r 0.91", "must": true}, {"zh": "研究二：居家 80 人 147 晚", "en": "Study 2, at home: 80 patients and 147 nights, with no professional needed to set it up.", "kw": "phase 2: home, 80 patients, 147 nights", "must": false}, {"zh": "研究三：72 人，雷達測到週期性呼吸與 LVEF 較低有關", "en": "Study 3, the heart: in 72 patients, periodic breathing picked up by radar was linked to lower LVEF.", "kw": "phase 3: cardiac, 72, periodic breathing ~ LVEF", "must": false}], "secD": 43.4, "secC": 21.9, "wd": 94, "wc": 42, "skip": null}, {"slide": 8, "title": "Study 1: Testing it in the hospital", "image": "gcbme-2026/s08.jpg", "detailed": ["Let's start with Study 1: testing it in the hospital.", "Our team published this study in 2024.", "We compared the radar with PSG in 196 patients.", "The setting was a tightly controlled lab, with no outside noise. So we get a clean baseline."], "concise": ["Study 1: testing it in the hospital, published by our team in 2024.", "We compared the radar with PSG in 196 patients, in a tightly controlled lab."], "dMark": ["[Let's start with] Study 1: testing it in the hospital.", "Our team published this study in 2024.", "[We] compared [the radar with] PSG [in] 196 patients.", "[The] setting [was] a tightly controlled lab, with no outside noise. So we get a clean baseline."], "cMark": ["Study 1: testing it in the hospital, published [by] our team in 2024.", "[We] compared [the radar with] PSG [in] 196 patients, [in] a tightly controlled lab."], "points": [{"zh": "研究一：團隊 2024 發表；196 位病人、以 PSG 為標準", "en": "Study 1: Our team published this study in 2024; N = 196 patients, compared with Polysomnography (PSG).", "kw": "act 1: hospital, 196, PSG reference", "must": true}, {"zh": "嚴格控制的實驗室、沒有外界干擾 → 乾淨的基準", "en": "A tightly controlled lab, with no outside noise. So we get a clean baseline.", "kw": "goal: clean baseline accuracy", "must": false}], "secD": 19.8, "secC": 14.1, "wd": 43, "wc": 27, "skip": null}, {"slide": 9, "title": "Radar turns tiny chest movements into breathing signals", "image": "gcbme-2026/s09.jpg", "detailed": ["So how does it see breathing? The radar turns tiny chest movements into breathing signals.", "At the top, normal breathing gives a steady, regular wave.", "At the bottom is a respiratory event. During the apnea episode, the wave gets very small, and then breathing comes back."], "concise": ["The radar turns tiny chest movements into breathing signals.", "You can see normal breathing, and a respiratory event with an apnea episode."], "dMark": ["[So how does it see] breathing? [The] radar turns tiny chest movements into breathing signals.", "[At the top,] normal breathing [gives a steady, regular wave.]", "[At the bottom is a] respiratory event. [During the] apnea episode, [the wave gets very small, and then] breathing [comes back.]"], "cMark": ["[The] radar turns tiny chest movements into breathing signals.", "[You can see] normal breathing, [and a] respiratory event [with an] apnea episode."], "points": [{"zh": "雷達把胸壁微動轉成呼吸訊號", "en": "Radar turns tiny chest movements into breathing signals.", "kw": "chest micro-movement → breathing signature", "must": true}, {"zh": "正常呼吸振幅穩定；事件時振幅停掉再恢復", "en": "Normal breathing and a respiratory event with an apnea episode.", "kw": "normal steady; event drops then recovers", "must": false}, {"zh": "呼吸中止後再恢復", "en": "Then breathing comes back after the apnea episode.", "kw": "not just a flat line", "must": false}], "secD": 21.2, "secC": 11.5, "wd": 46, "wc": 22, "skip": null}, {"slide": 10, "title": "Sleep tests watch airflow. Radar watches the chest.", "image": "gcbme-2026/s10.jpg", "detailed": ["Sleep tests watch airflow. Radar watches the chest.", "In standard scoring, airflow stops, or gets shallow. We only see these events when we measure airflow.", "Radar senses the chest rising and falling, not airflow. So if we read chest motion as airflow, we get blind spots.", "In an obstructive event, the patient keeps trying to breathe, but no air flows. So chest motion isn't the same as airflow.", "That's why the radar has to spot a typical pattern of chest-motion changes."], "concise": ["Sleep tests watch airflow: it stops, or gets shallow. Radar watches the chest.", "Radar senses the chest rising and falling, not airflow.", "In an obstructive event the chest still moves, so the radar has to spot a typical pattern of chest-motion changes."], "dMark": ["Sleep tests watch airflow. Radar watches the chest.", "[In] standard scoring, airflow stops, or gets shallow. We only see these events when we measure airflow.", "Radar senses the chest rising and falling, not airflow. [So] if we read chest motion as airflow, we get blind spots.", "In an obstructive event, the patient keeps trying to breathe, but no air flows. So chest motion isn't the same as airflow.", "[That's why the] radar has to spot a typical pattern of chest-motion changes."], "cMark": ["Sleep tests watch airflow: [it] stops, or gets shallow. Radar watches the chest.", "Radar senses the chest rising and falling, not airflow.", "In an obstructive event the chest [still moves, so the] radar has to spot a typical pattern of chest-motion changes."], "points": [{"zh": "睡眠檢查看氣流：停止（apnea）或變淺（hypopnea）", "en": "Sleep tests watch airflow: it stops (apnea) or gets shallow (hypopnea).", "kw": "events are defined by airflow", "must": true}, {"zh": "雷達看的是胸部起伏，不是氣流", "en": "Radar watches the chest rising and falling, not airflow.", "kw": "radar sees chest motion, not airflow", "must": true}, {"zh": "雷達要認出胸部動作的典型變化模式", "en": "Radar has to spot a typical pattern of chest-motion changes.", "kw": "obstruction: chest still moves → need a pattern", "must": false}], "secD": 37.4, "secC": 21.9, "wd": 81, "wc": 42, "skip": null}, {"slide": 11, "title": "How radar sees a sleep-breathing event", "image": "gcbme-2026/s11.jpg", "detailed": ["How does radar see a sleep-breathing event? In five steps of chest-wall motion.", "First, normal breathing: the chest moves regularly.", "Then apnea onset: the movement drops sharply, or stops.", "Then struggling effort: the airway is still closed, so the chest makes small moves.", "Then a recovery surge: the airway opens, with one big breath.", "And then it goes back to normal.", "This whole sequence is the event that radar can detect."], "concise": ["Here is how radar sees a sleep-breathing event, in five steps.", "Normal breathing, apnea onset, struggling effort, recovery surge, and back to normal."], "dMark": ["[How does] radar [see] a sleep-breathing event? [In] five steps [of] chest-wall motion.", "[First,] normal breathing: the chest moves regularly.", "[Then] apnea onset: [the] movement drops sharply, or stops.", "[Then] struggling effort: the airway is still closed, [so] the chest makes small moves.", "[Then a] recovery surge: the airway opens, [with] one big breath.", "[And then it] goes back to normal.", "This whole sequence is the event that radar can detect."], "cMark": ["[Here is] how radar sees a sleep-breathing event, [in] five steps.", "Normal breathing, apnea onset, struggling effort, recovery surge, [and] back to normal."], "points": [{"zh": "一開始正常，事件開始時振幅明顯下降甚至停止", "en": "Normal breathing, then Apnea onset: movement drops sharply, or stops.", "kw": "normal → amplitude drops or stops", "must": true}, {"zh": "氣道還關著時，胸部掙扎出現小幅上下", "en": "Struggling effort: the airway is still closed; the chest makes small moves, trying to breathe.", "kw": "struggle: small movements while airway closed", "must": false}, {"zh": "氣道打開時一次大起伏（恢復呼吸），再回到正常", "en": "Recovery surge: one big breath as breathing comes back, then Back to normal.", "kw": "big recovery breath, then back to normal", "must": false}, {"zh": "整段序列就是雷達能偵測的事件", "en": "This whole sequence is the event that radar can detect.", "kw": "whole pattern defines the event; schematic", "must": false}], "secD": 32.8, "secC": 12.0, "wd": 71, "wc": 23, "skip": null}, {"slide": 12, "title": "Does the radar agree with the clinical gold standard?", "image": "gcbme-2026/s12.jpg", "detailed": ["So, does the radar agree with the clinical gold standard?", "On one side, we have the full sleep study in the hospital, PSG. On the other side, the contactless 24-GHz radar.", "We tested 196 patients, and the correlation was r = 0.91."], "concise": ["Does the radar agree with the clinical gold standard?", "In 196 patients, the correlation with PSG was r = 0.91."], "dMark": ["[So,] does the radar agree with the clinical gold standard?", "[On one side, we have the] full sleep study in the hospital, PSG. [On the other side, the] contactless 24-GHz radar.", "We tested 196 patients, [and the] correlation [was] r = 0.91."], "cMark": ["Does the radar agree with the clinical gold standard?", "[In] 196 patients, [the] correlation [with] PSG [was] r = 0.91."], "points": [{"zh": "比較院內 PSG 與無接觸雷達", "en": "Does the radar agree with the clinical gold standard: full sleep study in the hospital (PSG) versus Contactless 24-GHz Radar?", "kw": "PSG vs contactless radar", "must": true}, {"zh": "r = 0.91 相關、N = 196", "en": "r = 0.91 Correlation; we tested N = 196 patients.", "kw": "196 patients, r = 0.91", "must": false}], "secD": 19.4, "secC": 10.4, "wd": 42, "wc": 20, "skip": "內容與第 7、13 張重複（196 人、r = 0.91）"}, {"slide": 13, "title": "Study 1: How accurate is it in the hospital?", "image": "gcbme-2026/s13.jpg", "detailed": ["Study 1: how accurate is it in the hospital?", "The radar's bRDI and the AHI from PSG line up well, with r = 0.91, and p < 0.01.", "For moderate-to-severe OSA, the accuracy was 90.3%, with a cut-off of 19.2 events/h.", "For severe OSA, the accuracy was 92.4%, with a cut-off of 28.86 events/h.", "And for multi-class prediction, the average accuracy was 83.7%."], "concise": ["Study 1: how accurate is it in the hospital?", "For moderate-to-severe OSA, accuracy was 90.3%. For severe OSA, it was 92.4%.", "For multi-class prediction, the average accuracy was 83.7%."], "dMark": ["Study 1: how accurate is it in the hospital?", "[The radar's] bRDI [and the] AHI [from PSG line up well, with] r = 0.91, [and] p < 0.01.", "[For] moderate-to-severe OSA, [the] accuracy [was] 90.3%, [with a] cut-off [of] 19.2 events/h.", "[For] severe OSA, [the] accuracy [was] 92.4%, [with a] cut-off [of] 28.86 events/h.", "[And for] multi-class prediction, [the] average accuracy [was] 83.7%."], "cMark": ["Study 1: how accurate is it in the hospital?", "[For] moderate-to-severe OSA, accuracy [was] 90.3%. [For] severe OSA, [it was] 92.4%.", "[For] multi-class prediction, [the] average accuracy [was] 83.7%."], "points": [{"zh": "雷達 bRDI 與 PSG AHI 高度相關（r = 0.91）", "en": "bRDI versus AHI: r = 0.91 (p < 0.01).", "kw": "bRDI vs AHI, r = 0.91", "must": false}, {"zh": "中重度 90.3%、重度 92.4%", "en": "Moderate-to-Severe OSA: 90.3% Accuracy; Severe OSA: 92.4% Accuracy.", "kw": "moderate-to-severe 90.3%, severe 92.4%", "must": true}, {"zh": "四級分類平均 83.7%", "en": "Multi-class Prediction: 83.7% Average Accuracy.", "kw": "four-class 83.7%", "must": false}], "secD": 29.1, "secC": 15.1, "wd": 63, "wc": 29, "skip": null}, {"slide": 14, "title": "From research to the ward: a zero-contact care platform", "image": "gcbme-2026/s14.jpg", "detailed": ["From research to the ward: this is our zero-contact care platform. We now use the radar every day for our inpatients.", "It monitors breathing nonstop, with no contact, and it reads heart rate and bed status from the same radar signal.", "If a patient is out of bed too long, or vital signs are abnormal, staff get alerts on the dashboard and LINE Notify.", "It received the 2021 SNQ, and the 2022 NHQA, Distinctive Center for our Sleep Center."], "concise": ["From research to the ward: we now use the radar every day for our inpatients.", "It tracks breathing, heart rate, and bed status.", "It received the 2021 SNQ and the 2022 NHQA awards."], "dMark": ["From research to the ward: [this is our] zero-contact care platform. We now use the radar every day for our inpatients.", "[It monitors] breathing nonstop, with no contact, [and it reads] heart rate [and] bed status from the same radar signal.", "[If] a patient is out of bed too long, [or] vital signs [are] abnormal, staff get alerts on the dashboard and LINE Notify.", "[It received the] 2021 SNQ, [and the] 2022 NHQA, Distinctive Center for our Sleep Center."], "cMark": ["From research to the ward: we now use the radar every day for our inpatients.", "[It tracks] breathing, heart rate, [and] bed status.", "[It received the] 2021 SNQ [and the] 2022 NHQA [awards.]"], "points": [{"zh": "從研究到病房：每天用在住院病人", "en": "From research to the ward: a zero-contact care platform we now use every day for our inpatients.", "kw": "into routine ward care", "must": true}, {"zh": "呼吸、心率、床位狀態；儀表板與 LINE Notify 通知", "en": "Breathing, Heart rate, Bed status; staff get alerts on the dashboard and LINE Notify.", "kw": "breathing, heart rate, bed status, alerts", "must": false}, {"zh": "2021 SNQ、2022 NHQA 特色中心", "en": "2021 SNQ, Symbol of National Quality; 2022 NHQA, Distinctive Center – Sleep Center.", "kw": "SNQ 2021, NHQA 2022", "must": false}], "secD": 36.5, "secC": 17.2, "wd": 79, "wc": 33, "skip": null}, {"slide": 15, "title": "Obstructive Sleep Apnea after COVID-19", "image": "gcbme-2026/s15.jpg", "detailed": ["Next, obstructive sleep apnea after COVID-19. This is an observational study.", "The table shows sleep test results in post-COVID-19 patients.", "Out of 257 patients, only 2 were normal, with an AHI below 5.", "Mild OSA was 11.28%, moderate was 29.18%, and severe was 58.75%."], "concise": ["This is an observational study of sleep apnea after COVID-19.", "Out of 257 patients, only 2 were normal, and 58.75% were severe."], "dMark": ["[Next,] obstructive sleep apnea after COVID-19. [This is] an observational study.", "[The table shows] sleep [test results] in post-COVID-19 patients.", "[Out of] 257 patients, only 2 were normal, [with an AHI below 5.]", "Mild [OSA was] 11.28%, moderate [was] 29.18%, [and] severe [was] 58.75%."], "cMark": ["[This is] an observational study [of] sleep apnea after COVID-19.", "[Out of] 257 patients, only 2 were normal, [and] 58.75% [were] severe."], "points": [{"zh": "COVID-19 後的阻塞性睡眠呼吸中止（Life 2024）", "en": "Obstructive Sleep Apnea after COVID-19: An Observational Study.", "kw": "OSA after COVID-19", "must": true}, {"zh": "257 人中只有 2 人正常（AHI<5）；重度 58.75%", "en": "N = 257, only 2 were normal (AHI<5); Severe: 58.75%.", "kw": "257 patients, only 2 normal, 58.75% severe", "must": false}], "secD": 20.3, "secC": 11.5, "wd": 44, "wc": 22, "skip": null}, {"slide": 16, "title": "Radar picks up OSA in COVID-19 patients", "image": "gcbme-2026/s16.jpg", "detailed": ["Radar also picks up OSA in COVID-19 patients.", "From 2021/7 to 2022/7, our platform recorded 5,376 monitoring sessions.", "The lines show the percentage with RDI ≥15, ≥30, and ≥40.", "The chart runs from COVID-19 Delta in the summer of 2021, through autumn, winter and spring, to Omicron in the summer of 2022.", "These are observational data. They show trends, not a diagnosis for each patient."], "concise": ["Radar picks up OSA in COVID-19 patients.", "From 2021/7 to 2022/7, we recorded 5,376 monitoring sessions.", "We tracked RDI ≥15, ≥30, and ≥40, from Delta to Omicron.", "These are observational trends, not a diagnosis for each patient."], "dMark": ["Radar [also] picks up OSA in COVID-19 patients.", "[From] 2021/7 to 2022/7, [our] platform [recorded] 5,376 monitoring sessions.", "[The lines show the percentage with] RDI ≥15, ≥30, [and] ≥40.", "[The chart runs from] COVID-19 Delta [in the] summer [of] 2021, [through] autumn, winter [and] spring, [to] Omicron [in the] summer [of] 2022.", "[These are observational data. They show trends, not a diagnosis for each patient.]"], "cMark": ["Radar picks up OSA in COVID-19 patients.", "[From] 2021/7 to 2022/7, [we recorded] 5,376 monitoring sessions.", "[We tracked] RDI ≥15, ≥30, [and] ≥40, [from] Delta [to] Omicron.", "[These are observational trends, not a diagnosis for each patient.]"], "points": [{"zh": "2021/7–2022/7：5,376 次監測（monitoring sessions）", "en": "2021/7 to 2022/7: 5,376 monitoring sessions.", "kw": "5,376 monitoring sessions", "must": true}, {"zh": "追蹤 RDI ≥15/30/40 比例，跨 Delta 到 Omicron", "en": "RDI >=15, >=30, >=40 (%), from Covid-19 (Delta) to Covid-19 (Omicron).", "kw": "RDI shares, Delta → Omicron", "must": false}, {"zh": "Omicron 期間很多人有上呼吸道症狀", "en": "Pharyngitis: runny nose, headache, fatigue, sneezing, sore throat.", "kw": "Omicron: upper-airway symptoms", "must": false}, {"zh": "這些是觀察性資料：看趨勢，不是個別診斷", "en": "Observational data: trends, not a diagnosis for each patient.", "kw": "observational: trends, not diagnosis", "must": false}], "secD": 30.0, "secC": 19.3, "wd": 65, "wc": 37, "skip": null}, {"slide": 18, "title": "Does it work in real homes?", "image": "gcbme-2026/s18.jpg", "detailed": ["Now, does it work in real homes?", "We studied 80 patients over 147 nights.", "We checked it against PSG in the hospital, and against HSAT at home. No technician was there at home.", "So we see it as a promising complement to HSAT."], "concise": ["Does it work in real homes?", "We studied 80 patients over 147 nights, with no technician at home.", "It's a promising complement to HSAT."], "dMark": ["[Now,] does it work in real homes?", "[We studied] 80 patients [over] 147 nights.", "We checked it against PSG in the hospital, and against HSAT at home. No technician was there at home.", "[So we see it as] a promising complement to HSAT."], "cMark": ["Does it work in real homes?", "[We studied] 80 patients [over] 147 nights, [with] no technician at home.", "[It's] a promising complement to HSAT."], "points": [{"zh": "在真實家中也行得通嗎？", "en": "Does it work in real homes?", "kw": "does it work at home?", "must": true}, {"zh": "80 人、147 晚", "en": "80 Patients, 147 Nights.", "kw": "80 patients, 147 nights", "must": false}, {"zh": "可補充 HSAT；居家沒有技術員在場", "en": "A Promising Complement to HSAT; no technician was there at home.", "kw": "promising complement to HSAT", "must": false}], "secD": 19.8, "secC": 12.5, "wd": 43, "wc": 24, "skip": "與第 19 張重複（80 人、147 晚、沒有技術員）"}, {"slide": 19, "title": "Study 2: Taking it home", "image": "gcbme-2026/s19.jpg", "detailed": ["This brings us to Study 2: taking it home.", "At home, nothing is controlled: different sleep positions, thick blankets, noise, and no technician.", "We had 80 subjects and 147 nights of home sleep, with no staff on site.", "We compared the radar with home sleep apnea testing, or HSAT.", "Real homes are messy, so we need robust signal processing."], "concise": ["Study 2: taking it home.", "At home, nothing is controlled, and there's no technician.", "We had 80 subjects and 147 nights, and we compared it with HSAT."], "dMark": ["[This brings us to] Study 2: taking it home.", "At home, nothing is controlled: different sleep positions, thick blankets, noise, and no technician.", "[We had] 80 subjects [and] 147 nights of home sleep, with no staff on site.", "We compared [the radar] with home sleep apnea testing, [or] HSAT.", "Real homes are messy, so we need robust signal processing."], "cMark": ["Study 2: taking it home.", "At home, nothing is controlled, [and there's] no technician.", "[We had] 80 subjects [and] 147 nights, [and] we compared it with HSAT."], "points": [{"zh": "居家什麼都無法控制：睡姿、厚被子、噪音、沒有技術員", "en": "At home, nothing is controlled: different sleep positions, thick blankets, noise, and no technician.", "kw": "home has uncontrolled variables", "must": true}, {"zh": "80 人 147 晚，以居家睡眠檢測為對照", "en": "80 subjects, 147 nights; we compared it with home sleep apnea testing (HSAT).", "kw": "80 subjects, 147 nights vs HSAT", "must": false}, {"zh": "裝在牆架或落地架，高度 75–90 公分", "en": "Wall-mounted bracket or Floor stand, 75-90 cm.", "kw": "wall bracket or floor stand, 75–90 cm", "must": false}], "secD": 27.2, "secC": 14.1, "wd": 59, "wc": 27, "skip": null}, {"slide": 20, "title": "Study 2: How well does it work at home?", "image": "gcbme-2026/s20.jpg", "detailed": ["Study 2: how well does it work at home?", "The correlation was r = 0.87, with p < 0.01. So bRDI_TIB tracks HSAT AHI closely, even with no one supervising.", "For consistency, on average, the difference is −5.30 events/h.", "And 93.88% of nights, that's 138 of 147, fall within the ±1.96 SD limits of agreement.", "These are limits of agreement, not a confidence interval."], "concise": ["Study 2: how well does it work at home?", "The correlation was r = 0.87.", "On average, the difference is −5.30 events/h."], "dMark": ["Study 2: how well does it work at home?", "[The] correlation [was] r = 0.87, [with] p < 0.01. [So] bRDI_TIB tracks HSAT AHI closely, even with no one supervising.", "[For] consistency, on average, the difference is −5.30 events/h.", "[And] 93.88% of nights, [that's] 138 of 147, fall within the ±1.96 SD limits of agreement.", "[These are] limits of agreement, [not a confidence interval.]"], "cMark": ["Study 2: how well does it work at home?", "[The] correlation [was] r = 0.87.", "On average, the difference is −5.30 events/h."], "points": [{"zh": "居家相關係數 0.87", "en": "Correlation: r = 0.87 (p < 0.01); bRDI_TIB tracks HSAT AHI closely.", "kw": "home correlation 0.87", "must": true}, {"zh": "Bland–Altman：平均差 −5.30，93.88% 夜晚在一致界限內", "en": "On average, the difference is −5.30 events/h; 93.88% of nights fall within the ±1.96 SD limits of agreement.", "kw": "Bland–Altman: mean −5.30, 93.88% within", "must": false}, {"zh": "這是一致界限，不是信賴區間", "en": "These are limits of agreement, not a confidence interval.", "kw": "limits of agreement, not a CI", "must": false}], "secD": 29.5, "secC": 11.5, "wd": 64, "wc": 22, "skip": null}, {"slide": 21, "title": "Study 2: Grading severity at home", "image": "gcbme-2026/s21.jpg", "detailed": ["Study 2: grading severity at home.", "For moderate-to-severe OSA, the accuracy was 83.67%, with a bRDI_TIB cut-off of 21.19 events/h.", "For severe OSA, it was 93.21%, with a cut-off of 28.14 events/h.", "For multi-class prediction, the average accuracy was 78.23%. That's better than HSAT rules alone, at 72.11%."], "concise": ["Study 2: grading severity at home.", "For moderate-to-severe OSA, accuracy was 83.67%. For severe OSA, it was 93.21%."], "dMark": ["Study 2: grading severity at home.", "[For] moderate-to-severe OSA, [the] accuracy [was] 83.67%, [with a] bRDI_TIB cut-off [of] 21.19 events/h.", "[For] severe OSA, [it was] 93.21%, [with a] cut-off [of] 28.14 events/h.", "[For] multi-class prediction, [the] average accuracy [was] 78.23%. [That's] better than HSAT rules alone, at 72.11%."], "cMark": ["Study 2: grading severity at home.", "[For] moderate-to-severe OSA, accuracy [was] 83.67%. [For] severe OSA, [it was] 93.21%."], "points": [{"zh": "居家中重度準確度 83.67%", "en": "Moderate-to-Severe OSA: 83.67% Accuracy.", "kw": "home moderate-to-severe 83.67%", "must": false}, {"zh": "居家重度準確度 93.21%", "en": "Severe OSA: 93.21% Accuracy.", "kw": "home severe 93.21%", "must": true}, {"zh": "多分類 78.23%，比純 HSAT 規則 72.11% 好", "en": "Multi-class Prediction: 78.23% average accuracy, better than HSAT rules alone, at 72.11%.", "kw": "multi-class 78.23% vs 72.11%", "must": false}], "secD": 22.2, "secC": 9.4, "wd": 48, "wc": 18, "skip": null}, {"slide": 22, "title": "Hospital vs. home: how do they compare?", "image": "gcbme-2026/s22.jpg", "detailed": ["So, hospital vs. home: how do they compare?", "In Study 1, in the hospital, the correlation with PSG was r = 0.91, and severe OSA accuracy was 92.4%.", "In Study 2, in real homes with nothing controlled, the correlation with HSAT was r = 0.87, and severe OSA accuracy was 93.21%.", "So the key insight is: for severe OSA, accuracy stays above 92%, in the hospital and at home."], "concise": ["Hospital vs. home: how do they compare?", "For severe OSA, accuracy stays above 92% in the hospital and at home."], "dMark": ["[So,] hospital vs. home: how do they compare?", "[In] Study 1, in the hospital, [the] correlation [with] PSG [was] r = 0.91, [and] severe OSA accuracy [was] 92.4%.", "[In] Study 2, [in] real homes [with] nothing controlled, [the] correlation [with] HSAT [was] r = 0.87, [and] severe OSA accuracy [was] 93.21%.", "[So the] key insight [is:] for severe OSA, accuracy stays above 92%, in the hospital and at home."], "cMark": ["Hospital vs. home: how do they compare?", "For severe OSA, accuracy stays above 92% in the hospital and at home."], "points": [{"zh": "院內 vs 居家：比較", "en": "Hospital vs. home: how do they compare?", "kw": "hospital vs home side by side", "must": false}, {"zh": "相關性 0.91 vs 0.87", "en": "Correlation: r = 0.91 and r = 0.87.", "kw": "correlation 0.91 vs 0.87", "must": false}, {"zh": "重度準確度兩邊都 >92%", "en": "For severe OSA, accuracy stays above 92% in the hospital and at home.", "kw": "severe accuracy >92% in both", "must": true}], "secD": 31.8, "secC": 10.4, "wd": 69, "wc": 20, "skip": null}, {"slide": 23, "title": "TFDA clearance: where we stand", "image": "gcbme-2026/s23.jpg", "detailed": ["TFDA clearance: where we stand. The device is TFDA cleared.", "bRDI ≥ 30 is used only as a screen for suspected severe obstructive sleep apnea.", "At a cut-off of 30, the sensitivity is 90.5%, and the specificity is also 90.5%.", "Please note: this device screens for suspected severe OSA. It does not diagnose OSA on its own."], "concise": ["TFDA clearance: where we stand.", "bRDI ≥ 30 is used only as a screen for suspected severe OSA.", "It does not diagnose OSA on its own."], "dMark": ["TFDA clearance: where we stand. [The] device [is] TFDA cleared.", "bRDI ≥ 30 is used only as a screen for suspected severe obstructive sleep apnea.", "At a cut-off of 30, [the] sensitivity [is] 90.5%, [and the] specificity [is also] 90.5%.", "Please note: this device screens for suspected severe OSA. It does not diagnose OSA on its own."], "cMark": ["TFDA clearance: where we stand.", "bRDI ≥ 30 is used only as a screen for suspected severe OSA.", "It does not diagnose OSA on its own."], "points": [{"zh": "已通過台灣 TFDA 核准", "en": "TFDA clearance: TFDA Cleared.", "kw": "Taiwan FDA cleared", "must": true}, {"zh": "bRDI ≥ 30 篩檢疑似重度 OSA，敏感度/特異度 90.5%", "en": "bRDI ≥ 30 is used only as a screen for suspected severe OSA; Sensitivity 90.5%, Specificity 90.5%.", "kw": "bRDI ≥30 screen, 90.5% / 90.5%", "must": false}, {"zh": "只能篩檢疑似重度 OSA，不能單獨診斷", "en": "This device screens for suspected severe OSA. It does not diagnose OSA on its own.", "kw": "screen, not standalone diagnosis", "must": false}], "secD": 26.3, "secC": 13.6, "wd": 57, "wc": 26, "skip": null}, {"slide": 24, "title": "TFDA license document", "image": "gcbme-2026/s24.jpg", "detailed": ["This is the TFDA license document, in Chinese.", "At a bRDI cut-off of 30, sensitivity and specificity are both 90.5%.", "Heart rate is tracked from 40–120 bpm, and sleep staging agreement is 69%."], "concise": ["This is the TFDA license document.", "At a bRDI cut-off of 30, sensitivity and specificity are both 90.5%."], "dMark": ["[This is the] TFDA license document, [in Chinese.]", "[At a] bRDI [cut-off of] 30, [sensitivity and specificity are both] 90.5%.", "[Heart rate is tracked from] 40–120 bpm, [and sleep staging agreement is] 69%."], "cMark": ["[This is the] TFDA license document.", "[At a] bRDI [cut-off of] 30, [sensitivity and specificity are both] 90.5%."], "points": [{"zh": "TFDA 許可證文件", "en": "This is the TFDA license document.", "kw": "the TFDA license", "must": true}, {"zh": "報告內容：睡眠時間、睡眠分期、bRDI、心跳呼吸", "en": "The report covers sleep time, sleep stages, bRDI, heart rate and respiration rate.", "kw": "report: sleep time, stages, bRDI, HR, RR", "must": false}, {"zh": "bRDI 30：90.5%；心率 40–120；一致性 69%", "en": "bRDI 30: 90.5%; Heart rate 40–120 Bpm; overall agreement 69%.", "kw": "labeled: 90.5%, HR 40–120, staging 69%", "must": false}], "secD": 15.2, "secC": 9.4, "wd": 33, "wc": 18, "skip": "TFDA 許可證中文文件，數字與第 23、25 張相同"}, {"slide": 25, "title": "So what does TFDA clearance mean in practice?", "image": "gcbme-2026/s25.jpg", "detailed": ["So what does TFDA clearance mean in practice?", "The main cut-off is bRDI ≥ 30. This flags suspected severe OSA.", "Sensitivity and specificity are both 90.5%.", "It tracks heart rate from 40–120 bpm.", "And for sleep stages, the consistency is 69%.", "But keep in mind: bRDI ≥ 30 is validated as a screen for suspected severe OSA. It doesn't replace a full diagnosis."], "concise": ["So what does TFDA clearance mean in practice?", "The main cut-off is bRDI ≥ 30. It's a screen, not a full diagnosis."], "dMark": ["So what does TFDA clearance mean in practice?", "[The] main cut-off [is] bRDI ≥ 30. This flags suspected severe OSA.", "Sensitivity [and] specificity [are both] 90.5%.", "It tracks heart rate from 40–120 bpm.", "[And for] sleep stages, [the] consistency [is] 69%.", "[But] keep in mind: bRDI ≥ 30 is validated as a screen for suspected severe OSA. It doesn't replace a full diagnosis."], "cMark": ["So what does TFDA clearance mean in practice?", "[The] main cut-off [is] bRDI ≥ 30. [It's] a screen, [not] a full diagnosis."], "points": [{"zh": "主要門檻 bRDI ≥ 30 → 疑似重度", "en": "Main cut-off: bRDI ≥ 30. This flags suspected severe OSA.", "kw": "main threshold bRDI ≥30", "must": true}, {"zh": "敏感度/特異度 90.5%；分期 69%", "en": "Sensitivity: 90.5%, Specificity: 90.5%; Sleep stages: 69% consistency.", "kw": "90.5%; staging 69%", "must": false}, {"zh": "已驗證可篩檢疑似重度 OSA，不能取代完整診斷", "en": "It's validated as a screen for suspected severe OSA. It doesn't replace a full diagnosis.", "kw": "screen, not definitive diagnosis", "must": false}], "secD": 29.1, "secC": 11.5, "wd": 63, "wc": 22, "skip": "與第 23 張重複（bRDI ≥ 30 只是篩檢）；69% 可在 Q&A 再講"}, {"slide": 26, "title": "How do we install it?", "image": "gcbme-2026/s26.jpg", "detailed": ["How do we install it?", "Option A is a wall-mounted bracket. It's best for fixed hospital or clinic beds.", "Option B is a floor stand. It's best for homes, and it's easy to move.", "Either way, the radar is set at 75–90 cm."], "concise": ["How do we install it?", "We use a wall-mounted bracket or a floor stand, set at 75–90 cm."], "dMark": ["How do we install it?", "Option A [is] a wall-mounted bracket. [It's] best for fixed hospital or clinic beds.", "Option B [is a] floor stand. [It's] best for homes, [and it's] easy to move.", "[Either way, the radar is] set at 75–90 cm."], "cMark": ["How do we install it?", "[We use] a wall-mounted bracket or [a] floor stand, set at 75–90 cm."], "points": [{"zh": "安裝簡單：牆架或落地架，75–90 公分", "en": "Wall-mounted bracket or floor stand, set at 75–90 cm.", "kw": "simple: wall or floor stand, 75–90 cm", "must": true}, {"zh": "牆架適合醫院固定床、落地架適合居家彈性使用", "en": "Option A: Wall-mounted bracket, best for fixed hospital or clinic beds; Option B: Floor stand, best for homes, easy to move.", "kw": "wall for hospital beds, stand for home", "must": false}], "secD": 19.8, "secC": 9.4, "wd": 43, "wc": 18, "skip": null}, {"slide": 27, "title": "How it all works, around the clock", "image": "gcbme-2026/s27.jpg", "detailed": ["So how does it all work, around the clock?", "The radar sends data nonstop over Wi-Fi.", "The clinical dashboard shows each patient's status, movement, and abnormal vital signs in one place.", "And with automatic Line@ app alerts, staff get an alert right away for abnormal values or bed exits."], "concise": ["How it all works, around the clock.", "It sends data over Wi-Fi to a clinical dashboard, and staff get Line@ app alerts right away."], "dMark": ["[So how does] it all [work,] around the clock?", "[The radar] sends data nonstop over Wi-Fi.", "[The] clinical dashboard shows each patient's status, movement, and abnormal vital signs in one place.", "[And with] automatic Line@ app alerts, staff get an alert right away for abnormal values or bed exits."], "cMark": ["How it all works, around the clock.", "[It] sends data over Wi-Fi [to a] clinical dashboard, [and] staff get Line@ app alerts right away."], "points": [{"zh": "資料用 Wi-Fi 持續傳到臨床儀表板", "en": "Sends data nonstop over Wi-Fi to a Clinical dashboard.", "kw": "Wi-Fi to clinical dashboard", "must": true}, {"zh": "儀表板一次看到每位病人的狀態、活動與異常生命徵象", "en": "The dashboard shows each patient's status, movement and abnormal vital signs in one place.", "kw": "tracks status, movement, HR, breathing", "must": false}, {"zh": "LINE 自動推播異常值或離床警示", "en": "Automatic Line@ app alerts: staff get an alert right away for abnormal values or bed exits.", "kw": "LINE alerts for abnormal values / bed exit", "must": false}], "secD": 22.6, "secC": 12.5, "wd": 49, "wc": 24, "skip": null}, {"slide": 28, "title": "What does daily screening data look like?", "image": "gcbme-2026/s28.jpg", "detailed": ["What does daily screening data look like?", "The team gets a LINE Notify message from the test site.", "For each bed, it lists the bRDI, sleep time, PB%, PB events, and the average cycle length.", "On the right is the full sleep report, in Chinese."], "concise": ["What does daily screening data look like?", "LINE Notify lists the bRDI, sleep time, PB%, and PB events for each bed."], "dMark": ["What does daily screening data look like?", "[The team gets a] LINE Notify [message from the] test site.", "[For each bed, it lists the] bRDI, sleep time, PB%, PB events, [and the average cycle length.]", "[On the right is the full] sleep [report, in Chinese.]"], "cMark": ["What does daily screening data look like?", "LINE Notify [lists the] bRDI, sleep time, PB%, [and] PB events [for each bed.]"], "points": [{"zh": "每床 LINE 摘要：bRDI、睡眠時間、週期性呼吸", "en": "LINE Notify: bRDI / Sleep time / PB% / PB events / Cycle-length avg.", "kw": "LINE summary per bed", "must": true}, {"zh": "完整睡眠報告：分期、事件、趨勢、心跳呼吸", "en": "The full BestShape sleep report with sleep stages, breathing rate and heart rate.", "kw": "full sleep report", "must": false}, {"zh": "標題：每日篩檢資料長什麼樣子", "en": "What does daily screening data look like?", "kw": "care team sees it every morning", "must": false}], "secD": 20.8, "secC": 11.0, "wd": 45, "wc": 21, "skip": null}, {"slide": 29, "title": "Study 3: Can breathing tell us about the heart?", "image": "gcbme-2026/s29.jpg", "detailed": ["Now, Study 3: can breathing tell us about the heart?", "This study had 72 patients, and it was published by our team in 2025.", "Here's what we found. When the radar picks up abnormal breathing, especially periodic breathing, or Cheyne-Stokes, it's linked to a lower LVEF.", "Just to be clear: this is an early-warning idea for heart failure, based on associations.", "It isn't validated yet for diagnosis or prediction."], "concise": ["Study 3: can breathing tell us about the heart? Our team published it in 2025.", "When the radar picks up periodic breathing, it's linked to a lower LVEF.", "It's based on associations, and it isn't validated yet."], "dMark": ["[Now,] Study 3: can breathing tell us about the heart?", "[This] study [had] 72 [patients, and it was] published by our team [in] 2025.", "Here's what we found. When the radar picks up abnormal breathing, especially periodic breathing, [or] Cheyne-Stokes, it's linked to a lower LVEF.", "Just to be clear: this is an early-warning idea for heart failure, based on associations.", "It isn't validated yet for diagnosis or prediction."], "cMark": ["Study 3: can breathing tell us about the heart? Our team published [it in] 2025.", "When the radar picks up periodic breathing, it's linked to a lower LVEF.", "[It's] based on associations, [and] it isn't validated yet."], "points": [{"zh": "研究三：呼吸能告訴我們心臟的事嗎？（團隊 2025 發表，72 人）", "en": "Study 3: Can breathing tell us about the heart? Published by our team (2025), N = 72.", "kw": "act 3: cardiac research, 72 patients", "must": true}, {"zh": "雷達測到異常呼吸（尤其週期性呼吸）與 LVEF 較低有關", "en": "When the radar picks up abnormal breathing, especially periodic breathing, it's linked to a lower LVEF.", "kw": "periodic breathing associated with low LVEF", "must": false}, {"zh": "只是根據相關性的早期預警想法，尚未驗證可用於診斷或預測", "en": "It's an early-warning idea based on associations, and it isn't validated yet for diagnosis or prediction.", "kw": "association only, not validated", "must": false}], "secD": 31.8, "secC": 19.3, "wd": 69, "wc": 37, "skip": null}, {"slide": 30, "title": "Why does a weaker heart change breathing during sleep?", "image": "gcbme-2026/s30.jpg", "detailed": ["Why does a weaker heart change breathing during sleep?", "It comes from a feedback loop: the neural outflow, the plant gain, the circulation time, and the chemoreflex gain to CO2.", "Periodic breathing is associated with impaired cardiac function.", "Our radar does not measure CO2. It only sees the breathing pattern."], "concise": ["Why does a weaker heart change breathing during sleep?", "Periodic breathing is associated with impaired cardiac function, through circulation time.", "The radar does not measure CO2. It only sees the breathing pattern."], "dMark": ["Why does a weaker heart change breathing during sleep?", "[It comes from a feedback loop: the] neural outflow, [the] plant gain, [the] circulation time, [and the] chemoreflex gain to CO2.", "Periodic breathing is associated with impaired cardiac function.", "[Our radar] does [not measure] CO2. [It only sees the] breathing [pattern.]"], "cMark": ["Why does a weaker heart change breathing during sleep?", "Periodic breathing is associated with impaired cardiac function, [through] circulation time.", "[The radar] does [not measure] CO2. [It only sees the] breathing [pattern.]"], "points": [{"zh": "呼吸控制迴路：神經輸出、plant gain、循環時間、化學反射", "en": "Neural Outflow, Plant Gain, Circulation Time, Chemoreflex Gain to CO2.", "kw": "breathing control loop", "must": false}, {"zh": "心臟透過循環時間影響呼吸", "en": "Periodic breathing is associated with impaired cardiac function, through Circulation Time.", "kw": "heart enters via circulation time", "must": true}, {"zh": "雷達不量 CO₂，只看到結果的呼吸型態", "en": "The radar does not measure CO2; it sees the breathing pattern.", "kw": "radar doesn't measure CO2", "must": false}], "secD": 23.1, "secC": 16.7, "wd": 50, "wc": 32, "skip": null}, {"slide": 31, "title": "Periodic-breathing features & cycle length", "image": "gcbme-2026/s31.jpg", "detailed": ["We can measure periodic breathing by features like the cycle length and the hyperpnea length.", "When cycle length was measured by CPAP, it was 11x in acute heart failure, 8x in chronic heart failure, and 1x in a normal heart.", "And by LVEF, the cycle length goes from 49.1 seconds when LVEF is above 50, up to 85.7 seconds when LVEF is below 20."], "concise": ["Periodic breathing has features we can measure, like the cycle length.", "Cycle length measured by CPAP is 11x in acute heart failure, and 8x in chronic heart failure.", "As LVEF falls, the cycle length goes from 49.1 up to 85.7 seconds."], "dMark": ["[We can measure periodic breathing by] features [like the] cycle length [and the] hyperpnea length.", "[When] cycle length [was] measured by CPAP, [it was] 11x [in] acute heart failure, 8x [in] chronic heart failure, [and] 1x [in a] normal heart.", "[And by] LVEF, [the] cycle length [goes from] 49.1 [seconds when] LVEF [is above] 50, [up to] 85.7 [seconds when] LVEF [is below] 20."], "cMark": ["[Periodic breathing has] features [we can measure, like the] cycle length.", "Cycle length measured by CPAP [is] 11x [in] acute heart failure, [and] 8x [in] chronic heart failure.", "[As] LVEF [falls, the] cycle length [goes from] 49.1 [up to] 85.7 [seconds.]"], "points": [{"zh": "週期性呼吸可量化：週期長度等特徵", "en": "Cycle length, Apnea-hypopnea length, Hyperpnea length, Hyperpnea shape.", "kw": "measurable features, e.g. cycle length", "must": true}, {"zh": "依 LVEF，週期長度 49.1 → 85.7 秒", "en": "By LVEF, cycle length rises from 49.1 to 85.7 seconds.", "kw": "lower LVEF → longer cycle (49→86 s)", "must": false}, {"zh": "急性心衰 11 倍、慢性 8 倍", "en": "Cycle length measured by CPAP: Acute Heart Failure 11x, Chronic Heart Failure 8x.", "kw": "acute HF 11×, chronic 8×", "must": false}], "secD": 29.5, "secC": 21.4, "wd": 64, "wc": 41, "skip": null}, {"slide": 32, "title": "IEEE JTEHM 2025 paper", "image": "gcbme-2026/s32.jpg", "detailed": ["This is our paper on evaluating cardiac impairment from abnormal respiratory patterns, using wireless radar and deep learning.", "In Table 1, we split patients by LVEF: above 50%, 47 patients, and 50% or below, 25 patients.", "The table also compares LVEF, LVEDD, and LVESD between the two groups."], "concise": ["This is our paper on evaluating cardiac impairment from abnormal respiratory patterns.", "We compared 47 patients with LVEF above 50%, and 25 patients with LVEF of 50% or below."], "dMark": ["[This is our] paper [on] evaluating cardiac impairment from abnormal respiratory patterns, [using] wireless radar and deep learning.", "[In] Table 1, [we split patients by] LVEF: [above] 50%, 47 [patients, and] 50% [or below,] 25 [patients.]", "[The] table [also compares] LVEF, LVEDD, [and] LVESD between [the two groups.]"], "cMark": ["[This is our] paper [on] evaluating cardiac impairment from abnormal respiratory patterns.", "[We compared] 47 [patients with] LVEF [above] 50%, [and] 25 [patients with] LVEF [of] 50% [or below.]"], "points": [{"zh": "我們 2025 IEEE JTEHM 論文：雷達+深度學習評估心功能", "en": "Evaluating Cardiac Impairment From Abnormal Respiratory Patterns: a Wireless Radar and Deep Learning Study.", "kw": "IEEE JTEHM 2025: radar + deep learning for cardiac", "must": true}, {"zh": "LVEF >50% 47 人、≤50% 25 人", "en": "LVEF > 50% (N = 47) and LVEF ≤ 50% (N = 25).", "kw": "47 vs 25 patients by LVEF", "must": false}, {"zh": "年齡性別等相似，心臟超音波指標顯著不同", "en": "LVEF, LVEDD and LVESD differed, p < 0.01.", "kw": "similar baseline, echo differs", "must": false}], "secD": 22.2, "secC": 15.1, "wd": 48, "wc": 29, "skip": null}, {"slide": 33, "title": "Putting numbers on the heart–breathing links", "image": "gcbme-2026/s33.jpg", "detailed": ["Let's put numbers on the heart–breathing links.", "Keep in mind: these are clinical associations only.", "If RDI goes up by 1/h, LVEF goes down 0.22%, and LVESD goes up 0.14 mm.", "If the PB cycle is 1 s longer, NT-proBNP goes up 158.49 pg/mL, LVEF goes down 0.21%, LVEDD goes up 0.11 mm, and LVESD goes up 0.16 mm."], "concise": ["Let's put numbers on the heart–breathing links. These are clinical associations only.", "If RDI goes up by 1/h, LVEF goes down 0.22%.", "If the PB cycle is 1 s longer, NT-proBNP goes up 158.49 pg/mL."], "dMark": ["[Let's put] numbers on the heart–breathing links.", "Keep in mind: these are clinical associations only.", "If RDI goes up [by] 1/h, LVEF goes down 0.22%, [and] LVESD goes up 0.14 mm.", "If the PB cycle is 1 s longer, NT-proBNP goes up 158.49 pg/mL, LVEF goes down 0.21%, LVEDD goes up 0.11 mm, [and] LVESD goes up 0.16 mm."], "cMark": ["[Let's put] numbers on the heart–breathing links. These are clinical associations only.", "If RDI goes up [by] 1/h, LVEF goes down 0.22%.", "If the PB cycle is 1 s longer, NT-proBNP goes up 158.49 pg/mL."], "points": [{"zh": "提醒：只是臨床相關性", "en": "Keep in mind: These are clinical associations only.", "kw": "associations only", "must": true}, {"zh": "RDI 每增加 1，LVEF 低 0.22%", "en": "If RDI goes up 1/h: LVEF goes down 0.22%.", "kw": "RDI +1 → LVEF −0.22%", "must": false}, {"zh": "週期每長 1 秒，NT-proBNP 高 158.49", "en": "If the PB cycle is 1 s longer: NT-proBNP goes up 158.49 pg/mL.", "kw": "cycle +1 s → NT-proBNP +158.49", "must": false}], "secD": 27.2, "secC": 18.3, "wd": 59, "wc": 35, "skip": null}, {"slide": 34, "title": "Our ward work has won national awards", "image": "gcbme-2026/s34.jpg", "detailed": ["Our ward work has also won national awards for our zero-contact care platform.", "In 2025, we received the NHQA, the National Healthcare Quality Award, for our zero-contact monitoring platform for inpatients.", "We also received the SNQ, the Symbol of National Quality, for our Wholehearted integrated care model."], "concise": ["Our ward work has won national awards.", "We received the 2025 NHQA and the SNQ national quality awards."], "dMark": ["Our ward work has [also] won national awards for our zero-contact care platform.", "[In] 2025, [we received the] NHQA, [the] National Healthcare Quality Award, for our zero-contact monitoring platform for [inpatients.]", "[We also received the] SNQ, [the] Symbol of National Quality, for our Wholehearted integrated care model."], "cMark": ["Our ward work has won national awards.", "[We received the] 2025 NHQA [and the] SNQ national quality awards."], "points": [{"zh": "標題：我們的病房工作獲得國家獎項", "en": "Our ward work has won national awards.", "kw": "cardiac work shaped our quality program", "must": false}, {"zh": "2025 NHQA 智慧醫療（住院）標章", "en": "2025 NHQA: National Healthcare Quality Award, Quality Mark, Inpatient Services.", "kw": "NHQA 2025 Quality Mark, inpatient", "must": true}, {"zh": "SNQ 國家品質標章：全心全力整合照護模式", "en": "SNQ: Symbol of National Quality, Wholehearted Integrated Care Model.", "kw": "SNQ 'Wholehearted' cardiac care model", "must": false}], "secD": 21.7, "secC": 9.4, "wd": 47, "wc": 18, "skip": null}, {"slide": 37, "title": "What to take home", "image": "gcbme-2026/s37.jpg", "detailed": ["So, what should you take home?", "First, it's contactless. A 24-GHz radar can monitor breathing night after night, with nothing to wear.", "Second, it's consistent with standard tests: r = 0.91 in the hospital, and r = 0.87 at home.", "Third, it's a TFDA-cleared screen for suspected severe OSA, with 90.5% sensitivity.", "Fourth, we found associations between periodic breathing and cardiac impairment. So it may help us watch the heart, too.", "And finally, our work received national quality awards: SNQ and NHQA.", "Thank you very much. I'm happy to take your questions."], "concise": ["What should you take home?", "It's contactless, with nothing to wear.", "It agrees with standard tests, in the hospital and at home.", "It's TFDA-cleared to screen for suspected severe OSA.", "And it may help us watch the heart, too.", "Thank you very much. I'm happy to take your questions."], "dMark": ["[So,] what [should you] take home?", "[First, it's] contactless. A 24-GHz radar can monitor breathing night after night, with nothing to wear.", "[Second, it's] consistent with standard tests: r = 0.91 in the hospital, [and] r = 0.87 at home.", "[Third, it's a] TFDA-cleared screen for suspected severe OSA, with 90.5% sensitivity.", "[Fourth,] we found associations between periodic breathing and cardiac impairment. So it may help us watch the heart, too.", "[And finally, our work] received national quality awards: SNQ and NHQA.", "[Thank you very much. I'm happy] to take [your questions.]"], "cMark": ["What [should you] take home?", "[It's] contactless, with nothing to wear.", "It agrees with standard tests, in the hospital and at home.", "It's TFDA-cleared to screen for suspected severe OSA.", "[And] it may help us watch the heart, too.", "[Thank you very much. I'm happy] to take [your questions.]"], "points": [{"zh": "24 GHz 雷達：夜夜監測、身上不用戴東西", "en": "Contactless: A 24-GHz radar can monitor breathing night after night, with nothing to wear.", "kw": "contactless, continuous multi-night", "must": true}, {"zh": "院內 r=0.91、居家 r=0.87：與標準檢查一致", "en": "Consistent: It agrees with standard tests in the hospital (r=0.91) and at home (r=0.87).", "kw": "accurate: 0.91 hospital, 0.87 home", "must": false}, {"zh": "TFDA 核准篩檢重度 OSA；心臟只是相關", "en": "TFDA-cleared to screen for suspected severe OSA (bRDI ≥ 30); associations between periodic breathing and cardiac impairment.", "kw": "TFDA screen for severe OSA; cardiac = association", "must": false}, {"zh": "感謝，歡迎提問", "en": "Thank you very much. I'm happy to take your questions.", "kw": "thank you, questions", "must": false}], "secD": 42.5, "secC": 25.6, "wd": 92, "wc": 49, "skip": null}], "sections": [{"id": "s1", "zh": "開場與問題", "en": "Opening & the problem", "slides": [1, 2, 3, 4]}, {"id": "s2", "zh": "雷達原理與床邊樣貌", "en": "How the radar works", "slides": [5, 6]}, {"id": "s3", "zh": "三篇研究總覽", "en": "Our three studies", "slides": [7]}, {"id": "s4", "zh": "研究一：院內驗證", "en": "Study 1: in the hospital", "slides": [8, 9, 10, 11, 12, 13]}, {"id": "s5", "zh": "從研究到病房、COVID-19", "en": "From research to the ward; COVID-19", "slides": [14, 15, 16]}, {"id": "s6", "zh": "研究二：走進家中", "en": "Study 2: at home", "slides": [18, 19, 20, 21, 22]}, {"id": "s7", "zh": "TFDA 核准與實際部署", "en": "TFDA clearance & deployment", "slides": [23, 24, 25, 26, 27, 28]}, {"id": "s8", "zh": "研究三：呼吸與心臟", "en": "Study 3: breathing and the heart", "slides": [29, 30, 31, 32, 33]}, {"id": "s9", "zh": "獎項與結論", "en": "Awards & take-home", "slides": [34, 37]}], "keyMessages": [["Contactless", "A 24-GHz radar can monitor breathing night after night, with nothing to wear.", "無接觸：24 GHz 雷達夜夜監測呼吸，身上不用戴任何東西。"], ["Consistent", "It agrees with standard tests: r = 0.91 in the hospital, and r = 0.87 at home.", "與標準檢查一致：院內 r = 0.91、居家 r = 0.87。"], ["TFDA-cleared screen", "It's a TFDA-cleared screen for suspected severe OSA, with 90.5% sensitivity. It does not diagnose OSA on its own.", "TFDA 核准的「疑似重度 OSA 篩檢」，敏感度 90.5%；不能單獨診斷。"], ["The heart", "We found associations between periodic breathing and cardiac impairment. So it may help us watch the heart, too.", "週期性呼吸與心功能受損「有相關」——只是相關，尚未驗證可用於診斷或預測。"], ["Recognition", "Our work received national quality awards: SNQ and NHQA.", "病房零接觸照護平台獲 SNQ 與 NHQA 國家品質獎項。"]], "caveats": [["The radar does not measure SpO2 or CO2. It only sees the breathing pattern.", "雷達不量血氧、不量 CO₂，只看呼吸型態。"], ["bRDI ≥ 30 is used only as a screen for suspected severe OSA. It does not diagnose OSA on its own.", "bRDI ≥ 30 只是疑似重度 OSA 的篩檢，不能單獨診斷。"], ["These are clinical associations only. It isn't validated yet for diagnosis or prediction.", "心臟發現只是臨床相關性，尚未驗證可用於診斷或預測。"], ["These are limits of agreement, not a confidence interval.", "Bland–Altman 的範圍是一致界限，不是信賴區間。"], ["These are observational data. They show trends, not a diagnosis for each patient.", "COVID-19 資料是觀察性資料：看趨勢，不是個別診斷。"]], "vocab": [{"term": "polysomnography (PSG)", "ipa": "/ˌpɑliˌsɑmˈnɑɡrəfi/", "stress": "po·ly·som·NOG·ra·phy；縮寫唸 P-S-G", "zh": "多項睡眠生理檢查（院內睡眠檢查，臨床黃金標準）", "cat": "睡眠醫學", "example": "PSG covers all sleep diseases, but it needs 20 or more wires, and patients wait 1 to 2 months.", "exSlide": 3, "say": "polysomnography. P S G"}, {"term": "sleep-disordered breathing", "ipa": "/ˌslip dɪsˈɔrdərd ˈbriðɪŋ/", "stress": "sleep-dis·OR·dered BREATH·ing", "zh": "睡眠呼吸障礙", "cat": "睡眠醫學", "example": "Look at the waiting room. If we suspect sleep-disordered breathing, we need objective data.", "exSlide": 2, "say": null}, {"term": "obstructive sleep apnea (OSA)", "ipa": "/əbˈstrʌktɪv ˈslip ˈæpniə/", "stress": "ob·STRUC·tive SLEEP AP·ne·a；縮寫唸 O-S-A", "zh": "阻塞型睡眠呼吸中止症", "cat": "睡眠醫學", "example": "For moderate-to-severe OSA, the accuracy was 90.3%, with a cut-off of 19.2 events/h.", "exSlide": 13, "say": "obstructive sleep apnea. O S A"}, {"term": "apnea", "ipa": "/ˈæpniə/", "stress": "AP·ne·a", "zh": "呼吸中止", "cat": "睡眠醫學", "example": "At the bottom is a respiratory event. During the apnea episode, the wave gets very small, and then breathing comes back.", "exSlide": 9, "say": null}, {"term": "hypopnea", "ipa": "/haɪˈpɑpniə/", "stress": "hy·POP·ne·a", "zh": "呼吸變淺（淺呼吸）", "cat": "睡眠醫學", "example": "Sleep tests watch airflow: it stops (apnea) or gets shallow (hypopnea).", "exSlide": 10, "say": null}, {"term": "respiratory event", "ipa": "/ˈrɛspərəˌtɔri ɪˈvɛnt/", "stress": "RES·pi·ra·to·ry e·VENT", "zh": "呼吸事件", "cat": "睡眠醫學", "example": "At the bottom is a respiratory event. During the apnea episode, the wave gets very small, and then breathing comes back.", "exSlide": 9, "say": null}, {"term": "airflow", "ipa": "/ˈɛrˌfloʊ/", "stress": "AIR·flow", "zh": "氣流", "cat": "睡眠醫學", "example": "Sleep tests watch airflow. Radar watches the chest.", "exSlide": 10, "say": null}, {"term": "airway", "ipa": "/ˈɛrˌweɪ/", "stress": "AIR·way", "zh": "呼吸道", "cat": "睡眠醫學", "example": "Then struggling effort: the airway is still closed, so the chest makes small moves.", "exSlide": 11, "say": null}, {"term": "struggling effort", "ipa": "/ˈstrʌɡlɪŋ ˈɛfərt/", "stress": "STRUG·gling EF·fort", "zh": "（氣道關閉時）掙扎呼吸動作", "cat": "睡眠醫學", "example": "Then struggling effort: the airway is still closed, so the chest makes small moves.", "exSlide": 11, "say": null}, {"term": "recovery surge", "ipa": "/rɪˈkʌvəri sɜrdʒ/", "stress": "re·COV·er·y SURGE", "zh": "恢復呼吸時的一次大起伏", "cat": "睡眠醫學", "example": "Then a recovery surge: the airway opens, with one big breath.", "exSlide": 11, "say": null}, {"term": "periodic breathing (PB)", "ipa": "/ˌpɪriˈɑdɪk ˈbriðɪŋ/", "stress": "pe·ri·OD·ic BREATH·ing", "zh": "週期性呼吸", "cat": "心臟", "example": "In Study 3, with 72 patients, when the radar picked up periodic breathing, it was linked to lower LVEF.", "exSlide": 7, "say": "periodic breathing. P B"}, {"term": "Cheyne-Stokes", "ipa": "/ˌtʃeɪn ˈstoʊks/", "stress": "CHEYNE-STOKES（兩字都重）", "zh": "陳施氏呼吸（潮式呼吸）", "cat": "心臟", "example": "Here's what we found. When the radar picks up abnormal breathing, especially periodic breathing, or Cheyne-Stokes, it's linked to a lower LVEF.", "exSlide": 29, "say": null}, {"term": "home sleep apnea testing (HSAT)", "ipa": "/hoʊm slip ˈæpniə ˈtɛstɪŋ/", "stress": "縮寫唸 H-S-A-T", "zh": "居家睡眠呼吸中止檢測", "cat": "睡眠醫學", "example": "We checked it against PSG in the hospital, and against HSAT at home. No technician was there at home.", "exSlide": 18, "say": "home sleep apnea testing. H S A T"}, {"term": "AHI / RDI / bRDI", "ipa": "—", "stress": "逐字母：A-H-I、R-D-I、b-R-D-I", "zh": "呼吸中止低通氣指數／呼吸障礙指數／雷達算出的 RDI（每小時事件數）", "cat": "睡眠醫學", "example": "The radar's bRDI and the AHI from PSG line up well, with r = 0.91, and p < 0.01.", "exSlide": 13, "say": "A H I. R D I. b R D I"}, {"term": "oximeter", "ipa": "/ɑkˈsɪmɪtər/", "stress": "ox·IM·e·ter", "zh": "血氧計", "cat": "睡眠醫學", "example": "Home sleep testing uses 3 wires. An oximeter or an ECG patch can record for 7 to 14 days.", "exSlide": 3, "say": null}, {"term": "allergy", "ipa": "/ˈælərdʒi/", "stress": "AL·ler·gy", "zh": "過敏", "cat": "睡眠醫學", "example": "But they are all uncomfortable, and the patch can cause allergy.", "exSlide": 3, "say": null}, {"term": "objective data", "ipa": "/əbˈdʒɛktɪv ˈdeɪtə/", "stress": "ob·JEC·tive DA·ta", "zh": "客觀資料", "cat": "睡眠醫學", "example": "Look at the waiting room. If we suspect sleep-disordered breathing, we need objective data.", "exSlide": 2, "say": null}, {"term": "hassle", "ipa": "/ˈhæsəl/", "stress": "HAS·sle", "zh": "麻煩事", "cat": "睡眠醫學", "example": "But getting that data is a real hassle.", "exSlide": 2, "say": null}, {"term": "unnatural", "ipa": "/ʌnˈnætʃərəl/", "stress": "un·NAT·u·ral", "zh": "不自然的", "cat": "睡眠醫學", "example": "And then patients have to sleep in a very unnatural setting.", "exSlide": 2, "say": null}, {"term": "wearable / non-wearable", "ipa": "/ˈwɛrəbəl/", "stress": "WEAR·a·ble；non-WEAR·a·ble", "zh": "穿戴式／非穿戴式", "cat": "雷達與訊號", "example": "Today I'll talk about non-wearable devices in sleep medicine: using contactless radar to check breathing during sleep.", "exSlide": 1, "say": null}, {"term": "contactless", "ipa": "/ˈkɑntæktləs/", "stress": "CON·tact·less", "zh": "無接觸的", "cat": "雷達與訊號", "example": "Today I'll talk about non-wearable devices in sleep medicine: using contactless radar to check breathing during sleep.", "exSlide": 1, "say": null}, {"term": "radar", "ipa": "/ˈreɪˌdɑr/", "stress": "RA·dar", "zh": "雷達", "cat": "雷達與訊號", "example": "Today I'll talk about non-wearable devices in sleep medicine: using contactless radar to check breathing during sleep.", "exSlide": 1, "say": null}, {"term": "24-GHz (gigahertz)", "ipa": "/ˈɡɪɡəˌhɜrts/", "stress": "GI·ga·hertz；唸 twenty-four gigahertz", "zh": "24 吉赫", "cat": "雷達與訊號", "example": "How it works: a 24-GHz continuous-wave radar, plus deep neural decision trees.", "exSlide": 7, "say": "twenty-four gigahertz"}, {"term": "continuous-wave", "ipa": "/kənˈtɪnjuəs weɪv/", "stress": "con·TIN·u·ous WAVE", "zh": "連續波（雷達）", "cat": "雷達與訊號", "example": "How it works: a 24-GHz continuous-wave radar, plus deep neural decision trees.", "exSlide": 7, "say": null}, {"term": "reflection", "ipa": "/rɪˈflɛkʃən/", "stress": "re·FLEC·tion", "zh": "反射（回波）", "cat": "雷達與訊號", "example": "The radar sends a signal from Tx, and picks up the reflection at Rx.", "exSlide": 5, "say": null}, {"term": "time of flight (ToF)", "ipa": "/taɪm əv flaɪt/", "stress": "TIME of FLIGHT；縮寫唸 T-O-F", "zh": "飛行時間", "cat": "雷達與訊號", "example": "When the chest moves a little, the received signal changes, in its time of flight, or ToF, and its phase.", "exSlide": 5, "say": null}, {"term": "phase", "ipa": "/feɪz/", "stress": "PHASE", "zh": "相位", "cat": "雷達與訊號", "example": "When the chest moves a little, the received signal changes, in its time of flight, or ToF, and its phase.", "exSlide": 5, "say": null}, {"term": "deep neural decision trees", "ipa": "/dip ˈnʊrəl dɪˈsɪʒən triz/", "stress": "DEEP NEU·ral de·CI·sion TREES", "zh": "深度神經決策樹", "cat": "雷達與訊號", "example": "How it works: a 24-GHz continuous-wave radar, plus deep neural decision trees.", "exSlide": 7, "say": null}, {"term": "bedside", "ipa": "/ˈbɛdˌsaɪd/", "stress": "BED·side", "zh": "病床邊", "cat": "雷達與訊號", "example": "Here's how it looks at the bedside.", "exSlide": 6, "say": null}, {"term": "gold standard", "ipa": "/ɡoʊld ˈstændərd/", "stress": "GOLD STAN·dard", "zh": "黃金標準", "cat": "統計與驗證", "example": "So, does the radar agree with the clinical gold standard?", "exSlide": 12, "say": null}, {"term": "correlation", "ipa": "/ˌkɔrəˈleɪʃən/", "stress": "cor·re·LA·tion", "zh": "相關（係數 r）", "cat": "統計與驗證", "example": "In Study 1, in the sleep lab, we compared the radar side by side with PSG in 196 patients, and got a strong correlation, r = 0.91.", "exSlide": 7, "say": null}, {"term": "cut-off", "ipa": "/ˈkʌtˌɔf/", "stress": "CUT-off", "zh": "切點／門檻值", "cat": "統計與驗證", "example": "For moderate-to-severe OSA, the accuracy was 90.3%, with a cut-off of 19.2 events/h.", "exSlide": 13, "say": null}, {"term": "accuracy", "ipa": "/ˈækjərəsi/", "stress": "AC·cu·ra·cy", "zh": "準確度", "cat": "統計與驗證", "example": "For moderate-to-severe OSA, the accuracy was 90.3%, with a cut-off of 19.2 events/h.", "exSlide": 13, "say": null}, {"term": "moderate-to-severe", "ipa": "/ˈmɑdərət tə səˈvɪr/", "stress": "MOD·er·ate to se·VERE", "zh": "中重度", "cat": "統計與驗證", "example": "For moderate-to-severe OSA, the accuracy was 90.3%, with a cut-off of 19.2 events/h.", "exSlide": 13, "say": null}, {"term": "multi-class prediction", "ipa": "/ˌmʌltiˈklæs prɪˈdɪkʃən/", "stress": "mul·ti-CLASS pre·DIC·tion", "zh": "多分類預測（嚴重度分級）", "cat": "統計與驗證", "example": "And for multi-class prediction, the average accuracy was 83.7%.", "exSlide": 13, "say": null}, {"term": "sensitivity", "ipa": "/ˌsɛnsəˈtɪvəti/", "stress": "sen·si·TIV·i·ty", "zh": "敏感度", "cat": "統計與驗證", "example": "At a cut-off of 30, the sensitivity is 90.5%, and the specificity is also 90.5%.", "exSlide": 23, "say": null}, {"term": "specificity", "ipa": "/ˌspɛsəˈfɪsəti/", "stress": "spe·ci·FIC·i·ty", "zh": "特異度", "cat": "統計與驗證", "example": "At a cut-off of 30, the sensitivity is 90.5%, and the specificity is also 90.5%.", "exSlide": 23, "say": null}, {"term": "limits of agreement", "ipa": "/ˈlɪmɪts əv əˈɡrimənt/", "stress": "LIM·its of a·GREE·ment", "zh": "一致界限（Bland–Altman）", "cat": "統計與驗證", "example": "And 93.88% of nights, that's 138 of 147, fall within the ±1.96 SD limits of agreement.", "exSlide": 20, "say": null}, {"term": "confidence interval", "ipa": "/ˈkɑnfədəns ˈɪntərvəl/", "stress": "CON·fi·dence IN·ter·val", "zh": "信賴區間", "cat": "統計與驗證", "example": "These are limits of agreement, not a confidence interval.", "exSlide": 20, "say": null}, {"term": "observational", "ipa": "/ˌɑbzərˈveɪʃənəl/", "stress": "ob·ser·VA·tion·al", "zh": "觀察性的", "cat": "統計與驗證", "example": "Next, obstructive sleep apnea after COVID-19. This is an observational study.", "exSlide": 15, "say": null}, {"term": "association", "ipa": "/əˌsoʊsiˈeɪʃən/", "stress": "as·so·ci·A·tion", "zh": "相關性（非因果）", "cat": "統計與驗證", "example": "Just to be clear: this is an early-warning idea for heart failure, based on associations.", "exSlide": 29, "say": null}, {"term": "baseline", "ipa": "/ˈbeɪsˌlaɪn/", "stress": "BASE·line", "zh": "基準", "cat": "統計與驗證", "example": "The setting was a tightly controlled lab, with no outside noise. So we get a clean baseline.", "exSlide": 8, "say": null}, {"term": "validated", "ipa": "/ˈvæləˌdeɪtɪd/", "stress": "VAL·i·dat·ed", "zh": "經過驗證的", "cat": "統計與驗證", "example": "But keep in mind: bRDI ≥ 30 is validated as a screen for suspected severe OSA. It doesn't replace a full diagnosis.", "exSlide": 25, "say": null}, {"term": "robust", "ipa": "/roʊˈbʌst/", "stress": "ro·BUST", "zh": "穩健的", "cat": "統計與驗證", "example": "Real homes are messy, so we need robust signal processing.", "exSlide": 19, "say": null}, {"term": "complement", "ipa": "/ˈkɑmpləmənt/", "stress": "COM·ple·ment（名詞）", "zh": "補充、互補", "cat": "統計與驗證", "example": "So we see it as a promising complement to HSAT.", "exSlide": 18, "say": null}, {"term": "cardiac impairment", "ipa": "/ˈkɑrdiˌæk ɪmˈpɛrmənt/", "stress": "CAR·di·ac im·PAIR·ment", "zh": "心功能受損", "cat": "心臟", "example": "This is our paper on evaluating cardiac impairment from abnormal respiratory patterns, using wireless radar and deep learning.", "exSlide": 32, "say": null}, {"term": "LVEF", "ipa": "/ˌɛl vi i ˈɛf/", "stress": "逐字母 L-V-E-F（left ven·TRIC·u·lar e·JEC·tion FRAC·tion）", "zh": "左心室射出分率", "cat": "心臟", "example": "In Study 3, with 72 patients, when the radar picked up periodic breathing, it was linked to lower LVEF.", "exSlide": 7, "say": "L V E F. left ventricular ejection fraction"}, {"term": "LVEDD / LVESD", "ipa": "—", "stress": "逐字母 L-V-E-D-D、L-V-E-S-D", "zh": "左心室舒張末期／收縮末期內徑", "cat": "心臟", "example": "The table also compares LVEF, LVEDD, and LVESD between the two groups.", "exSlide": 32, "say": "L V E D D. L V E S D"}, {"term": "NT-proBNP", "ipa": "—", "stress": "唸 N-T-pro-B-N-P", "zh": "N 端腦利鈉胜肽前驅物（心衰竭指標）", "cat": "心臟", "example": "If the PB cycle is 1 s longer, NT-proBNP goes up 158.49 pg/mL, LVEF goes down 0.21%, LVEDD goes up 0.11 mm, and LVESD goes up 0.16 mm.", "exSlide": 33, "say": "N T pro B N P"}, {"term": "heart failure", "ipa": "/ˈhɑrt ˈfeɪljər/", "stress": "HEART FAIL·ure", "zh": "心衰竭", "cat": "心臟", "example": "Just to be clear: this is an early-warning idea for heart failure, based on associations.", "exSlide": 29, "say": null}, {"term": "circulation time", "ipa": "/ˌsɜrkjəˈleɪʃən taɪm/", "stress": "cir·cu·LA·tion TIME", "zh": "循環時間", "cat": "心臟", "example": "It comes from a feedback loop: the neural outflow, the plant gain, the circulation time, and the chemoreflex gain to CO2.", "exSlide": 30, "say": null}, {"term": "chemoreflex gain", "ipa": "/ˌkimoʊˈriˌflɛks ɡeɪn/", "stress": "che·mo·RE·flex GAIN", "zh": "化學反射增益", "cat": "心臟", "example": "It comes from a feedback loop: the neural outflow, the plant gain, the circulation time, and the chemoreflex gain to CO2.", "exSlide": 30, "say": null}, {"term": "plant gain", "ipa": "/plænt ɡeɪn/", "stress": "PLANT GAIN", "zh": "受控體增益（控制迴路術語）", "cat": "心臟", "example": "It comes from a feedback loop: the neural outflow, the plant gain, the circulation time, and the chemoreflex gain to CO2.", "exSlide": 30, "say": null}, {"term": "hyperpnea", "ipa": "/ˌhaɪpərpˈniə/", "stress": "hy·perp·NE·a", "zh": "過度換氣期（呼吸增強段）", "cat": "心臟", "example": "We can measure periodic breathing by features like the cycle length and the hyperpnea length.", "exSlide": 31, "say": null}, {"term": "TFDA clearance", "ipa": "/ˈklɪrəns/", "stress": "T-F-D-A CLEAR·ance", "zh": "台灣食藥署核准（許可）", "cat": "臨床部署", "example": "TFDA clearance: where we stand. The device is TFDA cleared.", "exSlide": 23, "say": "T F D A clearance"}, {"term": "screen (n./v.)", "ipa": "/skrin/", "stress": "SCREEN", "zh": "篩檢（工具）；a screen for … ＝ … 的篩檢", "cat": "臨床部署", "example": "bRDI ≥ 30 is used only as a screen for suspected severe obstructive sleep apnea.", "exSlide": 23, "say": null}, {"term": "diagnosis", "ipa": "/ˌdaɪəɡˈnoʊsɪs/", "stress": "di·ag·NO·sis", "zh": "診斷", "cat": "臨床部署", "example": "These are observational data. They show trends, not a diagnosis for each patient.", "exSlide": 16, "say": null}, {"term": "inpatient", "ipa": "/ˈɪnˌpeɪʃənt/", "stress": "IN·pa·tient", "zh": "住院病人", "cat": "臨床部署", "example": "From research to the ward: this is our zero-contact care platform. We now use the radar every day for our inpatients.", "exSlide": 14, "say": null}, {"term": "dashboard", "ipa": "/ˈdæʃˌbɔrd/", "stress": "DASH·board", "zh": "儀表板", "cat": "臨床部署", "example": "If a patient is out of bed too long, or vital signs are abnormal, staff get alerts on the dashboard and LINE Notify.", "exSlide": 14, "say": null}, {"term": "wall-mounted bracket", "ipa": "/ˈwɔlˌmaʊntɪd ˈbrækɪt/", "stress": "WALL-mount·ed BRACK·et", "zh": "壁掛支架", "cat": "臨床部署", "example": "Option A is a wall-mounted bracket. It's best for fixed hospital or clinic beds.", "exSlide": 26, "say": null}, {"term": "floor stand", "ipa": "/flɔr stænd/", "stress": "FLOOR STAND", "zh": "落地架", "cat": "臨床部署", "example": "The radar can go on the wall above the bed, on an arm, or on a floor stand.", "exSlide": 6, "say": null}, {"term": "bed exit", "ipa": "/bɛd ˈɛɡzɪt/", "stress": "BED EX·it", "zh": "離床", "cat": "臨床部署", "example": "And with automatic Line@ app alerts, staff get an alert right away for abnormal values or bed exits.", "exSlide": 27, "say": null}, {"term": "pharyngitis", "ipa": "/ˌfærənˈdʒaɪtɪs/", "stress": "phar·yn·GI·tis", "zh": "咽炎", "cat": "臨床部署", "example": "Pharyngitis: runny nose, headache, fatigue, sneezing, sore throat.", "exSlide": 16, "say": null}, {"term": "Omicron", "ipa": "/ˈɑməˌkrɑn/", "stress": "OM·i·cron", "zh": "Omicron 變異株", "cat": "臨床部署", "example": "The chart runs from COVID-19 Delta in the summer of 2021, through autumn, winter and spring, to Omicron in the summer of 2022.", "exSlide": 16, "say": null}], "numbers": [["r = 0.91", "r equals zero point nine one（或 r of point nine one）"], ["r = 0.87", "r equals zero point eight seven"], ["p < 0.01", "p less than zero point zero one"], ["90.3% / 92.4% / 83.7%", "ninety point three percent / ninety-two point four percent / eighty-three point seven percent"], ["19.2 / 28.86 events/h", "nineteen point two / twenty-eight point eight six events per hour"], ["83.67% / 93.21%", "eighty-three point six seven percent / ninety-three point two one percent"], ["21.19 / 28.14 events/h", "twenty-one point one nine / twenty-eight point one four events per hour"], ["78.23% vs 72.11%", "seventy-eight point two three percent, versus seventy-two point one one percent"], ["−5.30 events/h", "minus five point three zero events per hour"], ["93.88% (138 of 147)", "ninety-three point eight eight percent, that's one hundred thirty-eight of one hundred forty-seven"], ["±1.96 SD", "plus or minus one point nine six S D"], ["bRDI ≥ 30", "b-R-D-I of thirty or more（或 greater than or equal to thirty）"], ["90.5%", "ninety point five percent"], ["40–120 bpm", "forty to one hundred twenty beats per minute"], ["69%", "sixty-nine percent"], ["75–90 cm", "seventy-five to ninety centimeters"], ["24-GHz", "twenty-four gigahertz"], ["5,376 monitoring sessions", "five thousand, three hundred seventy-six monitoring sessions"], ["2021/7 to 2022/7", "from July 2021 to July 2022"], ["257 patients; 58.75%", "two hundred fifty-seven patients; fifty-eight point seven five percent"], ["0.22% / 0.14 mm", "zero point two two percent / zero point one four millimeters"], ["158.49 pg/mL", "one hundred fifty-eight point four nine picograms per milliliter"], ["49.1 → 85.7 seconds", "from forty-nine point one up to eighty-five point seven seconds"], ["IEEE JTEHM", "I triple E, J-T-E-H-M"], ["SNQ / NHQA", "S-N-Q / N-H-Q-A"]], "frames": [{"id": "f1", "kind": "combo", "zh": "轉場：帶到下一段", "pattern": "[Opener] [next part].", "note": "句首可自由替換；每一種組合都通順。下一段用名詞片語。", "slots": {"Opener": ["Let's start with", "This brings us to", "Now, let's move on to", "Next, let's look at"], "next part": ["Study 1, in the hospital", "Study 2, at home", "Study 3, on the heart", "the TFDA clearance", "the installation", "the take-home messages"]}, "forms": [["轉場", "{Opener} {next part}."], ["先總結再轉場", "Before we move on to {next part}, let me sum up."], ["問句（問聽眾）", "Shall we move on to {next part}?"]]}, {"id": "f2", "kind": "rows", "zh": "用問題開場：Does the radar …?", "pattern": "(So,) does the radar [verb phrase]?", "note": "把投影片標題變成問題，再自己回答。否定答案也都是真的。", "slots": {"verb phrase": ["agree with the gold standard", "work in real homes", "measure CO2", "diagnose OSA on its own", "need a technician at home"]}, "rows": [{"f": {"verb phrase": "agree with the gold standard"}, "forms": [["問句", "So, does the radar agree with the gold standard?"], ["肯定回答", "Yes, it does. In 196 patients, the correlation with PSG was r = 0.91."], ["間接問句", "Many people ask whether the radar agrees with the gold standard."]]}, {"f": {"verb phrase": "work in real homes"}, "forms": [["問句", "So, does the radar work in real homes?"], ["肯定回答", "Yes, it does. At home, the correlation with HSAT was r = 0.87."], ["間接問句", "The next question is whether the radar works in real homes."]]}, {"f": {"verb phrase": "measure CO2"}, "forms": [["問句", "Does the radar measure CO2?"], ["否定回答", "No, it doesn't. The radar does not measure CO2. It only sees the breathing pattern."], ["間接問句", "People often ask whether the radar measures CO2."]]}, {"f": {"verb phrase": "diagnose OSA on its own"}, "forms": [["問句", "Does the radar diagnose OSA on its own?"], ["否定回答", "No, it doesn't. It screens for suspected severe OSA. It does not diagnose OSA on its own."], ["間接問句", "A common question is whether the radar diagnoses OSA on its own."]]}, {"f": {"verb phrase": "need a technician at home"}, "forms": [["問句", "Does the radar need a technician at home?"], ["否定回答", "No, it doesn't. In Study 2, no technician was there at home."], ["間接問句", "You may wonder whether the radar needs a technician at home."]]}]}, {"id": "f3", "kind": "rows", "zh": "報告準確度與切點", "pattern": "[Setting], for [severity] OSA, the accuracy was [x]%, with a cut-off of [y] events/h.", "note": "每一列是一組真實數據（院內／居家），不要混搭。", "slots": {"Setting": ["In the hospital", "At home"], "severity": ["moderate-to-severe", "severe"], "x": ["90.3", "92.4", "83.67", "93.21"], "y": ["19.2", "28.86", "21.19", "28.14"]}, "rows": [{"f": {"setting": "In the hospital", "severity": "moderate-to-severe", "x": "90.3", "y": "19.2"}, "forms": [["陳述", "In the hospital, for moderate-to-severe OSA, the accuracy was 90.3%, with a cut-off of 19.2 events/h."], ["問句", "What was the accuracy for moderate-to-severe OSA in the hospital?"], ["簡答", "It was 90.3%."]]}, {"f": {"setting": "In the hospital", "severity": "severe", "x": "92.4", "y": "28.86"}, "forms": [["陳述", "In the hospital, for severe OSA, the accuracy was 92.4%, with a cut-off of 28.86 events/h."], ["問句", "What was the accuracy for severe OSA in the hospital?"], ["簡答", "It was 92.4%."]]}, {"f": {"setting": "At home", "severity": "moderate-to-severe", "x": "83.67", "y": "21.19"}, "forms": [["陳述", "At home, for moderate-to-severe OSA, the accuracy was 83.67%, with a cut-off of 21.19 events/h."], ["問句", "What was the accuracy for moderate-to-severe OSA at home?"], ["簡答", "It was 83.67%."]]}, {"f": {"setting": "At home", "severity": "severe", "x": "93.21", "y": "28.14"}, "forms": [["陳述", "At home, for severe OSA, the accuracy was 93.21%, with a cut-off of 28.14 events/h."], ["問句", "What was the accuracy for severe OSA at home?"], ["簡答", "It was 93.21%."]]}]}, {"id": "f4", "kind": "rows", "zh": "報告相關性", "pattern": "In [setting], the correlation with [standard] was r = [x].", "note": "r 唸 r equals zero point nine one。", "slots": {"setting": ["the hospital", "real homes"], "standard": ["PSG", "HSAT"], "x": ["0.91", "0.87"]}, "rows": [{"f": {"setting": "the hospital", "standard": "PSG", "x": "0.91"}, "forms": [["陳述", "In the hospital, the correlation with PSG was r = 0.91."], ["問句", "How strong was the correlation with PSG in the hospital?"], ["加細節", "In 196 patients, the radar's bRDI and the AHI from PSG lined up well, with r = 0.91."]]}, {"f": {"setting": "real homes", "standard": "HSAT", "x": "0.87"}, "forms": [["陳述", "In real homes, the correlation with HSAT was r = 0.87."], ["問句", "How strong was the correlation with HSAT at home?"], ["加細節", "Even with no one supervising, bRDI_TIB tracked HSAT AHI closely, with r = 0.87."]]}]}, {"id": "f5", "kind": "rows", "zh": "釐清：是 A，不是 B", "pattern": "[This] is [A], not [B].", "note": "演講與 Q&A 最重要的「界線句」。否定與問句都是真的。", "slots": {"This": ["bRDI ≥ 30", "The heart finding", "The COVID-19 data", "The ±1.96 SD band"], "A": ["a screen", "an association", "observational trends", "limits of agreement"], "B": ["a full diagnosis", "a validated prediction", "a diagnosis for each patient", "a confidence interval"]}, "rows": [{"f": {"This": "bRDI ≥ 30", "A": "a screen for suspected severe OSA", "B": "a full diagnosis"}, "forms": [["陳述", "bRDI ≥ 30 is a screen for suspected severe OSA, not a full diagnosis."], ["否定在前", "bRDI ≥ 30 doesn't replace a full diagnosis. It's a screen for suspected severe OSA."], ["問句＋回答", "Is bRDI ≥ 30 a full diagnosis? No, it's a screen for suspected severe OSA."]]}, {"f": {"This": "The heart finding", "A": "an early-warning idea based on associations", "B": "a validated prediction tool"}, "forms": [["陳述", "The heart finding is an early-warning idea based on associations, not a validated prediction tool."], ["否定在前", "The heart finding isn't validated yet for diagnosis or prediction. It's an early-warning idea."], ["問句＋回答", "Can the radar predict heart failure? Not yet. It's an early-warning idea based on associations."]]}, {"f": {"This": "The COVID-19 data", "A": "observational trends", "B": "a diagnosis for each patient"}, "forms": [["陳述", "The COVID-19 data show observational trends, not a diagnosis for each patient."], ["否定在前", "These data don't give a diagnosis for each patient. They show trends."], ["問句＋回答", "Do these data diagnose each patient? No, they show observational trends."]]}, {"f": {"This": "The ±1.96 SD band", "A": "limits of agreement", "B": "a confidence interval"}, "forms": [["陳述", "These are limits of agreement, not a confidence interval."], ["否定在前", "The ±1.96 SD band isn't a confidence interval. It shows the limits of agreement."], ["問句＋回答", "Is that band a confidence interval? No, it shows the limits of agreement."]]}]}, {"id": "f6", "kind": "rows", "zh": "量化關聯：If X goes up, Y goes …", "pattern": "If [X] goes up by [n], [Y] goes [down/up] [m].", "note": "每列是 Study 3 的真實關聯數字；記得補一句「只是相關」。", "slots": {"X": ["RDI (by 1/h)", "the PB cycle (1 s longer)"], "Y": ["LVEF", "LVESD", "NT-proBNP", "LVEDD"]}, "rows": [{"f": {"X": "RDI", "Y": "LVEF"}, "forms": [["陳述", "If RDI goes up by 1/h, LVEF goes down 0.22%."], ["問句", "What happens to LVEF if RDI goes up by 1/h?"], ["加界線", "This is an association. We can't say that RDI causes the change in LVEF."]]}, {"f": {"X": "RDI", "Y": "LVESD"}, "forms": [["陳述", "If RDI goes up by 1/h, LVESD goes up 0.14 mm."], ["問句", "What happens to LVESD if RDI goes up by 1/h?"], ["加界線", "Keep in mind: this is a clinical association only."]]}, {"f": {"X": "the PB cycle", "Y": "NT-proBNP"}, "forms": [["陳述", "If the PB cycle is 1 s longer, NT-proBNP goes up 158.49 pg/mL."], ["問句", "What happens to NT-proBNP if the PB cycle is 1 s longer?"], ["加界線", "This is an association. We can't say that a longer cycle causes a higher NT-proBNP."]]}, {"f": {"X": "the PB cycle", "Y": "LVEF"}, "forms": [["陳述", "If the PB cycle is 1 s longer, LVEF goes down 0.21%."], ["問句", "What happens to LVEF if the PB cycle is 1 s longer?"], ["加界線", "Keep in mind: these are clinical associations only."]]}, {"f": {"X": "the PB cycle", "Y": "LVEDD"}, "forms": [["陳述", "If the PB cycle is 1 s longer, LVEDD goes up 0.11 mm, and LVESD goes up 0.16 mm."], ["問句", "What happens to LVEDD and LVESD if the PB cycle is 1 s longer?"], ["加界線", "These numbers show associations, not causes."]]}]}, {"id": "f7", "kind": "rows", "zh": "相關性：X is associated with Y", "pattern": "[X] is associated with [Y].", "note": "associated with / linked to 可互換；都不是因果。", "slots": {"X": ["Periodic breathing", "Abnormal breathing picked up by the radar", "A longer PB cycle"], "Y": ["impaired cardiac function", "a lower LVEF", "a higher NT-proBNP"]}, "rows": [{"f": {"X": "Periodic breathing", "Y": "impaired cardiac function"}, "forms": [["陳述", "Periodic breathing is associated with impaired cardiac function."], ["問句", "Is periodic breathing associated with impaired cardiac function?"], ["界線（否定）", "We can't say that periodic breathing causes impaired cardiac function."]]}, {"f": {"X": "Periodic breathing picked up by the radar", "Y": "a lower LVEF"}, "forms": [["陳述", "When the radar picks up periodic breathing, it's linked to a lower LVEF."], ["問句", "Is periodic breathing picked up by the radar linked to a lower LVEF?"], ["界線（否定）", "It isn't validated yet for diagnosis or prediction."]]}, {"f": {"X": "A longer PB cycle", "Y": "a higher NT-proBNP"}, "forms": [["陳述", "A longer PB cycle is associated with a higher NT-proBNP."], ["問句", "Is a longer PB cycle associated with a higher NT-proBNP?"], ["界線（否定）", "A longer cycle doesn't prove heart failure. It's an association."]]}]}, {"id": "f8", "kind": "rows", "zh": "優點，但限制（…, but …）", "pattern": "[Strength], but [limitation].", "note": "說明「為什麼需要雷達」的萬用框；也可改成 Although … 句型。", "slots": {"Strength": ["PSG covers all sleep diseases", "An oximeter or an ECG patch can record for 7 to 14 days", "We need objective data", "Wearable sensors track a lot"], "limitation": ["it needs 20 or more wires", "they are uncomfortable", "getting that data is a real hassle", "every one of them has to be worn on the body"]}, "rows": [{"f": {}, "forms": [["but 句", "PSG covers all sleep diseases, but it needs 20 or more wires."], ["Although 句", "Although PSG covers all sleep diseases, it needs 20 or more wires."], ["問句", "Why don't we use PSG every night? Because it needs 20 or more wires, and patients wait 1 to 2 months."]]}, {"f": {}, "forms": [["but 句", "An oximeter or an ECG patch can record for 7 to 14 days, but they are uncomfortable."], ["Although 句", "Although an oximeter or an ECG patch can record for 7 to 14 days, they are uncomfortable."], ["問句", "What's the problem with an ECG patch? It's uncomfortable, and it can cause allergy."]]}, {"f": {}, "forms": [["but 句", "We need objective data, but getting that data is a real hassle."], ["Although 句", "Although we need objective data, getting that data is a real hassle."], ["問句", "Why is sleep testing so hard? Because getting objective data is a real hassle."]]}, {"f": {}, "forms": [["but 句", "Wearable sensors track brain activity, heart activity and breathing, but every one of them has to be worn on the body."], ["Although 句", "Although wearable sensors track a lot, every one of them has to be worn on the body."], ["問句", "Could non-wearables work? That's the question behind our research."]]}]}, {"id": "f9", "kind": "rows", "zh": "Out of N, only n …", "pattern": "Out of [N], (only) [n] [were … / fell …].", "note": "報告比例的口語框；數字一律照原稿。", "slots": {"N": ["257 patients", "147 nights"], "n": ["2", "138"]}, "rows": [{"f": {}, "forms": [["陳述", "Out of 257 patients, only 2 were normal, with an AHI below 5."], ["問句", "How many of the 257 patients were normal?"], ["簡答", "Only 2 of them."]]}, {"f": {}, "forms": [["陳述", "Out of 147 nights, 138 fell within the ±1.96 SD limits of agreement."], ["問句", "How many of the 147 nights fell within the limits of agreement?"], ["簡答", "138 of them, that's 93.88%."]]}]}, {"id": "f10", "kind": "combo", "zh": "提醒／界線句開頭", "pattern": "[Signpost] [caveat].", "note": "句首與界線內容可自由搭配，每一種組合都是真的、也都通順。", "slots": {"Signpost": ["Keep in mind:", "Just to be clear:", "Please note:", "As I mentioned,"], "caveat": ["these are clinical associations only", "the radar does not measure CO2", "this device screens for suspected severe OSA", "these are limits of agreement, not a confidence interval", "these are observational data"]}, "forms": [["提醒", "{Signpost} {caveat}."], ["Q&A 開頭", "That's an important point. {Signpost} {caveat}."]]}, {"id": "f11", "kind": "rows", "zh": "選項 A／B：best for …", "pattern": "Option [A] is a [device]. It's best for [setting].", "note": "介紹安裝方式；最後補 75–90 cm。", "slots": {"device": ["wall-mounted bracket", "floor stand"], "setting": ["fixed hospital or clinic beds", "homes"]}, "rows": [{"f": {}, "forms": [["陳述", "Option A is a wall-mounted bracket. It's best for fixed hospital or clinic beds."], ["問句", "What is the wall-mounted bracket best for?"], ["比較", "A wall-mounted bracket is better for fixed beds, and a floor stand is better for homes."]]}, {"f": {}, "forms": [["陳述", "Option B is a floor stand. It's best for homes, and it's easy to move."], ["問句", "Which option is easy to move?"], ["補細節", "Either way, the radar is set at 75–90 cm."]]}]}, {"id": "f12", "kind": "rows", "zh": "獲獎：We received … for …", "pattern": "We received the [award] for [what].", "note": "SNQ、NHQA 逐字母唸。", "slots": {"award": ["2025 NHQA", "SNQ", "2021 SNQ", "2022 NHQA"], "what": ["our zero-contact monitoring platform for inpatients", "our Wholehearted integrated care model", "our Sleep Center (Distinctive Center)"]}, "rows": [{"f": {}, "forms": [["陳述", "In 2025, we received the NHQA, the National Healthcare Quality Award, for our zero-contact monitoring platform for inpatients."], ["問句", "What did you receive the 2025 NHQA for?"], ["簡答", "For our zero-contact monitoring platform for inpatients."]]}, {"f": {}, "forms": [["陳述", "We also received the SNQ, the Symbol of National Quality, for our Wholehearted integrated care model."], ["問句", "What did you receive the SNQ for?"], ["簡答", "For our Wholehearted integrated care model."]]}, {"f": {}, "forms": [["陳述", "The platform received the 2021 SNQ, and the 2022 NHQA, Distinctive Center, for our Sleep Center."], ["問句", "Which awards did the platform receive in 2021 and 2022?"], ["簡答", "The SNQ in 2021, and the NHQA in 2022."]]}]}], "qa": [{"q": "Does the radar measure oxygen saturation or CO2?", "zh": "雷達會量血氧或二氧化碳嗎？", "tag": "技術界線", "a": "No, it doesn't. The radar senses chest movement only. From the same radar signal, we read breathing, heart rate and bed status. It does not measure SpO2 or CO2. So for the heart–breathing links, the radar sees the breathing pattern, not the gas levels.", "slides": [14, 30]}, {"q": "In an obstructive event the chest keeps moving. How can the radar detect it?", "zh": "阻塞型事件胸部還在動，雷達怎麼偵測？", "tag": "技術", "a": "That's a great question, because the chest does keep moving. So the radar doesn't just look for a flat line. It looks for a typical pattern in five steps: normal breathing, apnea onset, struggling effort, a recovery surge, and back to normal. That whole sequence is the event the radar can detect.", "slides": [10, 11]}, {"q": "What were the results in the hospital?", "zh": "院內研究結果如何？", "tag": "數據", "a": "In Study 1, we compared the radar with PSG in 196 patients. The correlation was r = 0.91. For moderate-to-severe OSA, the accuracy was 90.3%, and for severe OSA, it was 92.4%. For multi-class prediction, the average accuracy was 83.7%.", "slides": [12, 13]}, {"q": "How well did it work at home?", "zh": "居家表現如何？", "tag": "數據", "a": "In Study 2, we had 80 patients and 147 nights at home, with no technician there. The correlation with HSAT was r = 0.87. The accuracy was 83.67% for moderate-to-severe OSA, and 93.21% for severe OSA. On average, the difference was −5.30 events/h.", "slides": [19, 20, 21]}, {"q": "Can the radar replace polysomnography?", "zh": "雷達可以取代 PSG 嗎？", "tag": "界線", "a": "No. The TFDA clearance is for screening. A bRDI of 30 or more flags suspected severe OSA, with 90.5% sensitivity and 90.5% specificity. It does not diagnose OSA on its own, so PSG is still the gold standard. We see the radar as a way to monitor night after night, and as a promising complement to HSAT.", "slides": [18, 23, 25]}, {"q": "Can it predict heart failure?", "zh": "它能預測心衰竭嗎？", "tag": "界線", "a": "Not yet. In Study 3, with 72 patients, periodic breathing picked up by the radar was linked to a lower LVEF. But these are clinical associations only. It's an early-warning idea, and it isn't validated yet for diagnosis or prediction.", "slides": [29, 33]}, {"q": "Is the Bland–Altman band a confidence interval?", "zh": "Bland–Altman 的範圍是信賴區間嗎？", "tag": "統計", "a": "No. These are limits of agreement, not a confidence interval. On average, the difference was −5.30 events/h, and 93.88% of nights, that's 138 of 147, fell within the ±1.96 SD limits of agreement.", "slides": [20]}, {"q": "What about blankets, sleep positions, or a bed partner?", "zh": "被子、睡姿或枕邊人會不會干擾？", "tag": "實務", "a": "That's exactly why we did Study 2 at home. At home, nothing is controlled: different sleep positions, thick blankets, noise, and no technician. Real homes are messy, so we need robust signal processing. As for a bed partner, we didn't report that in these studies, so I wouldn't make a claim there.", "slides": [19]}, {"q": "How do you install it, and what does the care team see?", "zh": "怎麼安裝？照護團隊看到什麼？", "tag": "實務", "a": "It's simple. We use a wall-mounted bracket for fixed hospital or clinic beds, or a floor stand for homes, set at 75–90 cm. Data go over Wi-Fi to a clinical dashboard. Staff get LINE alerts right away for abnormal values or bed exits, and each bed gets a daily summary with the bRDI, sleep time and periodic breathing.", "slides": [26, 27, 28]}, {"q": "How accurate is the sleep staging?", "zh": "睡眠分期準不準？", "tag": "數據", "a": "For sleep stages, the agreement on the TFDA license is 69%. That's useful context, but it's clearly lower than our breathing results. So we present the radar mainly as a breathing screen.", "slides": [24, 25]}, {"q": "Is sleep apnea really that common after COVID-19?", "zh": "COVID-19 後睡眠呼吸中止真的這麼多嗎？", "tag": "觀察性資料", "a": "In that observational study, out of 257 post-COVID-19 patients, only 2 were normal, and 58.75% had severe OSA. Our ward platform also recorded 5,376 monitoring sessions, from Delta to Omicron. But these are observational data. They show trends, not a diagnosis for each patient, and not a cause.", "slides": [15, 16]}, {"q": "How does the radar actually work?", "zh": "雷達的原理是什麼？", "tag": "技術", "a": "It's a 24-GHz continuous-wave radar. It sends a signal from Tx and picks up the reflection at Rx. When the chest moves a little, the received signal changes, in its time of flight and its phase. From those changes, we rebuild the breathing signal, with no wires. On top of that, we use deep neural decision trees.", "slides": [5, 7]}, {"q": "How is this different from a smartwatch or other wearables?", "zh": "和智慧手錶等穿戴裝置有何不同？", "tag": "比較", "a": "Wearables have improved a lot. They track brain activity, heart activity, movement, respiration and blood oxygen. But every one of them has to be worn on the body, and patches can cause allergy. The radar needs nothing to wear, so we can monitor breathing night after night.", "slides": [3, 4]}, {"q": "Your program title mentions myofunctional training. Where does that fit?", "zh": "議程題目有「肌功能訓練」，今天怎麼沒講？", "tag": "主持人可能問", "a": "Thank you for noticing. The full title has two parts: contactless assessment, and technology-assisted myofunctional training, which means making airway muscle training measurable. With only 20 minutes today, I focused on the assessment part. I'd be very happy to talk about the training part after the session.", "slides": [1], "note": "此題依據 11/09 舊講稿（官方講題含肌功能訓練）；目前 v8 投影片只講雷達。上台前請確認主持人介紹時用哪個題目。"}, {"q": "If we remember just one thing, what should it be?", "zh": "如果只記一件事，該記什麼？", "tag": "主持人可能問", "a": "That we can now monitor sleep breathing with nothing to wear. A 24-GHz radar agrees with standard tests, r = 0.91 in the hospital and r = 0.87 at home. It's TFDA-cleared as a screen for suspected severe OSA, and it may help us watch the heart, too.", "slides": [37]}], "phrases": [["爭取時間 Buying time", ["That's a great question. Let me think about it for a second.", "Good question. Let me answer it in two parts.", "That's an important point, so let me be precise."]], ["確認問題 Clarifying", ["Sorry, could you repeat the last part?", "Just to make sure I understand: are you asking about the hospital study, or the home study?", "If I understand correctly, you're asking whether the radar can replace PSG."]], ["不知道／超出範圍 Not knowing", ["I don't have that number with me today, but I'd be happy to follow up by email.", "We didn't study that in these papers, so I wouldn't make a claim there.", "That's beyond the scope of today's talk, but it's a very good direction."]], ["拉回重點 Bridging", ["What I can say is that the radar is a screen for suspected severe OSA.", "The key point is that it works night after night, with nothing to wear.", "As I showed on the TFDA slide, it does not diagnose OSA on its own."]], ["結束回答 Closing an answer", ["Does that answer your question?", "I'm happy to talk more after the session.", "Thank you. I think we're out of time. Thank you all very much."]], ["對主持人 To the moderator", ["Thank you, Dr. Lin, for the kind introduction.", "Thank you for chairing this session."]]], "lines": [{"group": "開場 Opening", "label": "主持人介紹後（可選）", "text": "Thank you, Dr. Lin, for the kind introduction.", "note": "可選。依 11/09 舊講稿，主持人為 Ming-Chin Lin, M.D.；上台前請再確認。"}, {"group": "開場 Opening", "label": "Slide 1 開場（詳細版）", "text": "Good morning, everyone. Thank you for inviting me to the GCBME 2026 International Forum on Smart Healthcare. I'm Wen-Te Liu, from Pulmonary Medicine at Shuang Ho Hospital. Today I'll talk about non-wearable devices in sleep medicine: using contactless radar to check breathing during sleep.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 2 · Why is sleep testing so hard?", "text": "So, why is sleep testing so hard?", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 3 · How do today's tests compare?", "text": "How do today's tests compare?", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 4 · Wearable sensors for sleep monitoring", "text": "So what do we use today? There are many wearable sensors for sleep monitoring.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 5 · Radar principle diagram", "text": "Here is how the radar works.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 6 · Here's how it looks at the bedside", "text": "Here's how it looks at the bedside.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 7 · Our three published studies: sleep lab, home, and heart", "text": "Our team has three published studies: in the sleep lab, at home, and on the heart.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 8 · Study 1: Testing it in the hospital", "text": "Let's start with Study 1: testing it in the hospital.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 9 · Radar turns tiny chest movements into breathing signals", "text": "So how does it see breathing? The radar turns tiny chest movements into breathing signals.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 10 · Sleep tests watch airflow. Radar watches the chest.", "text": "Sleep tests watch airflow. Radar watches the chest.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 11 · How radar sees a sleep-breathing event", "text": "How does radar see a sleep-breathing event? In five steps of chest-wall motion.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 12 · Does the radar agree with the clinical gold standard?", "text": "So, does the radar agree with the clinical gold standard?", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 13 · Study 1: How accurate is it in the hospital?", "text": "Study 1: how accurate is it in the hospital?", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 14 · From research to the ward: a zero-contact care platform", "text": "From research to the ward: this is our zero-contact care platform. We now use the radar every day for our inpatients.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 15 · Obstructive Sleep Apnea after COVID-19", "text": "Next, obstructive sleep apnea after COVID-19. This is an observational study.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 16 · Radar picks up OSA in COVID-19 patients", "text": "Radar also picks up OSA in COVID-19 patients.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 18 · Does it work in real homes?", "text": "Now, does it work in real homes?", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 19 · Study 2: Taking it home", "text": "This brings us to Study 2: taking it home.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 20 · Study 2: How well does it work at home?", "text": "Study 2: how well does it work at home?", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 21 · Study 2: Grading severity at home", "text": "Study 2: grading severity at home.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 22 · Hospital vs. home: how do they compare?", "text": "So, hospital vs. home: how do they compare?", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 23 · TFDA clearance: where we stand", "text": "TFDA clearance: where we stand. The device is TFDA cleared.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 24 · TFDA license document", "text": "This is the TFDA license document, in Chinese.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 25 · So what does TFDA clearance mean in practice?", "text": "So what does TFDA clearance mean in practice?", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 26 · How do we install it?", "text": "How do we install it?", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 27 · How it all works, around the clock", "text": "So how does it all work, around the clock?", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 28 · What does daily screening data look like?", "text": "What does daily screening data look like?", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 29 · Study 3: Can breathing tell us about the heart?", "text": "Now, Study 3: can breathing tell us about the heart?", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 30 · Why does a weaker heart change breathing during sleep?", "text": "Why does a weaker heart change breathing during sleep?", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 31 · Periodic-breathing features & cycle length", "text": "We can measure periodic breathing by features like the cycle length and the hyperpnea length.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 32 · IEEE JTEHM 2025 paper", "text": "This is our paper on evaluating cardiac impairment from abnormal respiratory patterns, using wireless radar and deep learning.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 33 · Putting numbers on the heart–breathing links", "text": "Let's put numbers on the heart–breathing links.", "note": null}, {"group": "轉場句 Transitions（每張第一句）", "label": "Slide 34 · Our ward work has won national awards", "text": "Our ward work has also won national awards for our zero-contact care platform.", "note": null}, {"group": "結尾 Closing", "label": "Slide 37 · What to take home", "text": "So, what should you take home? First, it's contactless. A 24-GHz radar can monitor breathing night after night, with nothing to wear. Second, it's consistent with standard tests: r = 0.91 in the hospital, and r = 0.87 at home. Third, it's a TFDA-cleared screen for suspected severe OSA, with 90.5% sensitivity. Fourth, we found associations between periodic breathing and cardiac impairment. So it may help us watch the heart, too. And finally, our work received national quality awards: SNQ and NHQA. Thank you very much. I'm happy to take your questions.", "note": null}, {"group": "界線句 Caveats（Q&A 也會用到）", "label": "雷達不量血氧、不量 CO₂，只看呼吸型態。", "text": "The radar does not measure SpO2 or CO2. It only sees the breathing pattern.", "note": null}, {"group": "界線句 Caveats（Q&A 也會用到）", "label": "bRDI ≥ 30 只是疑似重度 OSA 的篩檢，不能單獨診斷。", "text": "bRDI ≥ 30 is used only as a screen for suspected severe OSA. It does not diagnose OSA on its own.", "note": null}, {"group": "界線句 Caveats（Q&A 也會用到）", "label": "心臟發現只是臨床相關性，尚未驗證可用於診斷或預測。", "text": "These are clinical associations only. It isn't validated yet for diagnosis or prediction.", "note": null}, {"group": "界線句 Caveats（Q&A 也會用到）", "label": "Bland–Altman 的範圍是一致界限，不是信賴區間。", "text": "These are limits of agreement, not a confidence interval.", "note": null}, {"group": "界線句 Caveats（Q&A 也會用到）", "label": "COVID-19 資料是觀察性資料：看趨勢，不是個別診斷。", "text": "These are observational data. They show trends, not a diagnosis for each patient.", "note": null}], "retell": {"model": "Today I talked about non-wearable devices in sleep medicine. Sleep testing is hard: PSG needs 20 or more wires and a long wait, and wearable sensors are uncomfortable. So we use a 24-GHz contactless radar that turns tiny chest movements into breathing signals. In Study 1, in the hospital, it agreed with PSG in 196 patients, with r = 0.91. In Study 2, at home, the correlation with HSAT was r = 0.87, over 147 nights. The device is TFDA-cleared as a screen for suspected severe OSA, with 90.5% sensitivity and specificity. In Study 3, periodic breathing picked up by the radar was linked to a lower LVEF, but that's an association only. And we now use the radar every day for our inpatients.", "short": "A 24-GHz radar can monitor sleep breathing night after night, with nothing to wear. It agrees with PSG in the hospital and with HSAT at home, and it's TFDA-cleared as a screen for suspected severe OSA. It may help us watch the heart, too, but those are associations only.", "cues": [["問題", "PSG 線多要等、穿戴不舒服"], ["技術", "24 GHz 雷達：胸部微動 → 呼吸訊號"], ["研究一", "院內 196 人，r = 0.91"], ["研究二", "居家 80 人 147 晚，r = 0.87"], ["TFDA", "bRDI ≥ 30 篩檢疑似重度，90.5%"], ["研究三", "週期性呼吸 ↔ LVEF 較低（只是相關）"], ["病房", "每天用在住院病人；SNQ、NHQA"]]}, "checklist": ["開場 30 秒（slide 1）可以不看稿、看著聽眾說完", "每張投影片的第一句（轉場句）都能脫稿說出", "所有數字唸法正確（r = 0.91、−5.30、158.49 pg/mL…）", "縮寫逐字母唸清楚：PSG、HSAT、bRDI、LVEF、TFDA、NT-proBNP", "三條界線都有說到：只是篩檢不是診斷／心臟只是相關／不量 CO₂", "全程彩排落在目標時間 ±1 分鐘內", "能用 30 秒回答至少 8 題 Q&A", "結尾 take-home 五點可以脫稿說完", "錄音回放：重音落在關鍵字、句尾有停頓", "知道時間不夠時要略過哪幾張（★ 可略過）"]};
+  const STORAGE_KEY = 'gcbme2026-speech-trainer-v1';
+  const $ = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function el(tag, attrs, html) { const e = document.createElement(tag); if (attrs) for (const k in attrs) { if (k === 'class') e.className = attrs[k]; else e.setAttribute(k, attrs[k]); } if (html != null) e.innerHTML = html; return e; }
+  const fmt = sec => { sec = Math.max(0, Math.round(sec)); return Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0'); };
+  const fmtSigned = sec => (sec >= 0 ? '+' : '−') + fmt(Math.abs(sec));
+
+  // ---------- state ----------
+  function loadState() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch (e) { return {}; } }
+  const state = Object.assign({ slidesDone: {}, slideTimes: {}, vocab: {}, frames: {}, lines: {}, qa: {}, rehearsals: [], retell: 0, checklist: {}, ratings: [], level: 'detailed', slide: 1, targetMin: 17, skip: false }, loadState());
+  function save() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {} updateProgress(); }
+
+  // ---------- TTS ----------
+  const tts = TrainerTTS.createController({
+    selectEl: $('#voice-select'), rateEl: $('#voice-rate'), rateValueEl: $('#voice-rate-value'),
+    noteEl: $('#voice-note'), previewBtn: $('#voice-preview')
+  });
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const LETTERS = ['NT-proBNP','CPAP','bRDI','HSAT','PSG','AHI','RDI','LVEF','LVEDD','LVESD','TFDA','OSA','ECG','SNQ','NHQA','GCBME','JTEHM','PB','ToF','Tx','Rx','SD','SpO2','CO2','CO₂'];
+  function spoken(t) {
+    let s = String(t);
+    s = s.replace(/\[|\]/g, '');
+    s = s.replace(/bRDI_TIB/g, 'bRDI, time in bed,');
+    s = s.replace(/\bIEEE\b/g, 'I triple E');
+    s = s.replace(/Line@ app/gi, 'LINE app');
+    s = s.replace(/(\d)\s*pg\/mL/g, '$1 picograms per milliliter');
+    s = s.replace(/events\/h\b/g, 'events per hour');
+    s = s.replace(/(\d)\s*\/h\b/g, '$1 per hour');
+    s = s.replace(/\b(\d{4})\/(\d{1,2})\b/g, (m, y, mo) => (MONTHS[+mo - 1] || mo) + ' ' + y);
+    s = s.replace(/±\s*/g, 'plus or minus ');
+    s = s.replace(/≥\s*/g, 'greater than or equal to ');
+    s = s.replace(/≤\s*/g, 'less than or equal to ');
+    s = s.replace(/\bp\s*<\s*/g, 'p less than ');
+    s = s.replace(/<\s*(\d)/g, 'below $1');
+    s = s.replace(/>\s*(\d)/g, 'above $1');
+    s = s.replace(/−\s*(\d)/g, 'minus $1');
+    s = s.replace(/(\d)-GHz\b/g, '$1 gigahertz').replace(/\bGHz\b/g, 'gigahertz');
+    s = s.replace(/(\d)\s*cm\b/g, '$1 centimeters').replace(/(\d)\s*mm\b/g, '$1 millimeters');
+    s = s.replace(/(\d)\s*bpm\b/gi, '$1 beats per minute');
+    s = s.replace(/\b1 s\b/g, '1 second').replace(/(\d) s\b/g, '$1 seconds');
+    s = s.replace(/\br = /g, 'r equals ').replace(/\bN = /g, 'N equals ');
+    s = s.replace(/→/g, ', then ');
+    s = s.replace(/\b1x\b/g, '1 time').replace(/(\d)x\b(?= in)/g, '$1 times');
+    LETTERS.forEach(a => {
+      const re = new RegExp('(^|[^A-Za-z])' + a.replace(/[-]/g, '\\-') + '(?![A-Za-z])', 'g');
+      const say = a === 'NT-proBNP' ? 'N T pro B N P' : a === 'CPAP' ? 'C PAP' : a === 'ToF' ? 'T O F' : a.replace('₂', '2').split('').join(' ');
+      s = s.replace(re, (m, p) => p + say);
+    });
+    s = s.replace(/%/g, ' percent');
+    return s;
+  }
+  let seqToken = 0;
+  function stopAll() { seqToken++; tts.cancel(); $$('.playing').forEach(x => x.classList.remove('playing')); }
+  function say(text, btn) { seqToken++; $$('.playing').forEach(x => x.classList.remove('playing')); return tts.speak(spoken(text), btn); }
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  async function waitIdle(token) {
+    const synth = window.speechSynthesis; if (!synth) return;
+    await sleep(350); let idle = 0;
+    while (token === seqToken) { if (!synth.speaking && !synth.pending) { idle++; if (idle >= 3) return; } else idle = 0; await sleep(120); }
+  }
+  async function playSeq(items, gapFn) { // items: [{text, el}]
+    stopAll(); const token = seqToken;
+    for (let i = 0; i < items.length; i++) {
+      if (token !== seqToken) return;
+      const it = items[i];
+      if (it.el) it.el.classList.add('playing');
+      await tts.speak(spoken(it.text));
+      await waitIdle(token);
+      if (it.el) it.el.classList.remove('playing');
+      if (token !== seqToken) return;
+      const g = gapFn ? gapFn(it, i) : 400; if (g) await sleep(g);
+    }
+  }
+  const echoGap = it => 1200 + it.text.split(/\s+/).length * 420; // time for you to repeat
+  $('#stop-all').addEventListener('click', stopAll);
+
+  // ---------- recorder (memory only) ----------
+  const recordings = {};
+  function recorderWidget(key) {
+    const box = el('div', { class: 'rec' });
+    if (!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder)) {
+      box.innerHTML = '<span class="small">這個瀏覽器不支援錄音（MediaRecorder）。</span>'; return box;
+    }
+    box.innerHTML = '<span class="recdot"></span><button class="btn" data-a="rec">🎙 錄自己</button><button class="btn" data-a="stop" disabled>■ 停止</button><span class="small">只存在記憶體、不上傳</span>';
+    let mr = null, chunks = [], stream = null;
+    function showAudio() {
+      $$('audio', box).forEach(a => a.remove());
+      if (recordings[key]) { const a = el('audio', { controls: '' }); a.src = recordings[key]; box.appendChild(a); }
+    }
+    showAudio();
+    box.addEventListener('click', async e => {
+      const b = e.target.closest('button'); if (!b) return;
+      if (b.dataset.a === 'rec') {
+        try { stopAll(); stream = await navigator.mediaDevices.getUserMedia({ audio: true }); }
+        catch (err) { alert('無法使用麥克風：' + err.message); return; }
+        chunks = []; mr = new MediaRecorder(stream);
+        mr.ondataavailable = ev => { if (ev.data.size) chunks.push(ev.data); };
+        mr.onstop = () => { stream.getTracks().forEach(t => t.stop()); if (recordings[key]) URL.revokeObjectURL(recordings[key]); recordings[key] = URL.createObjectURL(new Blob(chunks, { type: mr.mimeType || 'audio/webm' })); box.classList.remove('recording'); showAudio(); };
+        mr.start(); box.classList.add('recording'); b.disabled = true; $('[data-a=stop]', box).disabled = false;
+      } else if (b.dataset.a === 'stop' && mr) {
+        mr.stop(); b.disabled = true; $('[data-a=rec]', box).disabled = false;
+      }
+    });
+    return box;
+  }
+
+  // ---------- stopwatch ----------
+  function stopwatch(targetSec, onStop) {
+    const box = el('div', { class: 'watch' });
+    box.innerHTML = '<span class="small">目標 ' + fmt(targetSec) + '</span><span class="clock">0:00.0</span><button class="btn primary" data-a="go">開始計時</button><button class="btn" data-a="reset">重設</button><span class="diff"></span>';
+    let t0 = 0, timer = null;
+    const clock = $('.clock', box), diff = $('.diff', box), go = $('[data-a=go]', box);
+    function show(sec) { clock.textContent = Math.floor(sec / 60) + ':' + (sec % 60).toFixed(1).padStart(4, '0'); }
+    box.addEventListener('click', e => {
+      const b = e.target.closest('button'); if (!b) return;
+      if (b.dataset.a === 'go') {
+        if (!timer) { t0 = performance.now(); timer = setInterval(() => show((performance.now() - t0) / 1000), 100); go.textContent = '停止'; diff.textContent = ''; }
+        else { clearInterval(timer); timer = null; const sec = (performance.now() - t0) / 1000; show(sec); go.textContent = '開始計時';
+          const d = sec - targetSec; diff.className = 'diff ' + (Math.abs(d) <= Math.max(3, targetSec * 0.15) ? 'diff-ok' : 'diff-bad');
+          diff.textContent = (d >= 0 ? '比目標慢 ' : '比目標快 ') + Math.abs(d).toFixed(1) + ' 秒'; if (onStop) onStop(sec); }
+      } else { clearInterval(timer); timer = null; show(0); go.textContent = '開始計時'; diff.textContent = ''; }
+    });
+    return box;
+  }
+
+  // ---------- helpers ----------
+  const SL = D.slides; const byNum = {}; SL.forEach(s => byNum[s.slide] = s);
+  const secOf = s => s.slide; 
+  function markHtml(m, showAdded) { return esc(m).replace(/\[([^\]]*)\]/g, (x, a) => showAdded ? '<i class="added">' + a + '</i>' : a); }
+  function plan(level, targetMin, skip) {
+    const list = SL.filter(s => !(skip && s.skip));
+    const key = level === 'concise' ? 'secC' : 'secD';
+    const total = list.reduce((a, s) => a + s[key], 0);
+    const f = targetMin * 60 / total; let t = 0;
+    return list.map(s => { const d = s[key] * f; const r = { s, start: t, dur: d, end: t + d }; t += d; return r; });
+  }
+
+  // ---------- tabs ----------
+  const nav = $('#nav');
+  nav.addEventListener('click', e => {
+    const b = e.target.closest('button[data-tab]'); if (!b) return;
+    $$('button', nav).forEach(x => x.classList.remove('active')); b.classList.add('active');
+    $$('.panel').forEach(p => p.classList.remove('active')); $('#panel-' + b.dataset.tab).classList.add('active');
+    stopAll(); window.scrollTo(0, 0);
+  });
+  function gotoTab(t) { $('button[data-tab=' + t + ']', nav).click(); }
+
+  // lightbox
+  const lb = $('#lightbox');
+  lb.addEventListener('click', () => lb.classList.remove('show'));
+  function zoom(src) { $('#lightbox-img').src = src; lb.classList.add('show'); }
+
+  // ================= 1. Overview =================
+  $('#key-messages').innerHTML = D.keyMessages.map(k => '<li><strong>' + esc(k[0]) + '：</strong>' + esc(k[1]) + ' <button class="ib" data-say="' + esc(k[1]) + '">▶</button><br><span class="small">' + esc(k[2]) + '</span></li>').join('');
+  $('#caveats').innerHTML = D.caveats.map(k => '<li>' + esc(k[0]) + ' <button class="ib" data-say="' + esc(k[0]) + '">▶</button><br><span class="small">' + esc(k[1]) + '</span></li>').join('');
+  document.addEventListener('click', e => { const b = e.target.closest('[data-say]'); if (b) say(b.getAttribute('data-say'), b); });
+  const ovT = $('#ov-target'), ovS = $('#ov-skip');
+  ovT.value = state.targetMin; ovS.checked = !!state.skip;
+  function renderTimeline() {
+    const p = plan('detailed', +ovT.value || 17, ovS.checked); const pm = {}; p.forEach(r => pm[r.s.slide] = r);
+    let h = '<tr><th>#</th><th>投影片</th><th>時間</th><th>時鐘</th><th>實測</th></tr>';
+    D.sections.forEach(sec => {
+      h += '<tr class="sec"><td colspan="5">' + esc(sec.zh) + '｜' + esc(sec.en) + '</td></tr>';
+      sec.slides.forEach(n => { const s = byNum[n], r = pm[n];
+        const must = s.points.some(x => x.must) ? ' <span class="must">必</span>' : '';
+        h += '<tr><td class="num">' + n + (s.skip ? ' ★' : '') + '</td><td><a href="#" data-goslide="' + n + '">' + esc(s.title) + '</a>' + must + (s.skip ? '<br><span class="small">★ ' + esc(s.skip) + '</span>' : '') + '</td>' +
+          (r ? '<td class="num">' + fmt(r.dur) + '</td><td class="num">' + fmt(r.start) + '→' + fmt(r.end) + '</td>' : '<td colspan="2" class="small">（略過）</td>') +
+          '<td class="num">' + (state.slideTimes[n] ? fmt(state.slideTimes[n]) : '–') + '</td></tr>'; });
+    });
+    $('#timeline').innerHTML = h;
+  }
+  ovT.addEventListener('change', () => { state.targetMin = +ovT.value || 17; save(); renderTimeline(); });
+  ovS.addEventListener('change', () => { state.skip = ovS.checked; save(); renderTimeline(); });
+  $('#timeline').addEventListener('click', e => { const a = e.target.closest('[data-goslide]'); if (!a) return; e.preventDefault(); state.slide = +a.dataset.goslide; save(); gotoTab('slides'); renderSlide(); });
+
+  function updateProgress() {
+    const n = (o) => Object.keys(o || {}).filter(k => o[k]).length;
+    const items = [
+      ['投影片', n(state.slidesDone), SL.length],
+      ['字彙', n(state.vocab), D.vocab.length],
+      ['母框', n(state.frames), D.frames.length],
+      ['開場轉場結尾', n(state.lines), D.lines.length],
+      ['Q&A', n(state.qa), D.qa.length],
+      ['自我檢核', n(state.checklist), D.checklist.length],
+    ];
+    const pct = Math.round(items.reduce((a, x) => a + Math.min(1, x[1] / x[2]), 0) / items.length * 100);
+    $('#top-progress').textContent = '進度 ' + pct + '%';
+    const best = state.rehearsals.length ? state.rehearsals.reduce((a, r) => Math.abs(r.total - r.target * 60) < Math.abs(a.total - a.target * 60) ? r : a) : null;
+    $('#stats').innerHTML = items.map(x => '<div class="stat">' + x[0] + '<b>' + x[1] + ' / ' + x[2] + '</b><div class="bar"><span style="width:' + Math.round(Math.min(1, x[1] / x[2]) * 100) + '%"></span></div></div>').join('') +
+      '<div class="stat">全程彩排<b>' + state.rehearsals.length + ' 次</b><span class="small">' + (best ? '最接近目標：' + fmt(best.total) : '尚未彩排') + '</span></div>' +
+      '<div class="stat">一分鐘重述<b>' + (state.retell || 0) + ' 次</b></div>';
+  }
+  $('#export-progress').addEventListener('click', () => {
+    const a = el('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(state, null, 1)], { type: 'application/json' }));
+    a.download = 'gcbme2026-progress.json'; a.click();
+  });
+  $('#reset-progress').addEventListener('click', () => { if (confirm('確定清除這一頁的全部練習進度？（語音設定不會被清除）')) { localStorage.removeItem(STORAGE_KEY); location.reload(); } });
+
+  // ================= 2. Per slide =================
+  let level = state.level || 'detailed';
+  const chips = $('#slide-chips');
+  function renderChips() {
+    chips.innerHTML = SL.map(s => '<button class="chip' + (s.slide === state.slide ? ' active' : '') + (state.slidesDone[s.slide] ? ' done' : '') + (s.skip ? ' skip' : '') + '" data-n="' + s.slide + '">' + s.slide + '</button>').join('');
+    const a = $('.chip.active', chips); if (a && a.scrollIntoView) a.scrollIntoView({ block: 'nearest', inline: 'center' });
+  }
+  chips.addEventListener('click', e => { const b = e.target.closest('[data-n]'); if (!b) return; state.slide = +b.dataset.n; save(); renderSlide(); });
+  $$('#level-seg button').forEach(b => { b.classList.toggle('active', b.dataset.lv === level); b.addEventListener('click', () => { level = b.dataset.lv; state.level = level; save(); $$('#level-seg button').forEach(x => x.classList.toggle('active', x === b)); renderSlide(); }); });
+  $('#show-added').addEventListener('change', renderSlide);
+  $('#hide-text').addEventListener('change', renderSlide);
+  function renderSlide() {
+    stopAll(); renderChips();
+    const s = byNum[state.slide] || SL[0]; const idx = SL.indexOf(s);
+    const card = $('#slide-card'); card.innerHTML = '';
+    const sec = D.sections.find(x => x.slides.indexOf(s.slide) >= 0);
+    const head = el('div', { class: 'chunk-meta' }, '<span>' + esc(sec ? sec.zh : '') + '｜第 ' + (idx + 1) + ' / ' + SL.length + ' 張要講的投影片</span><span>' + (s.skip ? '<span class="badge">★ 可略過</span>' : '') + '</span>');
+    card.appendChild(head);
+    card.appendChild(el('h2', null, 'Slide ' + s.slide + '　' + esc(s.title)));
+    const grid = el('div', { class: 'slide-grid' });
+    const left = el('div'); const img = el('img', { class: 'slide-img', src: s.image, alt: 'Slide ' + s.slide, loading: 'lazy' });
+    img.addEventListener('click', () => zoom(s.image)); left.appendChild(img);
+    const hint = el('div', { class: 'hintbox' }, '<strong>中文提示</strong><ul style="margin:4px 0 0;padding-left:18px">' + s.points.map(p => '<li>' + (p.must ? '<span class="must">★必講 </span>' : '') + esc(p.zh) + '</li>').join('') + '</ul>' + (s.skip ? '<div class="small" style="margin-top:6px">★ 時間不夠可略過：' + esc(s.skip) + '</div>' : ''));
+    left.appendChild(hint);
+    const right = el('div');
+    const hide = $('#hide-text').checked, showAdded = $('#show-added').checked;
+    let target;
+    if (level === 'kp') {
+      target = s.secC;
+      right.appendChild(el('p', { class: 'small' }, '先看中文重點，自己用英文說出來，再按「看英文」對照。'));
+      s.points.forEach(p => {
+        const k = el('div', { class: 'kp' }, '<div>' + (p.must ? '<span class="must">★ </span>' : '') + esc(p.zh) + ' <span class="small">（' + esc(p.kw) + '）</span></div><div class="en">' + esc(p.en) + '</div><div class="btn-row" style="margin-top:6px"><button class="ib" data-a="show">看英文</button><button class="ib" data-a="play">▶</button></div>');
+        k.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; if (b.dataset.a === 'show') k.classList.toggle('show'); else say(p.en, b); });
+        right.appendChild(k);
+      });
+    } else {
+      const sents = level === 'concise' ? s.concise : s.detailed;
+      const marks = level === 'concise' ? s.cMark : s.dMark;
+      target = level === 'concise' ? s.secC : s.secD;
+      right.appendChild(el('div', { class: 'small' }, (level === 'concise' ? s.wc : s.wd) + ' 字｜目標約 ' + fmt(target) + '（' + (level === 'concise' ? '115' : '130') + ' wpm）'));
+      const list = el('div');
+      const rows = sents.map((t, i) => {
+        const r = el('div', { class: 'sent' });
+        r.innerHTML = '<div class="t' + (hide ? ' hide' : '') + '">' + markHtml(marks[i] || t, showAdded) + '</div><div class="acts"><button class="ib" data-a="play" title="播放">▶</button><button class="ib" data-a="rep" title="跟讀三遍（每遍後停頓讓你跟說）">🔁</button></div>';
+        const tdiv = $('.t', r);
+        r.addEventListener('click', e => {
+          const b = e.target.closest('button');
+          if (!b) { if (tdiv.classList.contains('hide')) tdiv.classList.remove('hide'); return; }
+          if (b.dataset.a === 'play') { say(t, b); }
+          else playSeq([{ text: t, el: tdiv }, { text: t, el: tdiv }, { text: t, el: tdiv }], echoGap);
+        });
+        list.appendChild(r); return { text: t, el: tdiv };
+      });
+      right.appendChild(list);
+      const br = el('div', { class: 'btn-row' });
+      br.innerHTML = '<button class="btn primary" data-a="all">▶ 播放整張</button><button class="btn" data-a="echo">跟讀模式（每句後停頓）</button><button class="btn" data-a="stop">■ 停止</button>';
+      br.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
+        if (b.dataset.a === 'all') playSeq(rows, () => 250); else if (b.dataset.a === 'echo') playSeq(rows, echoGap); else stopAll(); });
+      right.appendChild(br);
+    }
+    right.appendChild(stopwatch(target, sec => { state.slideTimes[s.slide] = Math.round(sec); save(); }));
+    right.appendChild(recorderWidget('slide-' + s.slide + '-' + level));
+    grid.appendChild(left); grid.appendChild(right); card.appendChild(grid);
+    const nb = el('div', { class: 'btn-row' });
+    nb.innerHTML = '<button class="btn" data-a="prev"' + (idx === 0 ? ' disabled' : '') + '>← 上一張</button><button class="btn ' + (state.slidesDone[s.slide] ? 'ok' : 'soft') + '" data-a="done">' + (state.slidesDone[s.slide] ? '✓ 已練好' : '標記為已練好') + '</button><button class="btn" data-a="next"' + (idx === SL.length - 1 ? ' disabled' : '') + '>下一張 →</button>';
+    nb.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
+      if (b.dataset.a === 'prev') state.slide = SL[idx - 1].slide; else if (b.dataset.a === 'next') state.slide = SL[idx + 1].slide; else state.slidesDone[s.slide] = !state.slidesDone[s.slide];
+      save(); renderSlide(); });
+    card.appendChild(nb);
+  }
+
+  // ================= 3. Vocab =================
+  let vcat = '全部';
+  const cats = ['全部'].concat(Array.from(new Set(D.vocab.map(v => v.cat))));
+  function renderVocab() {
+    $('#vocab-filter').innerHTML = cats.map(c => '<button class="chip' + (c === vcat ? ' active' : '') + '" data-c="' + esc(c) + '">' + esc(c) + '</button>').join('');
+    const g = $('#vocab-grid'); g.innerHTML = '';
+    D.vocab.forEach((v, i) => {
+      if (vcat !== '全部' && v.cat !== vcat) return;
+      const c = el('div', { class: 'vocab-card' + (state.vocab[i] ? ' studied' : '') });
+      c.innerHTML = '<p class="vocab-term">' + esc(v.term) + '</p><div class="ipa">' + esc(v.ipa) + '　<strong>' + esc(v.stress) + '</strong></div><div class="gloss">' + esc(v.zh) + '</div><div class="example">' + esc(v.example) + '<div class="small">— Slide ' + v.exSlide + '</div></div>' +
+        '<div class="btn-row"><button class="btn soft" data-a="w">▶ 單字</button><button class="btn soft" data-a="e">▶ 例句</button><button class="btn ' + (state.vocab[i] ? 'ok' : '') + '" data-a="d">' + (state.vocab[i] ? '✓ 會了' : '標記會了') + '</button></div>';
+      c.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
+        if (b.dataset.a === 'w') say(v.say || v.term.replace(/\(.*?\)/g, ''), b); else if (b.dataset.a === 'e') say(v.example, b); else { state.vocab[i] = !state.vocab[i]; save(); renderVocab(); } });
+      g.appendChild(c);
+    });
+  }
+  $('#vocab-filter').addEventListener('click', e => { const b = e.target.closest('[data-c]'); if (!b) return; vcat = b.dataset.c; renderVocab(); });
+  $('#numbers').innerHTML = '<table class="tl"><tr><th>寫法</th><th>唸法</th><th></th></tr>' + D.numbers.map(n => '<tr><td class="num"><strong>' + esc(n[0]) + '</strong></td><td>' + esc(n[1]) + '</td><td><button class="ib" data-say="' + esc(n[1].replace(/（.*?）/g, '').replace(/-/g, ' ')) + '">▶</button></td></tr>').join('') + '</table>';
+
+  // ================= 4. Frames =================
+  function frameInstances(f) {
+    if (f.kind === 'combo') {
+      const keys = Object.keys(f.slots);
+      const pick = {}; keys.forEach(k => { const o = f.slots[k]; pick[k] = o[Math.floor(Math.random() * o.length)]; });
+      return { fill: pick, forms: f.forms.map(x => [x[0], x[1].replace(/\{([^}]+)\}/g, (m, k) => pick[k])]) };
+    }
+    const r = f.rows[Math.floor(Math.random() * f.rows.length)];
+    return { fill: r.f, forms: r.forms };
+  }
+  function drillBox(f, inst) {
+    const box = el('div', { class: 'drill-out' });
+    const hide = $('#frame-hide').checked;
+    const fillTxt = Object.keys(inst.fill || {}).map(k => '<span class="badge">' + esc(k) + '：' + esc(inst.fill[k]) + '</span>').join(' ');
+    box.innerHTML = '<div class="small">' + esc(f.zh) + '</div>' + (fillTxt ? '<div style="margin:6px 0">' + fillTxt + '</div>' : '') +
+      inst.forms.map(x => '<div class="form"><span class="lab">' + esc(x[0]) + '</span><span class="s' + (hide ? ' hide' : '') + '">' + esc(x[1]) + '</span><button class="ib" data-say="' + esc(x[1]) + '">▶</button></div>').join('');
+    box.addEventListener('click', e => { const s = e.target.closest('.s.hide'); if (s) s.classList.remove('hide'); });
+    return box;
+  }
+  function renderFrames() {
+    const wrap = $('#frames'); wrap.innerHTML = '';
+    D.frames.forEach((f, i) => {
+      const c = el('div', { class: 'card' });
+      c.innerHTML = '<h2>' + (i + 1) + '. ' + esc(f.zh) + '</h2><div class="frame-pattern">' + esc(f.pattern) + '</div><p class="small">' + esc(f.note) + '</p>' +
+        '<div class="slotcols">' + Object.keys(f.slots).map(k => '<div class="slotcol"><h4>[' + esc(k) + ']</h4>' + f.slots[k].map(o => '<div>' + esc(o) + '</div>').join('') + '</div>').join('') + '</div>';
+      const out = el('div');
+      const btns = el('div', { class: 'btn-row' }, '<button class="btn primary" data-a="r">🎲 隨機替換</button><button class="btn" data-a="all">列出全部' + (f.kind === 'rows' ? '列' : '句型') + '</button><button class="btn ' + (state.frames[f.id] ? 'ok' : '') + '" data-a="d">' + (state.frames[f.id] ? '✓ 已熟練' : '標記已熟練') + '</button>');
+      btns.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
+        if (b.dataset.a === 'r') { out.innerHTML = ''; out.appendChild(drillBox(f, frameInstances(f))); }
+        else if (b.dataset.a === 'all') { out.innerHTML = ''; if (f.kind === 'rows') f.rows.forEach(r => out.appendChild(drillBox(f, { fill: r.f, forms: r.forms }))); else { const all = []; const ks = Object.keys(f.slots); const k1 = ks[0], k2 = ks[1]; f.slots[k2].forEach(v2 => { const v1 = f.slots[k1][all.length % f.slots[k1].length]; const fill = {}; fill[k1] = v1; fill[k2] = v2; all.push(fill); }); all.forEach(fill => out.appendChild(drillBox(f, { fill, forms: f.forms.map(x => [x[0], x[1].replace(/\{([^}]+)\}/g, (m, k) => fill[k])]) }))); } }
+        else { state.frames[f.id] = !state.frames[f.id]; save(); renderFrames(); } });
+      c.appendChild(btns); c.appendChild(out); wrap.appendChild(c);
+    });
+  }
+  $('#frame-random').addEventListener('click', () => { const f = D.frames[Math.floor(Math.random() * D.frames.length)]; const o = $('#frame-random-out'); o.innerHTML = ''; o.appendChild(drillBox(f, frameInstances(f))); });
+
+  // ================= 5. Lines (memorize) =================
+  let memMode = '0';
+  function hashP(i, j) { let h = (i + 1) * 2654435761 ^ (j + 7) * 40503; h = (h ^ (h >>> 13)) >>> 0; return (h % 100); }
+  function memHtml(text, li) {
+    const words = text.split(/(\s+)/);
+    let wi = 0;
+    return words.map(w => { if (/^\s+$/.test(w) || !w) return w; const j = wi++;
+      if (memMode === '0') return esc(w);
+      if (memMode === 'fl') { const m = w.match(/^([^A-Za-z0-9]*)([A-Za-z0-9])/); const f = m ? m[1] + m[2] + '…' : w; return '<span class="w fl" data-f="' + esc(f) + '">' + esc(w) + '</span>'; }
+      const p = memMode === '100' ? 101 : +memMode; return hashP(li, j) < p ? '<span class="w h">' + esc(w) + '</span>' : esc(w); }).join('');
+  }
+  function renderLines() {
+    const wrap = $('#lines'); wrap.innerHTML = '';
+    let group = '';
+    D.lines.forEach((ln, li) => {
+      if (ln.group !== group) { group = ln.group; wrap.appendChild(el('h3', { style: 'font-family:var(--font);margin:18px 4px 8px' }, esc(group))); }
+      const c = el('div', { class: 'chunk' + (state.lines[li] ? ' done' : '') });
+      c.innerHTML = '<div class="chunk-meta"><span>' + esc(ln.label) + '</span>' + (ln.note ? '<span class="small">' + esc(ln.note) + '</span>' : '') + '</div><div class="mem">' + memHtml(ln.text, li) + '</div>' +
+        '<div class="btn-row"><button class="ib" data-a="p">▶</button><button class="ib" data-a="r" title="跟讀三遍">🔁</button><button class="btn ' + (state.lines[li] ? 'ok' : '') + '" data-a="d">' + (state.lines[li] ? '✓ 背好了' : '標記背好了') + '</button></div>';
+      c.addEventListener('click', e => {
+        const w = e.target.closest('.w'); if (w) { w.classList.toggle('rev'); return; }
+        const b = e.target.closest('button'); if (!b) return;
+        if (b.dataset.a === 'p') say(ln.text, b); else if (b.dataset.a === 'r') playSeq([{ text: ln.text }, { text: ln.text }, { text: ln.text }], echoGap);
+        else { state.lines[li] = !state.lines[li]; save(); renderLines(); }
+      });
+      wrap.appendChild(c);
+    });
+  }
+  $$('#mem-seg button').forEach(b => b.addEventListener('click', () => { memMode = b.dataset.m; $$('#mem-seg button').forEach(x => x.classList.toggle('active', x === b)); renderLines(); }));
+
+  // ================= 6. QA =================
+  function qaTimer(sec) {
+    const box = el('div', { class: 'watch' }); box.innerHTML = '<span class="clock">' + fmt(sec) + '</span><button class="btn primary">開始 ' + sec + ' 秒</button>';
+    let t = null; const c = $('.clock', box), b = $('button', box);
+    b.addEventListener('click', () => { if (t) { clearInterval(t); t = null; b.textContent = '開始 ' + sec + ' 秒'; c.textContent = fmt(sec); return; }
+      stopAll(); let left = sec; b.textContent = '停止'; t = setInterval(() => { left--; c.textContent = fmt(left); if (left <= 0) { clearInterval(t); t = null; c.textContent = '時間到'; b.textContent = '再一次'; } }, 1000); });
+    return box;
+  }
+  function renderQA() {
+    const wrap = $('#qa-list'); wrap.innerHTML = '';
+    const hideEn = $('#qa-hide-en').checked;
+    D.qa.forEach((q, i) => {
+      const c = el('div', { class: 'card qa-card', id: 'qa-' + i });
+      c.innerHTML = '<div class="chunk-meta"><span>Q' + (i + 1) + '<span class="tag">' + esc(q.tag) + '</span></span><span class="small">相關投影片：' + q.slides.join('、') + '</span></div>' +
+        '<p class="chunk-text"' + (hideEn ? ' style="filter:blur(6px)"' : '') + '>' + esc(q.q) + '</p><p class="small">' + esc(q.zh) + '</p>' +
+        (q.note ? '<p class="small" style="color:var(--warm)">⚠ ' + esc(q.note) + '</p>' : '') +
+        '<div class="btn-row"><button class="btn soft" data-a="q">▶ 聽問題</button><button class="btn" data-a="show">看示範答案</button><button class="btn ' + (state.qa[i] ? 'ok' : '') + '" data-a="d">' + (state.qa[i] ? '✓ 答得出來' : '標記答得出來') + '</button></div>' +
+        '<div class="ans">' + esc(q.a) + ' <span class="small">（' + q.a.split(/\s+/).length + ' 字）</span><div class="btn-row"><button class="ib" data-a="a">▶ 示範</button></div></div>';
+      c.insertBefore(qaTimer(30), $('.ans', c));
+      c.appendChild(recorderWidget('qa-' + i));
+      c.addEventListener('click', e => { const b = e.target.closest('button[data-a]'); if (!b) return;
+        if (b.dataset.a === 'q') say(q.q, b); else if (b.dataset.a === 'a') say(q.a, b); else if (b.dataset.a === 'show') c.classList.toggle('show');
+        else if (b.dataset.a === 'd') { state.qa[i] = !state.qa[i]; save(); b.className = 'btn ' + (state.qa[i] ? 'ok' : ''); b.textContent = state.qa[i] ? '✓ 答得出來' : '標記答得出來'; } });
+      wrap.appendChild(c);
+    });
+  }
+  $('#qa-hide-en').addEventListener('change', renderQA);
+  $('#qa-random').addEventListener('click', () => { const i = Math.floor(Math.random() * D.qa.length); const c = $('#qa-' + i); c.classList.remove('show'); c.scrollIntoView({ behavior: 'smooth', block: 'start' }); setTimeout(() => say(D.qa[i].q), 400); });
+  $('#phrases').innerHTML = D.phrases.map(g => '<h3 style="font-family:var(--font);margin:12px 0 6px">' + esc(g[0]) + '</h3>' + g[1].map(p => '<div class="sent"><div class="t">' + esc(p) + '</div><div class="acts"><button class="ib" data-say="' + esc(p) + '">▶</button></div></div>').join('')).join('');
+
+  // ================= 7. Rehearse =================
+  let rh = { level: 'detailed', running: false, t0: 0, idx: 0, marks: [], timer: null, scroll: 0, last: 0, plan: [] };
+  const rhT = $('#rh-target'), rhS = $('#rh-skip');
+  rhT.value = state.targetMin; rhS.checked = !!state.skip;
+  function rhBuild() {
+    rh.plan = plan(rh.level, +rhT.value || 17, rhS.checked);
+    const p = $('#prompter');
+    p.innerHTML = rh.plan.map((r, i) => '<div class="ps" data-i="' + i + '"><h4>SLIDE ' + r.s.slide + (r.s.skip ? ' ★' : '') + ' · ' + esc(r.s.title) + ' · ' + fmt(r.dur) + '（' + fmt(r.start) + '→' + fmt(r.end) + '）</h4>' + esc((rh.level === 'concise' ? r.s.concise : r.s.detailed).join(' ')) + '</div>').join('');
+    const total = rh.plan[rh.plan.length - 1].end;
+    $('#rh-bar').innerHTML = rh.plan.map((r, i) => '<span data-i="' + i + '" style="width:' + (r.dur / total * 100) + '%;background:' + (i % 2 ? '#bcd5cb' : '#a3c4b7') + '"></span>').join('');
+    rhHighlight();
+  }
+  function rhHighlight() {
+    $$('#prompter .ps').forEach((d, i) => { d.classList.toggle('cur', i === rh.idx); d.classList.toggle('past', i < rh.idx); });
+    $$('#rh-bar span').forEach((d, i) => { const m = rh.marks[i]; if (m != null && i < rh.idx) { const r = rh.plan[i]; const actual = (rh.marks[i + 1] != null ? rh.marks[i + 1] : 0) - m; d.style.background = actual > r.dur * 1.2 ? '#e4a58f' : actual < r.dur * 0.7 ? '#e9d48f' : '#7fb69c'; } });
+    $('#rh-cur').textContent = rh.plan[rh.idx] ? rh.plan[rh.idx].s.slide : '–';
+  }
+  function rhScrollTo(i) { const d = $('#prompter .ps[data-i="' + i + '"]'); if (d) { const p = $('#prompter'); p.scrollTop = d.offsetTop - p.offsetTop - 20; rh.scroll = p.scrollTop; } }
+  function rhTick() {
+    const now = performance.now(); const el2 = (now - rh.t0) / 1000;
+    $('#rh-clock').textContent = fmt(el2);
+    const should = rh.plan.findIndex(r => el2 < r.end); const si = should < 0 ? rh.plan.length - 1 : should;
+    $('#rh-should').textContent = rh.plan[si].s.slide;
+    const cur = rh.plan[rh.idx]; const inSlide = el2 - rh.marks[rh.idx];
+    // pace: planned position vs actual (positive = ahead)
+    const plannedPos = cur.start + Math.min(inSlide, cur.dur);
+    const diff = plannedPos - el2;
+    const pe = $('#rh-pace'); pe.textContent = fmtSigned(diff); pe.className = 'big ' + (Math.abs(diff) <= 20 ? 'diff-ok' : 'diff-bad');
+    const sp = +$('#rh-speed').value; const p = $('#prompter');
+    if (sp > 0) { const dt = (now - rh.last) / 1000; rh.scroll += sp * dt; p.scrollTop = rh.scroll; }
+    rh.last = now;
+  }
+  function rhStart() { if (rh.running) return; rhBuild(); rh.running = true; rh.idx = 0; rh.marks = [0]; rh.t0 = performance.now(); rh.last = rh.t0; rhScrollTo(0); rh.timer = setInterval(rhTick, 100); $('#rh-result').innerHTML = ''; rhHighlight(); }
+  function rhNext(d) { if (!rh.running) { if (d > 0) rhStart(); return; } const t = (performance.now() - rh.t0) / 1000;
+    if (d > 0) { if (rh.idx >= rh.plan.length - 1) { rhStop(); return; } rh.idx++; rh.marks[rh.idx] = t; } else if (rh.idx > 0) { rh.marks.length = rh.idx; rh.idx--; }
+    rhScrollTo(rh.idx); rhHighlight(); }
+  function rhStop() {
+    if (!rh.running) return; clearInterval(rh.timer); rh.running = false;
+    const total = (performance.now() - rh.t0) / 1000; rh.marks[rh.idx + 1] = total;
+    const per = rh.plan.slice(0, rh.idx + 1).map((r, i) => ({ slide: r.s.slide, plan: Math.round(r.dur), actual: Math.round(rh.marks[i + 1] - rh.marks[i]) }));
+    const target = +rhT.value || 17;
+    const rec = { date: new Date().toLocaleString('zh-TW', { hour12: false }), level: rh.level, target, total: Math.round(total), slides: per.length, of: rh.plan.length, per };
+    state.rehearsals.push(rec); if (state.rehearsals.length > 30) state.rehearsals.shift(); save();
+    $('#rh-result').innerHTML = '<p><strong>總時間 ' + fmt(total) + '</strong>（目標 ' + fmt(target * 60) + '，差 ' + fmtSigned(total - target * 60) + '），講到 ' + per.length + ' / ' + rh.plan.length + ' 張。</p><div style="overflow-x:auto"><table class="tl"><tr><th>Slide</th><th>計畫</th><th>實際</th><th>差</th></tr>' +
+      per.map(x => '<tr><td>' + x.slide + '</td><td class="num">' + fmt(x.plan) + '</td><td class="num">' + fmt(x.actual) + '</td><td class="num ' + (Math.abs(x.actual - x.plan) > Math.max(8, x.plan * 0.3) ? 'diff-bad' : 'diff-ok') + '">' + fmtSigned(x.actual - x.plan) + '</td></tr>').join('') + '</table></div>';
+    rhHistory(); rhHighlight();
+  }
+  function rhHistory() { $('#rh-history').innerHTML = state.rehearsals.length ? '<h3 style="font-family:var(--font)">歷次彩排</h3><table class="tl"><tr><th>時間</th><th>版本</th><th>總長</th><th>目標</th><th>張數</th></tr>' + state.rehearsals.slice().reverse().map(r => '<tr><td>' + esc(r.date) + '</td><td>' + (r.level === 'concise' ? '精簡' : '詳細') + '</td><td class="num">' + fmt(r.total) + '</td><td class="num">' + fmt(r.target * 60) + '</td><td>' + r.slides + '/' + r.of + '</td></tr>').join('') + '</table>' : '<p class="small">還沒有彩排紀錄。</p>'; }
+  $('#rh-start').addEventListener('click', rhStart);
+  $('#rh-next').addEventListener('click', () => rhNext(1));
+  $('#rh-prev').addEventListener('click', () => rhNext(-1));
+  $('#rh-stop').addEventListener('click', rhStop);
+  $('#rh-reset').addEventListener('click', () => { clearInterval(rh.timer); rh.running = false; rh.idx = 0; rh.marks = []; $('#rh-clock').textContent = '0:00'; $('#rh-pace').textContent = '–'; $('#rh-pace').className = 'big'; $('#rh-should').textContent = '–'; rhBuild(); $('#prompter').scrollTop = 0; rh.scroll = 0; });
+  $$('#rh-level button').forEach(b => b.addEventListener('click', () => { if (rh.running) return; rh.level = b.dataset.lv; $$('#rh-level button').forEach(x => x.classList.toggle('active', x === b)); rhT.value = rh.level === 'concise' ? 10 : state.targetMin; rhBuild(); }));
+  rhT.addEventListener('change', () => { if (!rh.running) rhBuild(); });
+  rhS.addEventListener('change', () => { if (!rh.running) rhBuild(); });
+  $('#rh-speed').addEventListener('input', e => { $('#rh-speed-v').textContent = +e.target.value ? e.target.value + ' px/s' : '關'; rh.scroll = $('#prompter').scrollTop; });
+  $('#rh-font').addEventListener('input', e => { $('#prompter').style.fontSize = e.target.value + 'px'; });
+  $('#prompter').style.fontSize = '22px';
+  $('#prompter').addEventListener('click', e => { const d = e.target.closest('.ps'); if (!d || !rh.running) return; const i = +d.dataset.i; if (i === rh.idx + 1) rhNext(1); });
+  document.addEventListener('keydown', e => {
+    if (!$('#panel-rehearse').classList.contains('active')) return;
+    if (/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName) && document.activeElement.type !== 'range' && document.activeElement.type !== 'checkbox') return;
+    if (e.key === ' ' || e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); rhNext(1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); rhNext(-1); }
+  });
+
+  // ================= 8. Retell & self-check =================
+  $('#retell-cues').innerHTML = D.retell.cues.map(c => '<div><strong>' + esc(c[0]) + '</strong>｜' + esc(c[1]) + '</div>').join('');
+  let rtLen = 60, rtLeft = 60, rtTimer = null;
+  const rtFace = $('#retell-time');
+  function rtShow() { rtFace.textContent = fmt(rtLeft); }
+  $('#retell-start').addEventListener('click', () => { if (rtTimer) return; stopAll(); rtLeft = rtLen; rtShow(); rtTimer = setInterval(() => { rtLeft--; rtShow(); if (rtLeft <= 0) { clearInterval(rtTimer); rtTimer = null; rtFace.textContent = '時間到'; state.retell = (state.retell || 0) + 1; save(); } }, 1000); });
+  $('#retell-30').addEventListener('click', e => { rtLen = rtLen === 60 ? 30 : 60; e.target.textContent = rtLen === 60 ? '改 30 秒版' : '改 60 秒版'; $('#retell-start').textContent = '開始 ' + rtLen + ' 秒'; clearInterval(rtTimer); rtTimer = null; rtLeft = rtLen; rtShow(); });
+  $('#retell-reset').addEventListener('click', () => { clearInterval(rtTimer); rtTimer = null; rtLeft = rtLen; rtShow(); });
+  $('#retell-rec').appendChild(recorderWidget('retell'));
+  function showModel(t) { const m = $('#retell-model'); m.style.display = 'block'; m.innerHTML = esc(t) + ' <span class="small">（' + t.split(/\s+/).length + ' 字）</span><div class="btn-row"><button class="ib" data-say="' + esc(t) + '">▶ 聽示範</button></div>'; }
+  $('#retell-show').addEventListener('click', () => showModel(D.retell.model));
+  $('#retell-show30').addEventListener('click', () => showModel(D.retell.short));
+  function renderChecklist() {
+    $('#checklist').innerHTML = D.checklist.map((c, i) => '<li><input type="checkbox" id="ck' + i + '"' + (state.checklist[i] ? ' checked' : '') + '><label for="ck' + i + '">' + esc(c) + '</label></li>').join('');
+  }
+  $('#checklist').addEventListener('change', e => { const m = e.target.id.match(/^ck(\d+)$/); if (m) { state.checklist[m[1]] = e.target.checked; save(); } });
+  const RATE_ITEMS = ['流暢度', '發音清楚', '節奏停頓', '數字正確', '時間控制', '自信眼神'];
+  $('#ratings').innerHTML = RATE_ITEMS.map((r, i) => '<div class="rating"><span>' + r + '</span><input type="range" min="1" max="5" value="3" id="rt' + i + '"><b id="rtv' + i + '">3</b></div>').join('');
+  $('#ratings').addEventListener('input', e => { const m = e.target.id.match(/^rt(\d+)$/); if (m) $('#rtv' + m[1]).textContent = e.target.value; });
+  function renderRatings() { $('#rating-history').innerHTML = state.ratings.length ? '<table class="tl"><tr><th>日期</th>' + RATE_ITEMS.map(r => '<th>' + r + '</th>').join('') + '</tr>' + state.ratings.slice().reverse().map(r => '<tr><td>' + esc(r.date) + '</td>' + r.v.map(v => '<td>' + v + '</td>').join('') + '</tr>').join('') + '</table>' : ''; }
+  $('#save-rating').addEventListener('click', () => { state.ratings.push({ date: new Date().toLocaleString('zh-TW', { hour12: false }), v: RATE_ITEMS.map((r, i) => +$('#rt' + i).value) }); save(); renderRatings(); });
+
+  // ---------- init ----------
+  renderTimeline(); renderSlide(); renderVocab(); renderFrames(); renderLines(); renderQA(); rhBuild(); rhHistory(); renderChecklist(); renderRatings(); updateProgress();
+  window.__gcbme = { D, spoken, state, plan };
+})();
+</script>
+</body>
+</html>
