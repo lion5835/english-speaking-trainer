@@ -539,6 +539,11 @@ details.src{font-size:.85rem;color:var(--muted)}
 
 @media (max-width:640px){.topbar{position:static}.voice-note{display:none}.prompter{height:70vh}}
 
+.voice-bar.nv-on .browser-only{display:none}
+.voice-bar:not(.nv-on) .nv-only{display:none}
+.nv-field .seg button{padding:7px 12px}
+.nv-note{margin-top:6px}
+@media (max-width:640px){.nv-field .seg{width:100%}.nv-field .seg button{flex:1;padding:7px 6px}}
 </style>
 </head>
 <body>
@@ -563,18 +568,27 @@ details.src{font-size:.85rem;color:var(--muted)}
     </nav>
     <div class="voice-bar">
       <div class="voice-bar-inner">
-        <label class="voice-field">
+        <div class="voice-field nv-field">
+          <span>示範聲音</span>
+          <div class="seg" id="nv-voice" role="group" aria-label="示範聲音"><button type="button" data-nv="heart">自然女聲</button><button type="button" data-nv="michael">自然男聲</button><button type="button" data-nv="browser">瀏覽器</button></div>
+        </div>
+        <div class="voice-field nv-field nv-only">
+          <span>速度</span>
+          <div class="seg" id="nv-rate" role="group" aria-label="自然聲音速度"><button type="button" data-rate="0.8">0.8×</button><button type="button" data-rate="0.9">0.9×</button><button type="button" data-rate="1">1.0×</button><button type="button" data-rate="1.15">1.15×</button></div>
+        </div>
+        <label class="voice-field browser-only">
           <span>英文語音</span>
           <select id="voice-select" aria-label="選擇英文語音"></select>
         </label>
         <button type="button" class="btn soft" id="voice-preview">試聽</button>
-        <label class="voice-field voice-rate-field">
+        <label class="voice-field voice-rate-field browser-only">
           <span>速度 <strong id="voice-rate-value">0.95</strong></span>
           <input id="voice-rate" type="range" min="0.70" max="1.15" step="0.05" value="0.95" aria-label="朗讀速度">
         </label>
         <button type="button" class="btn" id="stop-all">■ 停止朗讀</button>
       </div>
-      <p class="voice-note" id="voice-note">朗讀使用你裝置上瀏覽器／作業系統已安裝的英文語音。語調能自然到什麼程度，取決於那些語音本身的品質；這不是另外錄製的真人聲音，也沒有接雲端或付費語音服務。</p>
+      <p class="voice-note nv-note" id="nv-note">自然女聲／自然男聲：預先用開源模型 Kokoro-82M（Apache-2.0）產生的示範音檔，講稿、字彙、母框、Q&amp;A 等固定句子都有；變速不變調。萬一某句沒有音檔或載入失敗，會自動改用瀏覽器語音。</p>
+      <p class="voice-note browser-only" id="voice-note">朗讀使用你裝置上瀏覽器／作業系統已安裝的英文語音。語調能自然到什麼程度，取決於那些語音本身的品質；這不是另外錄製的真人聲音，也沒有接雲端或付費語音服務。</p>
     </div>
   </header>
 
@@ -805,11 +819,15 @@ details.src{font-size:.85rem;color:var(--muted)}
     s = s.replace(/(\d)\s*\/h\b/g, '$1 per hour');
     s = s.replace(/\b(\d{4})\/(\d{1,2})\b/g, (m, y, mo) => (MONTHS[+mo - 1] || mo) + ' ' + y);
     s = s.replace(/±\s*/g, 'plus or minus ');
+    s = s.replace(/>=\s*/g, ' greater than or equal to ').replace(/<=\s*/g, ' less than or equal to ');
+    s = s.replace(/\br\s*=\s*(?=\d)/g, 'r equals ');
+    s = s.replace(/\b(\d+)x\b/g, (m, n) => n + (n === '1' ? ' time' : ' times'));
+    s = s.replace(/\b(\d+)\s*[-–]\s*(\d+)\b(?!-)/g, '$1 to $2');
     s = s.replace(/≥\s*/g, 'greater than or equal to ');
     s = s.replace(/≤\s*/g, 'less than or equal to ');
     s = s.replace(/\bp\s*<\s*/g, 'p less than ');
-    s = s.replace(/<\s*(\d)/g, 'below $1');
-    s = s.replace(/>\s*(\d)/g, 'above $1');
+    s = s.replace(/<\s*(\d)/g, ' below $1');
+    s = s.replace(/>\s*(\d)/g, ' above $1');
     s = s.replace(/−\s*(\d)/g, 'minus $1');
     s = s.replace(/(\d)-GHz\b/g, '$1 gigahertz').replace(/\bGHz\b/g, 'gigahertz');
     s = s.replace(/(\d)\s*cm\b/g, '$1 centimeters').replace(/(\d)\s*mm\b/g, '$1 millimeters');
@@ -824,11 +842,64 @@ details.src{font-size:.85rem;color:var(--muted)}
       s = s.replace(re, (m, p) => p + say);
     });
     s = s.replace(/%/g, ' percent');
-    return s;
+    return s.replace(/\(\s+/g, '(').replace(/\s{2,}/g, ' ').trim();
   }
+  // ---------- natural voices: pre-generated Kokoro-82M clips (Apache-2.0); browser TTS (tts-engine.js) is the fallback ----------
+  const NV_KEY = 'gcbme2026-natural-voice-v1';
+  const NV_VOICES = ['heart', 'michael', 'browser'], NV_RATES = [0.8, 0.9, 1, 1.15];
+  const NV_BASE = 'gcbme-2026/audio/';
+  const nvs = (() => { let o = {}; try { o = JSON.parse(localStorage.getItem(NV_KEY)) || {}; } catch (e) {}
+    return { voice: NV_VOICES.indexOf(o.voice) >= 0 ? o.voice : 'heart', rate: NV_RATES.indexOf(+o.rate) >= 0 ? +o.rate : 1 }; })();
+  const nkey = t => String(t).replace(/\s+/g, ' ').trim();
+  let NVM = null, nvTok = 0, nvFin = null, nvBtn = null;
+  const nvAudio = new Audio(); nvAudio.preload = 'auto'; nvAudio.setAttribute('playsinline', '');
+  function nvRateApply() { nvAudio.defaultPlaybackRate = nvs.rate; nvAudio.playbackRate = nvs.rate; try { nvAudio.preservesPitch = true; nvAudio.mozPreservesPitch = true; nvAudio.webkitPreservesPitch = true; } catch (e) {} }
+  nvAudio.addEventListener('loadedmetadata', nvRateApply); nvAudio.addEventListener('playing', nvRateApply);
+  const nvOn = () => nvs.voice !== 'browser';
+  const nvClip = t => (NVM && NVM.clips[nkey(t)]) || null;
+  function nvHas(t) { return !!(nvOn() && nvClip(t)); }
+  function nvDur(t) { const c = nvClip(t); return c && nvOn() ? (c.d[nvs.voice] || null) : null; }
+  function nvPlay(t) { // resolves 'ok' (finished), false (stopped), 'err' (could not play -> caller falls back)
+    nvStop(); const c = nvClip(t); const my = ++nvTok;
+    return new Promise(res => {
+      let done = false, guard = null;
+      const fin = r => { if (done) return; done = true; nvAudio.onended = nvAudio.onerror = null; clearTimeout(guard); if (nvFin === fin) nvFin = null; res(r === 'ok' && my !== nvTok ? false : r); };
+      nvFin = fin;
+      nvAudio.onended = () => fin('ok'); nvAudio.onerror = () => fin('err');
+      nvAudio.src = NV_BASE + nvs.voice + '/' + c.f + '.mp3?v=' + (NVM.v || 1); nvRateApply();
+      guard = setTimeout(() => fin('ok'), ((c.d[nvs.voice] || 30) / nvs.rate + 20) * 1000);
+      let pr; try { pr = nvAudio.play(); } catch (e) { fin('err'); return; }
+      if (pr && pr.catch) pr.catch(e => fin(e && e.name === 'AbortError' ? false : 'err'));
+    });
+  }
+  function nvStop() { nvTok++; try { nvAudio.pause(); } catch (e) {} if (nvFin) nvFin(false); if (nvBtn) { nvBtn.classList.remove('speak-active'); nvBtn = null; } }
+  function nvUI() {
+    $$('#nv-voice button').forEach(b => b.classList.toggle('active', b.dataset.nv === nvs.voice));
+    $$('#nv-rate button').forEach(b => b.classList.toggle('active', +b.dataset.rate === nvs.rate));
+    const bar = $('.voice-bar'); if (bar) bar.classList.toggle('nv-on', nvOn());
+  }
+  function nvSave() { try { localStorage.setItem(NV_KEY, JSON.stringify(nvs)); } catch (e) {} nvUI(); }
+  $('#nv-voice').addEventListener('click', e => { const b = e.target.closest('[data-nv]'); if (!b) return; stopAll(); nvs.voice = b.dataset.nv; nvSave(); });
+  $('#nv-rate').addEventListener('click', e => { const b = e.target.closest('[data-rate]'); if (!b) return; nvs.rate = +b.dataset.rate; nvRateApply(); nvSave(); });
+  nvUI();
+  fetch(NV_BASE + 'manifest.json?v=1').then(r => r.ok ? r.json() : null).then(m => { if (m && m.clips) NVM = m; }).catch(() => {});
+  // the 試聽 button belongs to tts-engine.js; with a natural voice selected, preview that voice instead
+  document.addEventListener('click', e => { const b = e.target.closest('#voice-preview'); if (!b || !nvOn() || !NVM) return;
+    e.stopPropagation(); e.preventDefault(); say(SL[0].detailed[0], b); }, true);
+
   let seqToken = 0;
-  function stopAll() { seqToken++; tts.cancel(); $$('.playing').forEach(x => x.classList.remove('playing')); }
-  function say(text, btn) { seqToken++; $$('.playing').forEach(x => x.classList.remove('playing')); return tts.speak(spoken(text), btn); }
+  function stopAll() { seqToken++; tts.cancel(); nvStop(); $$('.playing').forEach(x => x.classList.remove('playing')); }
+  function say(text, btn) {
+    const again = btn && nvBtn === btn;
+    seqToken++; $$('.playing').forEach(x => x.classList.remove('playing'));
+    if (nvHas(text) || again) { tts.cancel(); nvStop(); if (again) return Promise.resolve(); return nvSay(text, btn); }
+    nvStop(); return tts.speak(spoken(text), btn);
+  }
+  async function nvSay(text, btn) {
+    const p = nvPlay(text); if (btn) { nvBtn = btn; btn.classList.add('speak-active'); }
+    const r = await p; if (btn && nvBtn === btn) { btn.classList.remove('speak-active'); nvBtn = null; }
+    if (r === 'err') return tts.speak(spoken(text), btn);
+  }
   const sleep = ms => new Promise(r => setTimeout(r, ms));
   async function waitIdle(token) {
     const synth = window.speechSynthesis; if (!synth) return;
@@ -841,14 +912,15 @@ details.src{font-size:.85rem;color:var(--muted)}
       if (token !== seqToken) return;
       const it = items[i];
       if (it.el) it.el.classList.add('playing');
-      await tts.speak(spoken(it.text));
-      await waitIdle(token);
+      let r = null;
+      if (nvHas(it.text)) { r = await nvPlay(it.text); if (r === false || token !== seqToken) { if (it.el) it.el.classList.remove('playing'); return; } }
+      if (r !== 'ok') { await tts.speak(spoken(it.text)); await waitIdle(token); }
       if (it.el) it.el.classList.remove('playing');
       if (token !== seqToken) return;
       const g = gapFn ? gapFn(it, i) : 400; if (g) await sleep(g);
     }
   }
-  const echoGap = it => 1200 + it.text.split(/\s+/).length * 420; // time for you to repeat
+  const echoGap = it => { const d = nvDur(it.text); return d ? Math.round(900 + d / nvs.rate * 1100) : 1200 + it.text.split(/\s+/).length * 420; }; // time for you to repeat (clip length when a natural clip exists)
   $('#stop-all').addEventListener('click', stopAll);
 
   // ---------- recorder (memory only) ----------
@@ -1250,7 +1322,22 @@ details.src{font-size:.85rem;color:var(--muted)}
 
   // ---------- init ----------
   renderTimeline(); renderSlide(); renderVocab(); renderFrames(); renderLines(); renderQA(); rhBuild(); rhHistory(); renderChecklist(); renderRatings(); updateProgress();
-  window.__gcbme = { D, spoken, state, plan };
+  function speakables() { // every fixed English text the page can pass to say()/playSeq()
+    const out = []; const add = t => { if (t) out.push(nkey(t)); };
+    SL.forEach(s => { s.detailed.forEach(add); s.concise.forEach(add); s.points.forEach(p => add(p.en)); });
+    D.keyMessages.forEach(k => add(k[1])); D.caveats.forEach(k => add(k[0]));
+    D.vocab.forEach(v => { add(v.say || v.term.replace(/\(.*?\)/g, '')); add(v.example); });
+    D.numbers.forEach(n => add(n[1].replace(/（.*?）/g, '').replace(/-/g, ' ')));
+    D.frames.forEach(f => {
+      if (f.kind === 'rows') { f.rows.forEach(r => r.forms.forEach(x => add(x[1]))); return; }
+      let combos = [{}]; Object.keys(f.slots).forEach(k => { const n = []; combos.forEach(c => f.slots[k].forEach(v => { const o = Object.assign({}, c); o[k] = v; n.push(o); })); combos = n; });
+      combos.forEach(c => f.forms.forEach(x => add(x[1].replace(/\{([^}]+)\}/g, (m, k) => c[k]))));
+    });
+    D.lines.forEach(l => add(l.text)); D.qa.forEach(q => { add(q.q); add(q.a); });
+    D.phrases.forEach(g => g[1].forEach(add)); add(D.retell.model); add(D.retell.short);
+    return Array.from(new Set(out));
+  }
+  window.__gcbme = { D, spoken, state, plan, speakables, nv: { has: nvHas, dur: nvDur, settings: nvs, get manifest() { return NVM; }, audio: nvAudio, key: nkey } };
 })();
 </script>
 </body>
