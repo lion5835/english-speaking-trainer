@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2f6f5e">
+<title>GCBME 2026 自我口說練習｜一個觀念，換很多種講法</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <h1>自我口說練習：一個觀念，換很多種講法</h1>
+      <p>GCBME 2026｜Non-wearable Devices in Sleep Medicine（定稿 v29 講稿）</p>
+    </div>
+    <div class="voicebar">
+      <label>示範聲音
+        <select id="voiceSel"><option value="heart">自然女聲</option><option value="michael">自然男聲</option></select>
+      </label>
+      <label>速度
+        <select id="rateSel"><option value="0.8">0.8×</option><option value="0.9">0.9×</option><option value="1" selected>1.0×</option><option value="1.15">1.15×</option></select>
+      </label>
+    </div>
+  </div>
+  <nav class="nav" id="nav" aria-label="分頁">
+    <button type="button" data-tab="list" class="active">觀念練習</button>
+    <button type="button" data-tab="free">自由模式</button>
+    <button type="button" data-tab="progress">我的進度</button>
+    <button type="button" data-tab="settings">設定・AI 教練</button>
+    <button type="button" data-tab="help">怎麼練</button>
+  </nav>
+</header>
+<main id="main">
+  <section id="tab-list" class="tab active"></section>
+  <section id="tab-practice" class="tab"></section>
+  <section id="tab-free" class="tab"></section>
+  <section id="tab-progress" class="tab"></section>
+  <section id="tab-settings" class="tab"></section>
+  <section id="tab-help" class="tab"></section>
+</main>
+<div id="lightbox" class="lightbox" hidden><img alt="投影片放大"></div>
+<div id="toast" class="toast" hidden></div>
+<footer class="foot">
+  <p>另有：<a href="../gcbme-2026-smart-sleep.html">GCBME 2026 演講練習（舊版自我演練頁，11/16 v8 講稿）</a>｜<a href="https://lion5835.github.io/gcbme2026-speech-practice/">GCBME 口說練習網頁（三級講稿 v29）</a>｜<a href="../index.html">演講英文口說訓練首頁</a></p>
+  <p>錄音只存在這個分頁的記憶體，不上傳。練習紀錄存在這台裝置的瀏覽器（localStorage）。示範聲音為 Kokoro-82M 合成（Apache-2.0），不是真人錄音。</p>
+</footer>
+<script src="analyze.js?v=1"></script>
+<script src="app.js?v=1"></script>
+</body>
+</html>
